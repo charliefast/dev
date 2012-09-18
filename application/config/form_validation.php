@@ -1,11 +1,11 @@
 <?php
 $config = array(
                  'signup' => array(
-                                    array(
+                                    /*array(
                                             'field' => 'username',
                                             'label' => 'Användarnamn',
                                             'rules' => 'required|trim|xss_clean|max_length[255]|min_length[6]|callback_user_not_exist' 
-                                          ),
+                                          ), */
                                      array(
                                             'field' => 'firstname',
                                             'label' => 'Förnamn',
