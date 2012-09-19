@@ -1,4 +1,3 @@
-
 <?php
 Class User_model extends CI_Model
 {
@@ -11,10 +10,11 @@ Class User_model extends CI_Model
    $this -> db -> limit(1);
 
    $query = $this -> db -> get();
+  var_dump('password = ' . "'" . SHA1('shru7hTTls'.$password) . "'");
 
    if($query -> num_rows() == 1)
    {
-     return $query->result();
+     //return $query->result();
    }
    else
    {
@@ -69,8 +69,3 @@ Class User_model extends CI_Model
 
 
 //insert into members (username, password) values ('bob', SHA1('shru7hTTlssupersecret'));
-?>
-
-
-
-
