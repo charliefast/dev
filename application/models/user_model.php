@@ -16,21 +16,7 @@ Class User_model extends CI_Model
     //$str = "SELECT id, username, password FROM members WHERE username = ? AND password = ? LIMIT 1";
     $str = "SELECT id, email, password FROM members WHERE email = ? AND password = ? LIMIT 1";
 
-  $query = $this -> db -> get();
-  var_dump('password = ' . "'" . SHA1('shru7hTTls'.$password) . "'");
-
-   if($query -> num_rows() == 1)
-   {
-     //return $query->result();
-   }
-   else
-   {
-     return false;
-   }
- }
- function register_user($form_data)
-
-
+  //$query = $this -> db -> get();
     $query = $this -> db -> query($str,array($username, $pw));
 
     if($query -> num_rows() == 1)
@@ -39,10 +25,10 @@ Class User_model extends CI_Model
     }
     else
     {
-      var_dump($pw);
       return false;
     }
   }
+ 
   function register_user($form_data)
   {
     $this->db->insert('members', $form_data);
@@ -84,9 +70,4 @@ Class User_model extends CI_Model
     //email doesn't exist
     return FALSE;
   }
-}
-
-
-
-//insert into members (username, password) values ('bob', SHA1('shru7hTTlssupersecret'));
 }
