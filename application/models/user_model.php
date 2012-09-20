@@ -1,8 +1,12 @@
 <?php
 Class User_model extends CI_Model
 {
- function login($username, $password)
- {
+  function __construct()
+  {
+    parent::__construct();
+  }
+  function login($username, $password)
+  {
     //$this -> db -> select('id, username, password');
     //$this -> db -> from('members');
     //$this -> db -> where('username = ' . "'" . $username . "'");
@@ -19,7 +23,7 @@ Class User_model extends CI_Model
   //$query = $this -> db -> get();
     $query = $this -> db -> query($str,array($username, $pw));
 
-    if($query -> num_rows() == 1)
+    if($query -> num_rows() < 0)
     {
       return $query->result();
     }
