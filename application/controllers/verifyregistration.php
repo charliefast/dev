@@ -44,7 +44,7 @@ class VerifyRegistration extends CI_Controller {
       {
         if($this->send_email_activation_key($activationkey)==TRUE){
                   
-          $this->load->view('login_view');
+          //$this->load->view('login_view');
           //echo $this->email->print_debugger();
                 
         }
@@ -70,7 +70,7 @@ class VerifyRegistration extends CI_Controller {
       //  return TRUE;
       //}
       //return FALSE;
-      //echo 'Klicka på länken för att aktivera ditt konto'. anchor('index.php/confirm/'.$activationkey).'Aktivera';
+      echo 'Klicka på länken för att aktivera ditt konto'. anchor('index.php/confirm/'.$activationkey).'Aktivera';
       return TRUE;
     }
 
@@ -106,7 +106,23 @@ class VerifyRegistration extends CI_Controller {
         {
         //Go to loginpage
         echo 'registration successful';
+        }
       }
     }
-  }
+    function register_confirm($activation_key){
+    
+      //$activation_key = $this->uri->segment(3);
+    
+      if (!$activation_key){
+        echo 'Ingen aktiveringskod funnen i URL';
+        exit ();
+      }else{
+        if ($this->user_model->activate_user($activation_key) == TRUE){
+            echo 'Jippie! Ditt konto är aktiverat';
+        }else{
+          echo 'Någonting blev knas';
+          exit ();
+        }
+      }
+    }
 }

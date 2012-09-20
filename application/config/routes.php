@@ -43,6 +43,8 @@ $route['404_override'] = 'errors/page_missing';
 
 $route['register'] = "verifyregistration";
 
+$route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

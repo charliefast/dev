@@ -70,4 +70,29 @@ Class User_model extends CI_Model
     //email doesn't exist
     return FALSE;
   }
+  function activate_user($activation_key){
+    //first check if key exists
+    $query = "SELECT activation_key, email_activated FROM members WHERE activation_key = ?";
+
+    $result = $this -> db -> query($query,$activation_key);
+    if ($result->num_rows() > 0)
+    {
+      $row = $result->row(); 
+      if($row->email_activated == 1){
+        echo 'Ditt konto är redan aktiverat';
+        exit();
+      }else{
+        //activation_key exists
+        //update database
+        $this -> db -> update('members', array('email_activated' => '1'), array('activation_key' => $activation_key));
+        // check if any rows where affected by this update
+        if ($this->db->affected_rows() > 0){
+      
+          return TRUE;
+        }
+        //if activation_key doesn't exist or there where no affected rows
+        return FALSE;  
+      }
+    }   
+  }
 }
