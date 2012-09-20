@@ -48,10 +48,13 @@ class VerifyRegistration extends CI_Controller {
           //echo $this->email->print_debugger();
                 
         }
-          echo 'Ett fel uppstod när aktiveringsmailet skulle skickas. Var god försök senare.';
-        }
         else
         {
+          echo 'Ett fel uppstod när aktiveringsmailet skulle skickas. Var god försök senare.';
+        }
+      }
+      else
+      {
           echo 'Ett fel uppstod. Var god försök senare.';
           // Or whatever error handling is necessary
         }
@@ -70,7 +73,8 @@ class VerifyRegistration extends CI_Controller {
       //  return TRUE;
       //}
       //return FALSE;
-      echo 'Klicka på länken för att aktivera ditt konto'. anchor('index.php/confirm/'.$activationkey).'Aktivera';
+      echo 'Klicka på länken för att aktivera ditt konto: '. anchor('index.php/confirm/'.$activationkey, 'Aktivera').
+      ' eller kopiera följande länk till din webbläsare: '. anchor('index.php/confirm/'.$activationkey);
       return TRUE;
     }
 
@@ -118,7 +122,7 @@ class VerifyRegistration extends CI_Controller {
         exit ();
       }else{
         if ($this->user_model->activate_user($activation_key) == TRUE){
-            echo 'Jippie! Ditt konto är aktiverat';
+            echo 'Jippie! Ditt konto är aktiverat. '.anchor('index.php/login', 'Logga in här');
         }else{
           echo 'Någonting blev knas';
           exit ();

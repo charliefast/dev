@@ -79,7 +79,7 @@ Class User_model extends CI_Model
     {
       $row = $result->row(); 
       if($row->email_activated == 1){
-        echo 'Ditt konto är redan aktiverat';
+        echo 'Ditt konto är redan aktiverat. '.anchor('index.php/login','Logga in här');
         exit();
       }else{
         //activation_key exists
