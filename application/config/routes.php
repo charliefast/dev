@@ -45,8 +45,9 @@ $route['register'] = "verifyregistration";
 
 $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 
-$route['item/(:any)'] = "item/get_item_by_category/$1";
-$route['item'] = "item/list_categories";
+$route['item/(:any)'] = "item/get_items/$1";
+$route['item'] = "item/get_all_items";
+
 
 
 /* End of file routes.php */
