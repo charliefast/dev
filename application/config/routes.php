@@ -48,6 +48,7 @@ $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 $route['item/(:any)'] = "item/get_items/$1";
 $route['item'] = "item/get_items/$1";
 
+$route['(:any)/logout'] = "home/logout";
 
 
 /* End of file routes.php */

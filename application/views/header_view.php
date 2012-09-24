@@ -54,7 +54,8 @@
 		<div class="logo">
 			<img src="images/miniLogo.png" />
 		</div>
-	<?php if ($session == TRUE){
+	<?php
+	if (isset($this->session->userdata['logged_in'])){
 	echo '<a href="#" id="menuLink"></a>'.
 		    '<a href="#" id="searchLink"></a>'.
 		'<nav>'.
