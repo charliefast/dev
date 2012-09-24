@@ -12,6 +12,7 @@ class Login extends CI_Controller {
  {
    $this->load->helper(array('form', 'url'));
    $this->load->view('login_view');
+   //$this->template->build('welcome_message', array('message' => 'Hi there!'));
  }
 
 }
