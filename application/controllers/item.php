@@ -19,27 +19,27 @@ class item extends CI_Controller {
   {
     
   }
-  function get_all_items(){
-    $this->get_items('');
-  }
-  function get_items($item){
+  function get_items($item = null){
+    $type = '';
     $search = '';
     $category = '';
     if ($this->input->get('search')){
       $search = $this->input->get('search');
     }
-    if ($item){
+    if ($item != '$1'){
       $category = $item;
     }
-      $result = $this->item_model->get_item($category,$search);
+    $result = $this->item_model->get_item($category,$search);
       if ($result){
+        
         $this->load->view('result_view', array('result' => $result));
       }
     else
     {
     	$this->load->view('item_view', array('content' => 'Inga annonser hittades i vald kategori'));
     }
- }
+
+  }
 
  function list_categories(){
    $result = $this->item_model->get_categories_from_db();

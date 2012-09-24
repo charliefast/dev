@@ -23,7 +23,7 @@ Class User_model extends CI_Model
   //$query = $this -> db -> get();
     $query = $this -> db -> query($str,array($username, $pw));
 
-    if($query -> num_rows() < 0)
+    if($query -> num_rows() > 0)
     {
       return $query->result();
     }
