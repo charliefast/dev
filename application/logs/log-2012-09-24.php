@@ -9112,3 +9112,193 @@ DEBUG - 2012-09-24 13:20:28 --> File loaded: application/views/footer_view.php
 DEBUG - 2012-09-24 13:20:28 --> File loaded: application/views/item_view.php
 DEBUG - 2012-09-24 13:20:28 --> Final output sent to browser
 DEBUG - 2012-09-24 13:20:28 --> Total execution time: 1.0027
+DEBUG - 2012-09-24 13:33:16 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:16 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:16 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Loader Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Helper loaded: url_helper
+DEBUG - 2012-09-24 13:33:16 --> Database Driver Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Session Class Initialized
+DEBUG - 2012-09-24 13:33:16 --> Helper loaded: string_helper
+DEBUG - 2012-09-24 13:33:17 --> Session routines successfully run
+DEBUG - 2012-09-24 13:33:17 --> User Agent Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Template class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Controller Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:17 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Model Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Model Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/header_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/category_menu_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/item_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/footer_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/result_view.php
+DEBUG - 2012-09-24 13:33:17 --> Final output sent to browser
+DEBUG - 2012-09-24 13:33:17 --> Total execution time: 0.8100
+DEBUG - 2012-09-24 13:33:17 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:17 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Loader Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Helper loaded: url_helper
+DEBUG - 2012-09-24 13:33:17 --> Database Driver Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Session Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Helper loaded: string_helper
+DEBUG - 2012-09-24 13:33:17 --> Session routines successfully run
+DEBUG - 2012-09-24 13:33:17 --> User Agent Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Template class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Controller Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Model Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> Model Class Initialized
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/header_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/category_menu_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/item_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/footer_view.php
+DEBUG - 2012-09-24 13:33:17 --> File loaded: application/views/result_view.php
+DEBUG - 2012-09-24 13:33:18 --> Final output sent to browser
+DEBUG - 2012-09-24 13:33:18 --> Total execution time: 0.8516
+DEBUG - 2012-09-24 13:33:18 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:18 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:18 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:18 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:18 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:18 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:18 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:18 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:18 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:18 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:19 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:19 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:19 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:19 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:20 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:20 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:20 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:20 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:21 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:21 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:21 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:21 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:21 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:22 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:22 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:22 --> Language Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Config Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Hooks Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> Utf8 Class Initialized
+DEBUG - 2012-09-24 13:33:22 --> UTF-8 Support Enabled
+DEBUG - 2012-09-24 13:33:23 --> URI Class Initialized
+DEBUG - 2012-09-24 13:33:23 --> Router Class Initialized
+DEBUG - 2012-09-24 13:33:23 --> Output Class Initialized
+DEBUG - 2012-09-24 13:33:23 --> Security Class Initialized
+DEBUG - 2012-09-24 13:33:23 --> Input Class Initialized
+DEBUG - 2012-09-24 13:33:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2012-09-24 13:33:23 --> Language Class Initialized

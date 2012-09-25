@@ -8,7 +8,7 @@
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Bytarna.se</title>
+	<title>Bytarna.se - <?php echo $title ?></title>
 
 	<!-- Mobile Specific Metas
   ================================================== -->
