@@ -1,0 +1,98 @@
+header {
+		.clearfix();
+		background: #000;
+		display: block;
+		height: 50px;
+		width: 100%;
+		.logo {
+			float: left;
+			position: relative;
+			top: 5px;
+			left: 2%;
+			img {
+				width: 40px;
+			}
+		}
+		#menuLink {
+			width: 35px;
+			height: 33px;
+			background: url('../images/menu-icon.png') no-repeat 0 0;
+			position: absolute;
+			top: 7px;
+			right: 52px;
+			display: block;
+		}
+		#searchLink {
+			width: 30px;
+			height: 24px;
+			background: url('../images/search-icon.png') no-repeat 0 0;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			display: block;
+		}
+		nav {
+			ul {
+				list-style: none;
+				padding: 0;
+			}
+		}
+}
+
+
+.content {
+	.clearfix();
+	#introTop {
+		background: #87c06b;
+		margin-bottom: 20px;
+		.wrapper {
+			padding: 40px 15px;
+			img {
+				display: block;
+				margin: 0 auto;
+			}
+			span {
+				font-size: 24px;
+				text-align: center;
+				color: #000;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+	.loginForm {
+		.column(12);
+		h2 {
+			text-transform: none!important;
+			padding: 0 20px;
+		}
+		form {
+			padding: 0 20px;
+			margin-bottom: 20px;
+			.clearfix();
+			> div {
+				width: 100%;
+				input {
+					width: 100%;
+					float: left;
+				}
+			}
+			.button {
+				float: left;
+				&.blue {
+					float: right;
+				}
+			}
+		}
+		p {
+			display: block;
+			text-align: center;
+			position: relative;
+		}
+		a {
+			display: block;
+			text-align: center;
+		}
+		
+	}
+}
