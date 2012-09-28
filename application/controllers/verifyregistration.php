@@ -5,6 +5,7 @@ class VerifyRegistration extends CI_Controller {
   function __construct()
   {
     parent::__construct();
+    $this->load->view('header_view');
     $this->load->library('form_validation','email');
     $this->lang->load('form_validation', 'swedish');
     $this->load->database();

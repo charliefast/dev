@@ -16,7 +16,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/dev/';
+$config['base_url']	= 'http://localhost/git/dev/';
 
 /*
 |--------------------------------------------------------------------------
