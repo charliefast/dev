@@ -15,7 +15,7 @@ Class Item_model extends CI_Model
       $this -> db -> where('categories.slug = ' . "'" . $category . "'");
     }
     if ($search){
-      $this -> db -> where('headline = ' . "'" . $search. "'");
+      $this -> db -> where('headline = ' . "'" . $search['headline']. "'");
     }
     $query = $this -> db -> get();
     

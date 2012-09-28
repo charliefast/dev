@@ -21,17 +21,20 @@ class item extends CI_Controller {
   }
   function get_items($item = null){
     $type = '';
-    $search = '';
+    //$search = '';
     $category = '';
-    if ($this->input->get('search')){
-      $search = $this->input->get('search');
-    }
+   
     if ($item != '$1'){
       $category = $item;
     }
-    $result = $this->item_model->get_item($category,$search);
+   
+    $result = $this->item_model->get_item($category,$search = '');
       if ($result){
-        
+        if ($this->input->get('callback') == 'json'){
+          return json_encode($result);
+          exit();
+        }
+
         $this->load->view('result_view', array('result' => $result));
       }
     else
