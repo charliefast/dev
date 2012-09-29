@@ -18,7 +18,8 @@ class Search extends CI_Controller {
     $search = array('headline' => '');
     $category = '';
     if ($this->input->get('key')){
-      $search['headline'] = $this->input->get('key');
+      $key = $this->input->get('key');
+      $search['headline'] = explode( ' ', $key ) ;
     }
     if ($item != '$1'){
       $category = $item;

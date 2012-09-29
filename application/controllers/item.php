@@ -44,25 +44,27 @@ class item extends CI_Controller {
 
   }
 
- function list_categories(){
-   $result = $this->item_model->get_categories_from_db();
-   if ($result > 0){
-     $list['url'] = array();
-     foreach ($result as $row)
-     {
-     	$name = $row -> name;
-     	$slug = $row-> slug;
-      $list['url'][] = anchor('index.php/item/'.$slug, $name);
+  function list_categories(){
+    $result = $this->item_model->get_categories_from_db();
+    if ($result > 0){
+      $list['url'] = array();
+      foreach ($result as $row)
+      {
+     	  $name = $row -> name;
+       	$slug = $row-> slug;
+        $list['url'][] = anchor('index.php/item/'.$slug, $name);
       }
     return $list;
     }
     else
     {
-    	echo'något blev fel';
+      echo'något blev fel';
     }
   }
+
   function get_item_by_query($category, $query){
     echo $category.' '.$query.' ';
 
   }
+
 }
