@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     Responsive.Init();
     Validation.Init();
+    //Search.Init();
     
     // iOS scale bug fix
    // MBP.scaleFix();
@@ -69,7 +70,8 @@ Responsive = {
 
 Validation = {
 	'Init': function() {
-		$('#loginForm').validate({
+
+		$('.loginForm form').validate({
 			//debug: true,
 			// errorElement: "em",
 			// errorPlacement: function(error, element) {
@@ -85,9 +87,143 @@ Validation = {
 					required:true,
 					min: 8
 				}
-			}
+			},
+			messages: {
+				username: {
+					required: 'Du glömde fylla i det här fältet',
+					email: "Fyll i en korrekt mailadress"
+				},
+				password: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Lösenordet måste vara minst 8 tecken långt"
+				}
+			}	
 		});
+
+
+		$('.registerForm form').validate({
+			rules: {
+				firstname: {
+					required:true
+				},
+				lastname: {
+					required:true
+				},
+				email: {
+					required:true,
+					email: true
+				},
+				emailconf: {
+					required:true,
+					equalTo: "#email"
+				},
+				password: {
+					required:true,
+					min: 8
+				},
+				passconf: {
+					required:true,
+					equalTo: "#password"
+				}
+			},
+			messages: {
+				email: {
+					required: 'Du glömde fylla i det här fältet',
+					email: "Fyll i en korrekt mailadress"
+				},
+				password: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Lösenordet måste vara minst 8 tecken långt"
+				}
+			}	
+		});
+
 	}
 };
 
+Search = {
+	'Init': function() {
+		// var items = [];
 
+		$.get("data.json", function(data){
+				notes = data.notes;
+				showList("");
+
+		}, "json");
+
+		var qEl = $("#q");
+
+		qEl.keyup(function(event){
+			console.log( qEl.val() );
+			showList( qEl.val() );
+		});
+
+		
+		function showList( q ){
+			$("#list").empty();
+
+			for (var i = 0; i < notes.length; i++){
+				var note = notes[i];
+				var title = note.title;
+				var date = note.date;
+				console.log("h");
+
+				if(title.toLowerCase().indexOf(q) != -1){
+
+					var liEl = $("<li />");
+					liEl.text(title + "(" + date + ")");
+
+					$("#lista").append(liEl);
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+// // AJAX + XML
+		//   $.get("data.xml", function(data){
+		//     var notes = $(data).find("note");
+		// //    var notes = $("note", data);
+		//     for( var i = 0; i < notes.length; i++){
+		//       var note = $(notes[i]);
+		//       var title = $("title", note).text();
+		//       var date = $("date", note).attr("value");
+		 
+		//       var liEl = $("<li />");
+		 
+		//       liEl.text(title + " (" + date + ")");
+		 
+		//       $("#lista").append(liEl);
+		//     }
+		//   }, "xml");
+		/*
+
+
+		// XML version
+		$.get("data.xml", function(data){
+			var notes = $(data).find("note");
+
+			for (var i = 0 ; i < notes.length; i++){
+				var note = $(notes[i]);
+				//Måste .find var title finns! Skrivs likadant som .find("note"). eller som detta exempel, fungerar likadant.	
+				var title = $("title", note).text();
+				var date = $("date", note).attr("value");
+
+				var liEl = $("<li />");
+
+				liEl.text(title + "(" + date + ")");
+
+				$("#lista").append(liEl);
+
+			}
+		}, "xml");
+
+
+		*/
