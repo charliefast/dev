@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
     Responsive.Init();
+    Validation.Init();
     
     // iOS scale bug fix
-    MBP.scaleFix();
+   // MBP.scaleFix();
     
 });
 
@@ -63,6 +64,29 @@ Responsive = {
 	      }
 	    }
 	  }, 250);
+	}
+};
+
+Validation = {
+	'Init': function() {
+		$('#loginForm').validate({
+			//debug: true,
+			// errorElement: "em",
+			// errorPlacement: function(error, element) {
+			// 	error.appendTo( element.parent("td").next("td") );
+			// },
+			errorContainer: $("#message"),
+			rules: {
+				username: {
+					required:true,
+					email: true
+				},
+				password: {
+					required:true,
+					min: 8
+				}
+			}
+		});
 	}
 };
 
