@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "login";
+$route['default_controller'] = "start";
 $route['404_override'] = 'errors/page_missing';
 
 $route['register'] = "verifyregistration";
@@ -50,6 +50,7 @@ $route['item/search'] = "search/get_items/$1";
 $route['item/(:any)/search'] = "search/get_items/$1";
 $route['item/(:any)'] = "item/get_items/$1";
 $route['item'] = "item/get_items/$1";
+$route['user/(:any)'] = "user/get_user_info/$1";
 
 $route['(:any)/logout'] = "home/logout";
 
