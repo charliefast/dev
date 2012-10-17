@@ -23,7 +23,7 @@ Class Item_model extends CI_Model
     }
     if ($search){
       foreach ($search as $key => $value) {
-      $this -> db -> where($key. 'LIKE "%' . $value . '%"');
+      $this -> db -> where($key. " LIKE '%" . $value . "%'");
       }
     }
     $query = $this -> db -> get();
