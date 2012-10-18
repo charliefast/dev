@@ -9,6 +9,17 @@ class User extends CI_Controller {
    $this->lang->load('form_validation', 'swedish');
   }
   function get_user_info($id){
-  	echo $id;
+    $result = $this->user_model->get_user($id);
+    if($result){
+      foreach($result as $row){
+        echo $row->firstname.' ';
+        echo $row->lastname;
+        echo $row->city;
+        echo $row->country;
+        echo $row->sign_up_date;
+      }
+    }else{
+      echo "no user by that id";
+    }
   }
 }
