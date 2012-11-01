@@ -5,7 +5,7 @@ class VerifyRegistration extends CI_Controller {
   function __construct()
   {
     parent::__construct();
-    $this->load->view('header_view');
+    $this->load->view('header_view', array('title' => 'Registrering'));
     $this->load->library('form_validation','email');
     $this->lang->load('form_validation', 'swedish');
     $this->load->database();
@@ -31,10 +31,10 @@ class VerifyRegistration extends CI_Controller {
                         //'username' => set_value('username'),
                         'firstname' => set_value('firstname'),
                         'lastname' => set_value('lastname'),
-                        'city' => set_value('city'),
-                        'country' => set_value('country'),
-                        'zip' => set_value('zip'),
-                        'phone' => set_value('phone'),
+                        //'city' => set_value('city'),
+                        //'country' => set_value('country'),
+                        //'zip' => set_value('zip'),
+                        //'phone' => set_value('phone'),
                         'email' => set_value('email'),
                         'password' => SHA1('shru7hTTls'.$password),
                         'activation_key' => $activationkey

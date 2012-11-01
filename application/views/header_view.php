@@ -130,19 +130,18 @@
     <div class="logo">
       <img src="<?php echo base_url();?>images/miniLogo.png" />
     </div>
-  <?php
-  if (isset($this->session->userdata['logged_in'])){
-  echo '<a href="#" id="menuLink"></a>'.
-        '<a href="#" id="searchLink"></a>'.
-    '<nav>'.
-      '<!-- <ul id="mainNavigation">'.
-        '<li>hejhej</li>'.
-      '</ul> -->'.
-      '<ul id="mobileNavigation">'.
-        '<li></li>'.
-      '</ul>'.
-    '</nav>'; 
-  }?>
+    <?php if (isset($this->session->userdata['logged_in'])){?>
+      <a href="#" id="menuLink"></a>
+      <a href="#" id="searchLink"></a>
+      <nav>
+      <!-- <ul id="mainNavigation">
+        <li>hejhej</li>
+      </ul> -->
+        <ul id="mobileNavigation">
+          <li></li>'
+        </ul>
+      </nav>
+    <?php }?>
     <div class="search">
       <a href="#"></a>
     </div>
