@@ -5,7 +5,6 @@ class VerifyRegistration extends CI_Controller {
   function __construct()
   {
     parent::__construct();
-    $this->load->view('header_view', array('title' => 'Registrering'));
     $this->load->library('form_validation','email');
     $this->lang->load('form_validation', 'swedish');
     $this->load->database();
@@ -13,14 +12,18 @@ class VerifyRegistration extends CI_Controller {
     $this->load->model('user_model','',TRUE);
   }   
   function index()
-  {           
-            
+  {
+    $this->load->view('header_view', array('title' => 'Registrering'));
+    $this->load->view('registration_view');
+    $this->load->view('footer_view');
+  }
+  function register(){
     $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     
     if ($this->form_validation->run('signup') == FALSE) // validation hasn't been passed
     {
-      $this->load->view('registration_view');
-    }
+      echo "något blev fel";
+	}
     else // passed validation proceed to post success logic
     {
       // build array for the model
@@ -123,7 +126,7 @@ class VerifyRegistration extends CI_Controller {
         exit ();
       }else{
         if ($this->user_model->activate_user($activation_key) == TRUE){
-            echo 'Jippie! Ditt konto är aktiverat. '.anchor('index.php/login', 'Logga in här');
+            echo 'Jippie! Ditt konto är aktiverat. '.anchor('index.php', 'Logga in här');
         }else{
           echo 'Någonting blev knas';
           exit ();

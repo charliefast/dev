@@ -1,7 +1,7 @@
 <h1>Registrering</h1>
 <div class="registerForm">
   <?php $attributes = array('class' => '', 'id' => ''); ?>
-  <?php echo form_open('index.php/verifyregistration');/*, $attributes); */?>
+  <?php echo form_open('index.php/verify');/*, $attributes); */?>
   <?php //echo validation_errors(); ?> 
     <?php /*<label for="username">Användarnamn <span class="required">*</span></label>
     <?php echo form_error('username'); ?>

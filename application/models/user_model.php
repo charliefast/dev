@@ -12,7 +12,7 @@ Class User_model extends CI_Model
     $pw = SHA1('shru7hTTls'.$password);
     
     
-    //$str = "SELECT id, username, password FROM members WHERE username = ? AND password = ? LIMIT 1";
+    //$str = "SELECT id, username, password FROM users WHERE username = ? AND password = ? LIMIT 1";
     //query for using username as username, not email;
     $str = "SELECT id, email, password FROM users WHERE email = ? AND password = ? LIMIT 1";
 
@@ -58,7 +58,7 @@ Class User_model extends CI_Model
   }
   function check_exists_email($email){
 
-    $query = "SELECT email FROM members WHERE email = ?";
+    $query = "SELECT email FROM users WHERE email = ?";
 
     $result = $this -> db -> query($query,$email);
 
@@ -72,7 +72,7 @@ Class User_model extends CI_Model
   }
   function activate_user($activation_key){
     //first check if key exists
-    $query = "SELECT activation_key, email_activated FROM members WHERE activation_key = ?";
+    $query = "SELECT activation_key, email_activated FROM users WHERE activation_key = ?";
 
     $result = $this -> db -> query($query,$activation_key);
     if ($result->num_rows() > 0)
@@ -106,6 +106,27 @@ Class User_model extends CI_Model
       return $this->user;
     }else{
       return FALSE;
+    }
+  }
+  /**
+   * logged_in() checks id session is set
+   * @return BOOLEAN
+   */
+  function logged_in()
+  {
+    if($this->session->userdata('logged_in'))
+    {
+      $session_data = $this->session->userdata('logged_in');
+      $data['username'] = $session_data['username'];
+      //return $this->load->view('home_view', $data);
+      return TRUE;
+    }
+    else
+    {
+      //If no session, redirect to login page
+    //  redirect('login', 'refresh');
+    //return $this->load->view('login_view', $this->_get_args() );
+    return FALSE;
     }
   }
 }

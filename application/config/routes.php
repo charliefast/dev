@@ -42,6 +42,7 @@ $route['default_controller'] = "start";
 $route['404_override'] = 'errors/page_missing';
 
 $route['register'] = "verifyregistration";
+$route['verify'] = "verifyregistration/register";
 
 $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 

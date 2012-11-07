@@ -22,4 +22,7 @@ class User extends CI_Controller {
       echo "no user by that id";
     }
   }
+  function new_user(){
+    echo 'new user';
+  }
 }
