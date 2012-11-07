@@ -10,6 +10,13 @@
 |
 */
 
+$hook['pre_controller'] = array(
+                                'class'    => 'Start',
+                                'function' => 'hej',
+                                'filename' => 'start.php',
+                                'filepath' => 'hooks',
+                                'params'   => array('beer', 'wine', 'snacks')
+                                );
 
 
 /* End of file hooks.php */

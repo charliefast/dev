@@ -108,25 +108,5 @@ Class User_model extends CI_Model
       return FALSE;
     }
   }
-  /**
-   * logged_in() checks id session is set
-   * @return BOOLEAN
-   */
-  function logged_in()
-  {
-    if($this->session->userdata('logged_in'))
-    {
-      $session_data = $this->session->userdata('logged_in');
-      $data['username'] = $session_data['username'];
-      //return $this->load->view('home_view', $data);
-      return TRUE;
-    }
-    else
-    {
-      //If no session, redirect to login page
-    //  redirect('login', 'refresh');
-    //return $this->load->view('login_view', $this->_get_args() );
-    return FALSE;
-    }
-  }
+
 }
