@@ -1,8 +1,6 @@
 <?php
 //$query = $this->db->query("SELECT * FROM blog");
 
-
-
 $data = array(
               'blog_title'   => 'My Blog Title',
               'blog_heading' => 'My Blog Heading',

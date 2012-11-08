@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     Responsive.Init();
     Validation.Init();
-    //Search.Init();
+    Search.Init();
     
     // iOS scale bug fix
    // MBP.scaleFix();
@@ -143,87 +143,65 @@ Validation = {
 
 Search = {
 	'Init': function() {
-		// var items = [];
 
-		$.get("data.json", function(data){
-				notes = data.notes;
-				showList("");
+		var form = $("#searchForm"),
+			submit = $("#submit"),
+			query = $("#search"),
+			resultList = $('#results');
 
-		}, "json");
 
-		var qEl = $("#q");
+		submit.on('click', function(e) {
+			e.preventDefault();
+			resultList.empty();
 
-		qEl.keyup(function(event){
-			console.log( qEl.val() );
-			showList( qEl.val() );
+			$.getJSON("http://bytarna/index.php/item/search/?key="+query.val()+"&callback=json", function(data) {
+				var items = [];
+
+				$.each(data, function(key, val) {
+				   	items.push('<li>'+
+				   				'<h3><a href="#">'+val["headline"]+'</a></h3>'+
+				   				'<p>'+val["description"]+'</p>'+
+				   				'<span>'+val["id"]+'</span>'+
+				   				'</li>');
+				});
+
+				resultList.html(items);
+			});
 		});
 
+		// var items = [];
+		// $.get("data.json", function(data){
+		// 		notes = data.notes;
+		// 		showList("");
+
+		// }, "json");
+
+		// var qEl = $("#q");
+
+		// qEl.keyup(function(event){
+		// 	console.log( qEl.val() );
+		// 	showList( qEl.val() );
+		// });
+
 		
-		function showList( q ){
-			$("#list").empty();
+		// function showList( q ){
+		// 	$("#list").empty();
 
-			for (var i = 0; i < notes.length; i++){
-				var note = notes[i];
-				var title = note.title;
-				var date = note.date;
-				console.log("h");
+		// 	for (var i = 0; i < notes.length; i++){
+		// 		var note = notes[i];
+		// 		var title = note.title;
+		// 		var date = note.date;
+		// 		console.log("h");
 
-				if(title.toLowerCase().indexOf(q) != -1){
+		// 		if(title.toLowerCase().indexOf(q) != -1){
 
-					var liEl = $("<li />");
-					liEl.text(title + "(" + date + ")");
+		// 			var liEl = $("<li />");
+		// 			liEl.text(title + "(" + date + ")");
 
-					$("#lista").append(liEl);
-				}
-			}
-		}
+		// 			$("#lista").append(liEl);
+		// 		}
+		// 	}
+		// }
 	}
 }
 
-
-
-
-
-
-
-
-// // AJAX + XML
-		//   $.get("data.xml", function(data){
-		//     var notes = $(data).find("note");
-		// //    var notes = $("note", data);
-		//     for( var i = 0; i < notes.length; i++){
-		//       var note = $(notes[i]);
-		//       var title = $("title", note).text();
-		//       var date = $("date", note).attr("value");
-		 
-		//       var liEl = $("<li />");
-		 
-		//       liEl.text(title + " (" + date + ")");
-		 
-		//       $("#lista").append(liEl);
-		//     }
-		//   }, "xml");
-		/*
-
-
-		// XML version
-		$.get("data.xml", function(data){
-			var notes = $(data).find("note");
-
-			for (var i = 0 ; i < notes.length; i++){
-				var note = $(notes[i]);
-				//Måste .find var title finns! Skrivs likadant som .find("note"). eller som detta exempel, fungerar likadant.	
-				var title = $("title", note).text();
-				var date = $("date", note).attr("value");
-
-				var liEl = $("<li />");
-
-				liEl.text(title + "(" + date + ")");
-
-				$("#lista").append(liEl);
-
-			}
-		}, "xml");
-
-
-		*/
