@@ -154,7 +154,7 @@ Search = {
 			e.preventDefault();
 			resultList.empty();
 
-			$.getJSON("http://bytarna/index.php/item/search/?key="+query.val()+"&callback=json", function(data) {
+			$.getJSON("/index.php/item/search/?key="+query.val()+"&callback=json", function(data) {
 				var items = [];
 
 				$.each(data, function(key, val) {

@@ -125,8 +125,6 @@
     data-redirect-uri="http://localhost/git/dev/index.php/home">
   </div>   -->
   <header>
-    <div class="logo">
-      <img src="<?php echo base_url();?>images/miniLogo.png" />
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -139,7 +137,7 @@
           </a>
 
           <!-- Be sure to leave the brand out there if you want it shown -->
-          <a class="brand" href="#">
+          <a class="brand" href="<?php echo base_url();?>">
             <div class="logo" style="display:inline;">
               <img style="height:23px;" src="<?php echo base_url();?>images/miniLogo.png" />
             </div>
@@ -150,8 +148,8 @@
           <div class="nav-collapse collapse">
             <!-- .nav, .navbar-search, .navbar-form, etc -->
             <ul class="nav">
-              <li class="active"><a href="#"><i class="icon-home icon-white"></i>Start</a></li>
-              <li><a href="#"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
+              <li class="active"><a href="<?php echo base_url();?>"><i class="icon-home icon-white"></i>Start</a></li>
+              <li><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
               <li><a href="#"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
               <li><a href="#"><i class="icon-user icon-white"></i>Min sida</a></li>
             </ul>
