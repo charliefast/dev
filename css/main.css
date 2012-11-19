@@ -5394,3 +5394,34 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
+header {
+  height: 44px;
+}
+#introTop {
+  background: #87C06B;
+  min-height: 250px;
+  text-align: center;
+  position: relative;
+}
+#introTop .wrapper {
+  margin-top: 50px;
+}
+#introTop .wrapper .logo {
+  margin: 0 auto;
+  max-width: 350px;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+#introTop .wrapper span {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+}
+.container .loginForm {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}

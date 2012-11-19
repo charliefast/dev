@@ -51,79 +51,8 @@
 </head>
 
 
- <body>
-  
-  <!--<div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '387736861297952', // App ID
-        //channelUrl : 'http://localhost/git/dev/index.php/home', // Channel File
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
-      });
-      // Additional initialization code here
+<body>
 
-      FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        // the user is logged in and has authenticated your
-        // app, and response.authResponse supplies
-        // the user's ID, a valid access token, a signed
-        // request, and the time the access token 
-        // and signed request each expire
-        var uid = response.authResponse.userID;
-        var accessToken = response.authResponse.accessToken;
-        console.log("hejhej");
-
-      //window.location = "http://localhost/git/dev/index.php/home";
-
-      } else if (response.status === 'not_authorized') {
-        // the user is logged in to Facebook, 
-        // but has not authenticated your app
-      } else {
-        // the user isn't logged in to Facebook.
-      }
-     });
-
-    };
-    // Load the SDK Asynchronously
-    (function(d){
-       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement('script'); js.id = id; js.async = true;
-       // js.src = "//connect.facebook.net/en_US/all.js";
-       js.src = "//connect.facebook.net/sv_SE/all.js";
-       ref.parentNode.insertBefore(js, ref);
-     }(document));
-
-  </script>-->
-
-    <!-- <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '387736861297952',
-        status     : true, 
-        cookie     : true,
-        xfbml      : true,
-        oauth      : true,
-      });
-    };
-    (function(d){
-       var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-       js = d.createElement('script'); js.id = id; js.async = true;
-       js.src = "http://connect.facebook.net/en_US/all.js";
-       d.getElementsByTagName('head')[0].appendChild(js);
-     }(document));
-  </script>
-  <div 
-    class="fb-registration" 
-    data-fields="[{'name':'name'}, {'name':'email'},
-      {'name':'favorite_car','description':'What is your favorite car?',
-        'type':'text'}]" 
-    data-redirect-uri="http://localhost/git/dev/index.php/home">
-  </div>   -->
   <header>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -148,9 +77,9 @@
           <div class="nav-collapse collapse">
             <!-- .nav, .navbar-search, .navbar-form, etc -->
             <ul class="nav">
-              <li class="active"><a href="<?php echo base_url();?>"><i class="icon-home icon-white"></i>Start</a></li>
+              <li class="active"><a href="<?php echo base_url();?>index.php/search"><i class="icon-home icon-white"></i>Start</a></li>
               <li><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
-              <li><a href="#"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
+              <li><a href="<?php echo base_url();?>index.php/upload"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
               <li><a href="#"><i class="icon-user icon-white"></i>Min sida</a></li>
             </ul>
             <form class="navbar-search pull-left" action="">
