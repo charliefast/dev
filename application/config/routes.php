@@ -54,7 +54,7 @@ $route['item'] = "item/get_items/$1";
 $route['user/(:any)'] = "user/get_user_info/$1";
 
 $route['(:any)/logout'] = "home/logout";
-$route['upload'] = 'upload';
+$route['upload/image'] = 'upload/upload_pic';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
