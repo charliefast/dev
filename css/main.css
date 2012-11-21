@@ -5425,3 +5425,91 @@ header {
   margin: 0 auto;
   text-align: left;
 }
+.container #categoryList li {
+  list-style-type: none;
+}
+#dropbox {
+  border: 3px dashed #cddfd3;
+  position: relative;
+  margin: 80px auto 90px;
+  min-height: 220px;
+  overflow: hidden;
+  padding-bottom: 40px;
+  width: 100%;
+  max-width: 600px;
+  /*-------------------------
+		Image Previews
+	--------------------------*/
+
+}
+#dropbox.hover {
+  background: #eee;
+}
+#dropbox .message {
+  font-size: 24px;
+  color: #999;
+  text-align: center;
+  padding: 110px 20px 0;
+  display: block;
+}
+#dropbox .preview {
+  width: 245px;
+  height: 215px;
+  float: left;
+  margin: 55px auto 0;
+  position: relative;
+  text-align: center;
+}
+#dropbox .preview img {
+  max-width: 240px;
+  max-height: 180px;
+  border: 3px solid #fff;
+  display: block;
+  box-shadow: 0 0 2px #000;
+}
+#dropbox .preview.done {
+  margin-bottom: 15px;
+  /*-------------------------
+				Progress Bars
+			--------------------------*/
+
+}
+#dropbox .preview.done .uploaded {
+  display: block;
+}
+#dropbox .preview.done .progress {
+  width: 100% !important;
+}
+#dropbox .preview.done .imageHolder {
+  display: inline-block;
+  position: relative;
+}
+#dropbox .preview.done .progressHolder {
+  position: absolute;
+  background-color: #252f38;
+  height: 12px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 0 2px #000;
+}
+#dropbox .preview.done .progressHolder .progress {
+  background-color: green;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  width: 0;
+  -moz-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+#dropbox .uploaded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url('/images/done.png') no-repeat center center rgba(255, 255, 255, 0.5);
+  display: none;
+}

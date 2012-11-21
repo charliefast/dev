@@ -10,7 +10,7 @@ class item extends CI_Controller {
     $categories = $this->list_categories();
     $this->load->view('header_view', array('title' => 'Kategorier'));
     $this->load->view('category_menu_view', $categories);
-    $this->load->view('item_view', array('content' => 'hejhejhej'));
+    $this->load->view('item_view', array('content' => ''));
     $this->load->view('footer_view');
     
   }

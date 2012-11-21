@@ -1,7 +1,9 @@
-<ul>
-<?php foreach ($url as $item):?>
+<div class="container">
+	<ul id="categoryList">
+	<?php foreach ($url as $item):?>
 
-<li><?php echo $item;?></li>
+	<li><?php echo $item;?></li>
 
-<?php endforeach;?>
-</ul>
+	<?php endforeach;?>
+	</ul>
+</div>
