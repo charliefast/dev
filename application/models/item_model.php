@@ -1,10 +1,23 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Item model class
+ * 
+ * @author Carina Möllbrink
+ */
+
 Class Item_model extends CI_Model
 {
   function __construct()
   {
     parent::__construct();
   }
+  
+    /**
+   * Fetches item from db
+   * 
+   * @param array $category
+   * @param array $search
+   */
   function get_item($category, $search){
     //SELECT items.id, headline, description, date_added, end_date, name, user_id  FROM items JOIN categories ON categories.id = items.category_id WHERE categories.name = '$variabel'
     //$this -> db -> select('items.id, headline, description, date_added, end_date, user_id');
@@ -30,6 +43,7 @@ Class Item_model extends CI_Model
     
     return $query->result();
   }
+
   function get_queried_item($category, $query){
     echo $category.' '.$query.' ';
   }
@@ -47,6 +61,10 @@ Class Item_model extends CI_Model
       return false;
     }
   }
+  /**
+   * @access public
+   * @return BOOLEAN
+   */
   function insert_item($form_data)
   {
     $this->db->insert('item', $form_data);
@@ -57,6 +75,30 @@ Class Item_model extends CI_Model
     }
     
     return FALSE;
-
+  }
+   /**
+   * Fetches items from category
+   *
+   * @access public
+   * @param string $slug
+   * @param int $limit
+   * @return mixed
+   */
+  function fetch_category($slug, $limit = 20){
+    $str = "SELECT * FROM items 
+            INNER JOIN categories 
+            ON categories.id = items.category_id 
+            AND categories.slug = ? LIMIT 0, ?";
+    $query = $this->db->query($str,array($slug,$limit));
+    if($query -> num_rows() > 0)
+    {
+      return $query->result();
+    }
+    else
+    {
+      return false;
+    }
   }
 }
+/* End of file item_model.php */
+/* Location: ./application/models/item_model.php */
