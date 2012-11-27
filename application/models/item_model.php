@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
  * Item model class
  * 
@@ -12,13 +13,13 @@ Class Item_model extends CI_Model
     parent::__construct();
   }
   
-    /**
+   /**
    * Fetches item from db
    * 
    * @param array $category
    * @param array $search
    */
-  function get_item($category, $search){
+  function get_item($category, $search, $desc = TRUE, $limit = '20, 0'){
     //SELECT items.id, headline, description, date_added, end_date, name, user_id  FROM items JOIN categories ON categories.id = items.category_id WHERE categories.name = '$variabel'
     //$this -> db -> select('items.id, headline, description, date_added, end_date, user_id');
     //$this -> db -> from('items');
@@ -39,6 +40,10 @@ Class Item_model extends CI_Model
       $this -> db -> where($key. " LIKE '%" . $value . "%'");
       }
     }
+    if ($desc){
+      $this->db->order_by("date_added", "desc"); 
+    }
+    $this->db->limit($limit);
     $query = $this -> db -> get();
     
     return $query->result();

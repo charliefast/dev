@@ -121,8 +121,8 @@ Class User_model extends CI_Model
         //update database
         $this -> db -> update('users', array('email_activated' => '1'), array('activation_key' => $activation_key));
         // check if any rows where affected by this update
-        if ($this->db->affected_rows() > 0){
-      
+        if ($this->db->affected_rows() > 0)
+        {
           return TRUE;
         }
         //if activation_key doesn't exist or there where no affected rows
@@ -139,14 +139,32 @@ Class User_model extends CI_Model
    * @return mixed
    */
   function get_user($id){
-    $str = "SELECT firstname, lastname, city, country, sign_up_date FROM users WHERE id = ? LIMIT 1";
+    $str = "SELECT * FROM users WHERE id = ? LIMIT 1";
     $query = $this -> db -> query($str, $id);
     $this->user = $query->result();
-    if ($this->user){
+    if ($this->user)
+    {
       return $this->user;
-    }else{
-      return FALSE;
     }
+    return FALSE;
+  }
+  /**
+   * Updates user by ID
+   * 
+   * @access public
+   * @param int $id
+   * @param array $data
+   * @return BOOLEAN
+   */
+  function update_user_info($id, $pw, $data){
+    $this->db->where('id', $id);
+    $this->db->where('password', $pw);
+    $this->db->update('users', $data);
+    if ($this->db->affected_rows() > 0)
+    {
+     return TRUE;
+    }
+    return FALSE;  
   }
 }
 /* End of file user_model.php */

@@ -9,5 +9,9 @@ class Auth_Controller extends CI_Controller {
         { 
             redirect('index.php');
         }
+        else
+        {
+
+        }
     }
 }

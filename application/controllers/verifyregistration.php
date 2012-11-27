@@ -7,7 +7,6 @@ class VerifyRegistration extends CI_Controller {
     parent::__construct();
     $this->load->library('form_validation','email');
     $this->lang->load('form_validation', 'swedish');
-    $this->load->database();
     $this->load->helper('form', 'url', 'string');
     $this->load->model('user_model','',TRUE);
   }   
@@ -23,7 +22,7 @@ class VerifyRegistration extends CI_Controller {
     if ($this->form_validation->run('signup') == FALSE) // validation hasn't been passed
     {
       echo "något blev fel";
-	}
+  	}
     else // passed validation proceed to post success logic
     {
       // build array for the model

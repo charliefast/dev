@@ -54,10 +54,14 @@ $route['item/search'] = "search/get_items/$1";
 $route['item/(:any)/search'] = "search/get_items/$1";
 $route['item/(:any)'] = "item/get_items/$1";
 $route['item'] = "item/get_items/$1";
-$route['user/(:any)'] = "user/get_user_info/$1";
 $route['logout'] = "login/logout";
 $route['(:any)/logout'] = "login/logout";
-$route['upload/image'] = 'upload/upload_pic';
+$route['user/edit/upload/image'] = 'upload';
+$route['upload/image'] = 'upload';
+$route['user/edit/verify'] = 'user/verify_edit_info';
+$route['user/edit'] = 'user/edit_info/$1';
+$route['user/edit/(:any)'] = 'user/edit_info/$1';
+$route['user/(:any)'] = "user/get_user_info/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

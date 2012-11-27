@@ -10,7 +10,7 @@ foreach ($result as $row):?>
 		</a></p>
 	<h3><?php echo $row->headline; ?></h3>
 	<p><?php  echo $row->description; ?></p>
-	<p><?php  echo $row->date_added; ?>"</p>
+	<p><?php  echo $row->date_added; ?></p>
 	<p><?php  echo $row->end_date; ?></p>
 </li>
 <?php endforeach;
