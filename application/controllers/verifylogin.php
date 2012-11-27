@@ -1,14 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Controller VerifyLogin class
+ * 
+ * Handles verification of login and sets session
+ *
+ * @author Carina Möllbrink
+ */
+
 class VerifyLogin extends CI_Controller {
 
   function __construct()
   {
     parent::__construct();
     $this->load->model('user_model','',TRUE);
-
     $this->load->library('form_validation');
- 
     $this->lang->load('form_validation', 'swedish');
   }
 
@@ -17,15 +23,16 @@ class VerifyLogin extends CI_Controller {
     if($this->form_validation->run('login') == FALSE)
     {
       //Field validation failed.&nbsp; User redirected to login page
-      $this->load->view('header_view');
+      /*$this->load->view('header_view');
       $this->load->view('login_view');
-      $this->load->view('footer_view');
+      $this->load->view('footer_view');*/
+      echo 'login failed';
     }
     else
     {
       //Go to private area
-      redirect('index.php/home', 'refresh');
-    }
+      redirect('index.php', 'refresh');
+    } 
 
   }
 
@@ -33,10 +40,8 @@ class VerifyLogin extends CI_Controller {
   {
     //Field validation succeeded.&nbsp; Validate against database
     $username = $this->input->post('username');
-
     //query the database
     $result = $this->user_model->login($username, $password);
-
     if($result)
     {
       $sess_array = array();
@@ -72,3 +77,5 @@ class VerifyLogin extends CI_Controller {
     }
   }
 }
+/* End of file verifylogin.php */
+/* Location: ./application/controllers/verifylogin.php */

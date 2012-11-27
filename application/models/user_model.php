@@ -1,23 +1,35 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * User model class
+ * 
+ * @author Carina Möllbrink
+ */
+
 Class User_model extends CI_Model
 {
   private $user;
   
+  /**
+   * Constructor
+   */
   function __construct()
   {
     parent::__construct();
   }
+  
+  /**
+   * Adds salt and queries database
+   *
+   * @param string $username
+   * @param strint $password
+   * @return mixed
+   */
   function login($username, $password)
   {
     $pw = SHA1('shru7hTTls'.$password);
-    
-    
-    //$str = "SELECT id, username, password FROM users WHERE username = ? AND password = ? LIMIT 1";
-    //query for using username as username, not email;
-    $str = "SELECT id, email, password FROM users WHERE email = ? AND password = ? LIMIT 1";
-
-  //$query = $this -> db -> get();
-    $query = $this -> db -> query($str,array($username, $pw));
+    $str = "SELECT id, email, email_activated FROM users WHERE email = ? AND password = ? LIMIT 1";
+    $query = $this->db->query($str,array($username, $pw));
 
     if($query -> num_rows() > 0)
     {
@@ -28,20 +40,29 @@ Class User_model extends CI_Model
       return false;
     }
   }
- 
+  
+  /**
+   * Inserts form data to table users
+   *
+   * @param array $form_data
+   * @return BOOLEAN
+   */
   function register_user($form_data)
   {
-    $this->db->insert('users', $form_data);
-    
+    $this->db->insert('users', $form_data);  
     if ($this->db->affected_rows() == '1')
     {
       return TRUE;
     }
-    
     return FALSE;
-
   }
-   
+  
+  /**
+   * Checks if username exist in database
+   *
+   * @param string $username
+   * @return BOOLEAN
+   */
   function check_exists_username($username){
 
     $query = "SELECT username FROM users WHERE username = ?";
@@ -56,6 +77,13 @@ Class User_model extends CI_Model
     //username doesn't exist
     return FALSE;
   }
+
+  /**
+   * Checks if email exist in database
+   *
+   * @param string $email
+   * @return BOOLEAN
+   */
   function check_exists_email($email){
 
     $query = "SELECT email FROM users WHERE email = ?";
@@ -70,6 +98,13 @@ Class User_model extends CI_Model
     //email doesn't exist
     return FALSE;
   }
+  
+  /**
+   * Activates user
+   *
+   * @param string $activation_key
+   * @return BOOLEAN
+   */
   function activate_user($activation_key){
     //first check if key exists
     $query = "SELECT activation_key, email_activated FROM users WHERE activation_key = ?";
@@ -95,18 +130,24 @@ Class User_model extends CI_Model
       }
     }
   }
-  private function _get_user_from_db($id){
+  
+  /**
+   * Fetches user by ID
+   * 
+   * @access public
+   * @param int $id
+   * @return mixed
+   */
+  function get_user($id){
     $str = "SELECT firstname, lastname, city, country, sign_up_date FROM users WHERE id = ? LIMIT 1";
     $query = $this -> db -> query($str, $id);
     $this->user = $query->result();
-  }
-  function get_user($id){
-    $this->_get_user_from_db($id);
     if ($this->user){
       return $this->user;
     }else{
       return FALSE;
     }
   }
-
 }
+/* End of file user_model.php */
+/* Location: ./application/models/user_model.php */

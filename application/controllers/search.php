@@ -1,5 +1,4 @@
-<?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Controller search class
@@ -7,7 +6,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  * Handles searches of items
  */
 
-class Search extends CI_Controller {
+class Search extends Auth_Controller {
   private $search = array();
   private $search_query;
   private $search_key;

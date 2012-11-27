@@ -1,24 +1,31 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class item extends CI_Controller {
+class item extends Auth_Controller {
+
+  private $data;
+  private $categories;
+  private $content;
 
   function __construct()
   {
     parent::__construct();
     $this->load->model('item_model');
-    $categories = $this->list_categories();
-    $this->load->view('header_view', array('title' => 'Kategorier'));
-    $this->load->view('category_menu_view', $categories);
-    $this->load->view('item_view', array('content' => ''));
-    $this->load->view('footer_view');
+    $this->data = array('title' => 'Kategorier');
+    $this->categories = $this->list_categories();
+    $this->content = array('result' => 'Inga annonser hittades i vald kategori');;
+    
     
   }
 
   function index()
   {
-    
+    $this->load->view('header_view', $this->data);
+    $this->load->view('category_menu_view', $this->categories);
+    $this->load->view('result_view', $this->content);
+    $this->load->view('footer_view'); 
   }
+
   function get_items($item = null){
     $type = '';
     //$search = '';
@@ -26,6 +33,7 @@ class item extends CI_Controller {
    
     if ($item != '$1'){
       $category = $item;
+      $this->data['title'] = $category;
     }
    
     $result = $this->item_model->get_item($category,$search = '');
@@ -34,14 +42,9 @@ class item extends CI_Controller {
           return json_encode($result);
           exit();
         }
-
-        $this->load->view('result_view', array('result' => $result));
+        $this->content['result'] = $result;
       }
-    else
-    {
-    	$this->load->view('item_view', array('content' => 'Inga annonser hittades i vald kategori'));
-    }
-
+    $this->index();
   }
 
   function list_categories(){

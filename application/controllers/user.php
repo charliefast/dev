@@ -1,5 +1,5 @@
 <?php
-class User extends CI_Controller {
+class User extends Auth_Controller {
 
   function __construct()
   {

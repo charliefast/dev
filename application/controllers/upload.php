@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Upload extends CI_Controller {
+class Upload extends Auth_Controller {
   private $user_id;
   private $demo_mode;
   private $allowed_ext;
