@@ -165,3 +165,7 @@ pip-log.txt
 *.sublime-project
 
 *.sublime-workspace
+
+bytarna.TODO
+
+application/config/config.php

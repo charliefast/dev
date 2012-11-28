@@ -59,12 +59,6 @@
       <div class="navbar-inner">
         <div class="container">
      
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
 
           <!-- Be sure to leave the brand out there if you want it shown -->
           <a class="brand" href="<?php echo base_url();?>">
@@ -74,54 +68,33 @@
             Bytarna
           </a>
      
-          <!-- Everything you want hidden at 940px or less, place within here -->
-          <div class="nav-collapse collapse">
-            <!-- .nav, .navbar-search, .navbar-form, etc -->
-            <ul class="nav">
-              <li class="active"><a href="<?php echo base_url();?>index.php/search"><i class="icon-home icon-white"></i>Start</a></li>
-              <li><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
-              <li><a href="<?php echo base_url();?>index.php/upload"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
-              <li><a href="#"><i class="icon-user icon-white"></i>Min sida</a></li>
-            </ul>
-            <form class="navbar-search pull-left" action="">
-              <input type="text" class="search-query span2" placeholder="Sök annons...">
-            </form>
-          </div>
+
+          <!-- Display only when logged in -->
+          <?php if (isset($this->session->userdata['logged_in'])){?>
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+
+
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+              <!-- .nav, .navbar-search, .navbar-form, etc -->
+              <ul class="nav">
+                <li class="active"><a href="<?php echo base_url();?>index.php/search"><i class="icon-search icon-white"></i>Sök</a></li>
+                <li><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
+                <li><a href="<?php echo base_url();?>index.php/upload"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
+                <li><a href="#"><i class="icon-user icon-white"></i>Min sida</a></li>
+              </ul>
+              <!-- <form class="navbar-search pull-left" action="">
+                <input type="text" class="search-query span2" placeholder="Sök annons...">
+              </form> -->
+            </div>
+          <?php }?>
      
         </div>
       </div>
     </div>
-    <?php if (isset($this->session->userdata['logged_in'])){?>
-      <a href="#" id="menuLink"></a>
-      <a href="#" id="searchLink"></a>
-      <nav>
-      <!-- <ul id="mainNavigation">
-        <li>hejhej</li>
-      </ul> -->
-        <ul id="mobileNavigation">
-          <li></li>'
-        </ul>
-      </nav>
-    <?php }?>
-    <!-- 
-    
-    <div class="search">
-      <a href="#"></a>
-    </div>
-    </div> -->
-  </header>
-  <!-- Header -->  <!-- Header -->
-
-   <?php if (isset($this->session->userdata['logged_in'])){?>
-              <li><a href="#" id="menuLink"></a></li>
-              <li><a href="#" id="searchLink"></a></li>
-              <nav>
-              <!-- <ul id="mainNavigation">
-                <li>hejhej</li>
-              </ul> -->
-                <ul id="mobileNavigation">
-                  <li></li>'
-                </ul>
-              </nav>
-    <?php }?>
-
+  </header> <!--end header -->
