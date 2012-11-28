@@ -91,6 +91,11 @@
               <!-- <form class="navbar-search pull-left" action="">
                 <input type="text" class="search-query span2" placeholder="Sök annons...">
               </form> -->
+
+              <ul class="nav pull-right">
+                <li><a href="<?php echo base_url();?>index.php/login/logout"><i class="icon-off icon-white"></i>Logga ut</a></li>
+              </ul>
+
             </div>
           <?php }?>
      
