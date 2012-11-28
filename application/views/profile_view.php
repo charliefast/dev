@@ -15,7 +15,7 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
     </div>
     <div class='guestbook'>
       <?php if ($comments>0): ?>
-      	<?php foreach ($comments as $comments): ?>
+      	<?php foreach ($comments as $comment): ?>
       		<div>
       			<h3><?php echo $comment->from; ?></h3>
       			<p><?php $comment->message ?></p>
@@ -26,7 +26,7 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
       <div>
       <?php $date = array('date' => date('Y-m-d H:i:s'));
       $hidden = array_merge($user_data, $date); ?>
-      <?php echo form_open('index.php/send_message', '', $hidden); ?> 
+      <?php echo form_open('index.php/user/send_message/'.$id, '', $hidden); ?> 
       <label for="message">Meddelande:</label>
       <textarea id="message" name="message" class="message" rows="5" cols="30"></textarea>
       <?php echo form_submit('submit','Skicka', 'class="btn"') ?>

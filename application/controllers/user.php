@@ -15,6 +15,7 @@ class User extends Auth_Controller {
   {
     parent::__construct();
     $this->load->model('user_model','',TRUE);
+    $this->load->model('message_model');
     $this->content = array('error' => 'Ingen användare funnen');
     $this->data = 'Profilsida';
     $this->logged_in_user = $this->session->userdata('logged_in');
@@ -44,6 +45,7 @@ class User extends Auth_Controller {
     $result = $this->user_model->get_user($id);
     if($result){
      foreach($result as $row){
+        $this->data = array ('title' => $row->firstname.' '.$row->lastname);
         $place = ($row->city && $row->country)?$row->city.', '.$row->country:'ej angivet';
         $this->content = array(
           'id' => $row->id,
@@ -56,7 +58,7 @@ class User extends Auth_Controller {
           'email' => $row->email,
           'avatar' => NULL,
           'presentation' => NULL,
-          'comments' => FALSE,
+          'comments' => $this->message_model->fetch_all_messages($row->id),
           'error' => FALSE
           );
       }
