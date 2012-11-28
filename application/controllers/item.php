@@ -1,7 +1,12 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-class item extends Auth_Controller {
+/**
+ * Controller item class
+ * 
+ * Handles viewing items and categories
+ */
+ 
+class Item extends Auth_Controller {
 
   private $data;
   private $categories;
@@ -38,8 +43,8 @@ class item extends Auth_Controller {
    
     $result = $this->item_model->get_item($category,$search = '');
       if ($result){
-        if ($this->input->get('callback') == 'json'){
-          return json_encode($result);
+        if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
+          echo create_json(array('result'=> $result));
           exit();
         }
         $this->content['result'] = $result;
@@ -56,6 +61,10 @@ class item extends Auth_Controller {
      	  $name = $row -> name;
        	$slug = $row-> slug;
         $list['url'][] = anchor('index.php/item/'.$slug, $name);
+      }
+      if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
+          echo create_json(array('result'=> $list));
+          exit();
       }
     return $list;
     }

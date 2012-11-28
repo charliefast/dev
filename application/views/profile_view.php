@@ -2,10 +2,10 @@
 $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 <div class="container">
 <?php if (! $error): ?>
-	<?php if($edit) echo edit_link('edit/all','Ändra profil');?>
+	<?php if($edit) echo anchor('edit/all','Ändra profil');?>
 	<a href='#'>
 		<img src="<?php echo $avatar?>"/>
-		<?php if($edit) echo edit_link('edit/avatar','Ändra bild');?>
+		<?php if($edit) echo anchor('edit/avatar','Ändra bild', 'class=edit_pic');?>
 	</a><h1><?php echo $firstname.' '.$lastname; ?></h1>
     <p>Finns i: <?php echo $place; ?></p>
     <p>Medlem sedan:<?php echo $sign_up_date; ?></p>

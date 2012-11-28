@@ -1,4 +1,8 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * upload model class
+ * 
+ */
 Class Upload_model extends CI_Model
 {
   private $upload_dir;
@@ -14,3 +18,5 @@ Class Upload_model extends CI_Model
   	}
   }
 }
+/* End of file upload_model.php */
+/* Location: ./application/models/upload_model.php */

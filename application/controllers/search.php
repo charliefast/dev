@@ -7,14 +7,14 @@
  */
 
 class Search extends Auth_Controller {
+  
   private $search = array();
   private $search_query;
   private $search_key;
-  private $searchtype = 'and';
+  private $searchtype;
   private $category;
   private $county;
   private $type = FALSE;
-  private $json = FALSE;
   private $callback;
   private $item;
   private $args;
@@ -46,9 +46,12 @@ class Search extends Auth_Controller {
     );
     $this->search_criterias = array('searchtype' => '', 'key'=> '', 'callback'=>'');
     // $categories = $this->list_categories();
+    $this->searchtype = 'and';
     
   }
-
+  /**
+   * Loads default item page.
+   */
   function index()
   {
     $this->load->view('header_view', array('title' => 'Sök'));
@@ -56,10 +59,11 @@ class Search extends Auth_Controller {
     $this->load->view('result_view', array('result' => $this->get_items()));
     $this->load->view('footer_view');
   }
+  
   /**
-   * get_items:
+   * Fetches and validates get parameters for search query
    * @param string $item
-   * @return void
+   * @return array
    */
   function get_items($item = null)
   {
@@ -89,21 +93,25 @@ class Search extends Auth_Controller {
     }
 
     $this->result = $this->item_model->get_item($category, $this->search);
-    if ($this->result)
-    {
-      if ($this->callback == 'json')
-      {
-        $this->output_json();
-      }
-    } 
-    else
+    if (! $this->result)
     {
       $this->result =  array( 'error' => 'Inget sökresultat för "' . $this->search_key. '"');
     }
+    else
+    {
+      $this->result = array ('result' => $this->result);
+    }
+    if ($this->callback == 'json' OR $this->input->is_ajax_request())
+      {
+        echo create_json($this->result);
+        exit();
+      }
     return $this->result;
   }
+
   /**
    * Validates as valid searchtype and value
+   * @access private
    * @param $string $key
    * @param $string $val
    * @return BOOLEAN
@@ -118,40 +126,20 @@ class Search extends Auth_Controller {
       return FALSE;
     }
    }
-  function set_search_query() {
-
-  }
   /**
-  * Iterates through private array $selections
-  * and checks if selection options isset and saves to private variables accordingly
-  * and updates boolean $this->selected.
-  */
-  private function _updateSelection(){
-    foreach ($this->selections as $key => $val){
-      $this->$key = isset($_POST[$key]) ? $_POST[$key]: NULL;
-      if ($this->$key) {
-         $this->selected = TRUE;
-      }
-    }
-  }
-  private function _set_json($val) {
-    switch ($val) {
-      case 0 :
-        $this -> json = FALSE;
-        break;
-      case 1 :
-        $this -> json = TRUE;
-        break;
-    }
-  }
-
+   * Builds key for search
+   * 
+   * @access private
+   * @param string $str
+   * @return string $new_str
+   */
   private function _build_key($str) {
     $new_str = str_replace(" ", "%' $this->searchtype headline LIKE '%", "$str");
     return $new_str;
   }
 
   /**
-   * _is_searchtype: checks if get param is allowed.
+   * Checks if get param is allowed.
    * @param string $search to compare to $this->args
    * @return BOOLEAN
    */
@@ -161,7 +149,13 @@ class Search extends Auth_Controller {
     }
     return TRUE;
   }
-
+    /**
+   * Checks if get param is valid.
+   * @param string $key
+   * @param string $val
+   * @param string $where
+   * @return BOOLEAN
+   */
   private function _is_valid_value($key, $val, $where) {
     if (isset($this->args[$key][$where])) {
       if (! in_array($val, $this -> args[$key][$where])) {
@@ -179,17 +173,6 @@ class Search extends Auth_Controller {
   private function _clean_string($str) {
     $new_str = preg_replace("/[^a-zA-Z0-9\s]/", " ", $str);
     return $new_str;
-  }
-
-  /**
-   * Sets output to json 
-   */
-  function output_json(){
-    $this->output
-          ->set_content_type('application/json')
-          ->set_output(json_encode($this->result));
-        echo $this->output->get_output();
-        exit;
   }
 }
 /* End of file search.php */

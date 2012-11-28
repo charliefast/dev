@@ -30,9 +30,14 @@ class User extends Auth_Controller {
   {
     $this->_set_content($id);
     $this->load->view('header_view', $this->data);
+    if ($this->input->is_ajax_request())
+    {
+      echo create_json(array('status' => $this->content));
+      exit();
+    }
     $this->load->view('profile_view', $this->content);
     $this->load->view('footer_view');
-  }
+    }
 
   private function _set_content($id)
   {

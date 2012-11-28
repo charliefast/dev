@@ -16,10 +16,13 @@ Class Item_model extends CI_Model
    /**
    * Fetches item from db
    * 
-   * @param array $category
-   * @param array $search
+   * @param (optional) array $category
+   * @param (optional) array $search
+   * @param (optional) BOOLEAN $desc
+   * @param (optional) string $limit
+   * @return mixed
    */
-  function get_item($category, $search, $desc = TRUE, $limit = '20, 0'){
+  function get_item($category = '', $search = '', $desc = TRUE, $limit = '20, 0'){
     //SELECT items.id, headline, description, date_added, end_date, name, user_id  FROM items JOIN categories ON categories.id = items.category_id WHERE categories.name = '$variabel'
     //$this -> db -> select('items.id, headline, description, date_added, end_date, user_id');
     //$this -> db -> from('items');
@@ -30,10 +33,9 @@ Class Item_model extends CI_Model
       $this -> db -> select('*');
       $this -> db -> from($category);
     }else{
-    	//$this -> db -> select('SELECT items.id, headline, description, date_added, end_date, name, user_id, users.firstname, users.lastname');
-    	$this -> db -> select('*');
-    	$this -> db -> from('items');
-    	$this -> db -> join('users','items.user_id = users.id');
+      $this -> db -> select('items.id, headline, description, date_added, end_date, user_id, users.firstname, users.lastname');
+      $this -> db -> from('items');
+      $this -> db -> join('users','items.user_id = users.id');
     }
     if ($search){
       foreach ($search as $key => $value) {

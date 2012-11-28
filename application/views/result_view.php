@@ -11,7 +11,7 @@
 			<p><?php  echo $row->description; ?></p>
 			<p>
 				<a href="<?php  echo base_url(); ?>index.php/user/<?php  echo $row->user_id; ?>">
-				<?php  echo $row->firstname.' '.$row -> lastname; ?>
+				<?php  echo $row->firstname.' '.$row->lastname; ?>
 				</a>
 			</p>
 			<p><?php  echo $row -> id; ?></p>

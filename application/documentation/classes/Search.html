@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Search</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/CodeIgniter.html"><i class="icon-folder-open"></i> CodeIgniter</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">246</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">2</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_get_items" title="get_items :: get_items:"><span class="description">get_items:</span><pre>get_items()</pre></a></li>
+<li class="method public "><a href="#method_index" title="index :: "><span class="description">index()
+        </span><pre>index()</pre></a></li>
+<li class="method public "><a href="#method_output_json" title="output_json :: Sets output to json"><span class="description">Sets output to json</span><pre>output_json()</pre></a></li>
+<li class="method public "><a href="#method_set_search_query" title="set_search_query :: "><span class="description">set_search_query()
+        </span><pre>set_search_query()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="method private "><a href="#method__build_key" title="_build_key :: "><span class="description">_build_key()
+        </span><pre>_build_key()</pre></a></li>
+<li class="method private "><a href="#method__clean_string" title="_clean_string :: Removes non-alphanumeric characters"><span class="description">Removes non-alphanumeric characters</span><pre>_clean_string()</pre></a></li>
+<li class="method private "><a href="#method__is_search_type" title="_is_search_type :: _is_searchtype: checks if get param is allowed."><span class="description">_is_searchtype: checks if get param is allowed.</span><pre>_is_search_type()</pre></a></li>
+<li class="method private "><a href="#method__is_valid_value" title="_is_valid_value :: "><span class="description">_is_valid_value()
+        </span><pre>_is_valid_value()</pre></a></li>
+<li class="method private "><a href="#method__set_json" title="_set_json :: "><span class="description">_set_json()
+        </span><pre>_set_json()</pre></a></li>
+<li class="method private "><a href="#method__updateSelection" title="_updateSelection :: Iterates through private array $selections
+and checks if selection options isset and saves to private variables accordingly
+and updates boolean $this-&gt;selected."><span class="description">Iterates through private array $selections
+and checks if selection options isset and saves to private variables accordingly
+and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a></li>
+<li class="method private "><a href="#method__validate" title="_validate :: Validates as valid searchtype and value"><span class="description">Validates as valid searchtype and value</span><pre>_validate()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_args" title="$args :: "><span class="description"></span><pre>$args</pre></a></li>
+<li class="property private "><a href="#property_callback" title="$callback :: "><span class="description"></span><pre>$callback</pre></a></li>
+<li class="property private "><a href="#property_category" title="$category :: "><span class="description"></span><pre>$category</pre></a></li>
+<li class="property private "><a href="#property_county" title="$county :: "><span class="description"></span><pre>$county</pre></a></li>
+<li class="property private "><a href="#property_item" title="$item :: "><span class="description"></span><pre>$item</pre></a></li>
+<li class="property private "><a href="#property_json" title="$json :: "><span class="description"></span><pre>$json</pre></a></li>
+<li class="property private "><a href="#property_result" title="$result :: "><span class="description"></span><pre>$result</pre></a></li>
+<li class="property private "><a href="#property_search" title="$search :: "><span class="description"></span><pre>$search</pre></a></li>
+<li class="property private "><a href="#property_search_criterias" title="$search_criterias :: "><span class="description"></span><pre>$search_criterias</pre></a></li>
+<li class="property private "><a href="#property_search_key" title="$search_key :: "><span class="description"></span><pre>$search_key</pre></a></li>
+<li class="property private "><a href="#property_search_query" title="$search_query :: "><span class="description"></span><pre>$search_query</pre></a></li>
+<li class="property private "><a href="#property_searchtype" title="$searchtype :: "><span class="description"></span><pre>$searchtype</pre></a></li>
+<li class="property private "><a href="#property_type" title="$type :: "><span class="description"></span><pre>$type</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Search"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Search.html">Search</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Controller search class</p>
+<div class="details">
+<div class="long_description"><p>Handles searches of items</p></div>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_get_items"></a><div class="element clickable method public method_get_items" data-toggle="collapse" data-target=".method_get_items .collapse">
+<h2>get_items:</h2>
+<pre>get_items(string $item) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$item</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
+<h2>index()
+        </h2>
+<pre>index() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_output_json"></a><div class="element clickable method public method_output_json" data-toggle="collapse" data-target=".method_output_json .collapse">
+<h2>Sets output to json</h2>
+<pre>output_json() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_set_search_query"></a><div class="element clickable method public method_set_search_query" data-toggle="collapse" data-target=".method_set_search_query .collapse">
+<h2>set_search_query()
+        </h2>
+<pre>set_search_query() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method__build_key"></a><div class="element clickable method private method__build_key" data-toggle="collapse" data-target=".method__build_key .collapse">
+<h2>_build_key()
+        </h2>
+<pre>_build_key($str) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$str</h4></div>
+</div></div>
+</div>
+<a id="method__clean_string"></a><div class="element clickable method private method__clean_string" data-toggle="collapse" data-target=".method__clean_string .collapse">
+<h2>Removes non-alphanumeric characters</h2>
+<pre>_clean_string(string $str) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$new_str</div>
+</div></div>
+</div>
+<a id="method__is_search_type"></a><div class="element clickable method private method__is_search_type" data-toggle="collapse" data-target=".method__is_search_type .collapse">
+<h2>_is_searchtype: checks if get param is allowed.</h2>
+<pre>_is_search_type(string $search) : BOOLEAN</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$search</h4>
+<code>string</code><p>to compare to $this->args</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
+</div></div>
+</div>
+<a id="method__is_valid_value"></a><div class="element clickable method private method__is_valid_value" data-toggle="collapse" data-target=".method__is_valid_value .collapse">
+<h2>_is_valid_value()
+        </h2>
+<pre>_is_valid_value($key, $val, $where) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<div class="subelement argument"><h4>$val</h4></div>
+<div class="subelement argument"><h4>$where</h4></div>
+</div></div>
+</div>
+<a id="method__set_json"></a><div class="element clickable method private method__set_json" data-toggle="collapse" data-target=".method__set_json .collapse">
+<h2>_set_json()
+        </h2>
+<pre>_set_json($val) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$val</h4></div>
+</div></div>
+</div>
+<a id="method__updateSelection"></a><div class="element clickable method private method__updateSelection" data-toggle="collapse" data-target=".method__updateSelection .collapse">
+<h2>Iterates through private array $selections
+and checks if selection options isset and saves to private variables accordingly
+and updates boolean $this-&gt;selected.</h2>
+<pre>_updateSelection() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method__validate"></a><div class="element clickable method private method__validate" data-toggle="collapse" data-target=".method__validate .collapse">
+<h2>Validates as valid searchtype and value</h2>
+<pre>_validate($key, $val) : BOOLEAN</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<div class="subelement argument"><h4>$val</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_args"> </a><div class="element clickable property private property_args" data-toggle="collapse" data-target=".property_args .collapse">
+<h2></h2>
+<pre>$args </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_callback"> </a><div class="element clickable property private property_callback" data-toggle="collapse" data-target=".property_callback .collapse">
+<h2></h2>
+<pre>$callback </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_category"> </a><div class="element clickable property private property_category" data-toggle="collapse" data-target=".property_category .collapse">
+<h2></h2>
+<pre>$category </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_county"> </a><div class="element clickable property private property_county" data-toggle="collapse" data-target=".property_county .collapse">
+<h2></h2>
+<pre>$county </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_item"> </a><div class="element clickable property private property_item" data-toggle="collapse" data-target=".property_item .collapse">
+<h2></h2>
+<pre>$item </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_json"> </a><div class="element clickable property private property_json" data-toggle="collapse" data-target=".property_json .collapse">
+<h2></h2>
+<pre>$json </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_result"> </a><div class="element clickable property private property_result" data-toggle="collapse" data-target=".property_result .collapse">
+<h2></h2>
+<pre>$result </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_search"> </a><div class="element clickable property private property_search" data-toggle="collapse" data-target=".property_search .collapse">
+<h2></h2>
+<pre>$search </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_search_criterias"> </a><div class="element clickable property private property_search_criterias" data-toggle="collapse" data-target=".property_search_criterias .collapse">
+<h2></h2>
+<pre>$search_criterias </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_search_key"> </a><div class="element clickable property private property_search_key" data-toggle="collapse" data-target=".property_search_key .collapse">
+<h2></h2>
+<pre>$search_key </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_search_query"> </a><div class="element clickable property private property_search_query" data-toggle="collapse" data-target=".property_search_query .collapse">
+<h2></h2>
+<pre>$search_query </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_searchtype"> </a><div class="element clickable property private property_searchtype" data-toggle="collapse" data-target=".property_searchtype .collapse">
+<h2></h2>
+<pre>$searchtype </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_type"> </a><div class="element clickable property private property_type" data-toggle="collapse" data-target=".property_type .collapse">
+<h2></h2>
+<pre>$type </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
+            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+</div>
+</body>
+</html>

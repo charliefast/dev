@@ -4,7 +4,7 @@
   <?php echo form_open('index.php/user/edit/verify', '', $user_data); ?> 
   <a href='#'>
   <img src="<?php echo $avatar?>"/>
-  <?php echo edit_link('upload/image','Ladda upp bild');?>
+  <?php echo anchor('upload/image','Ladda upp bild');?>
   </a>
   <p>
     <label for="firstname">Förnamn <span class="required">*</span></label>
