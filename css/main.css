@@ -5092,11 +5092,17 @@ a.badge:hover {
   input.span1, textarea.span1, .uneditable-input.span1 {
     width: 28px;
   }
+  header {
+    height: 54px !important;
+  }
 }
 @media (max-width: 767px) {
   body {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  body header {
+    height: 54px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
@@ -5394,40 +5400,42 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
+/* Main styles */
 header {
   height: 44px;
 }
-#introTop {
-  background: #87C06B;
+header .navbar #logoWrapper {
+  display: inline;
+}
+header .navbar #logoWrapper img {
+  height: 23px;
+}
+.topImage {
   min-height: 250px;
   text-align: center;
   position: relative;
 }
-#introTop .wrapper {
-  margin-top: 50px;
-}
-#introTop .wrapper .logo {
-  margin: 0 auto;
-  max-width: 350px;
-  width: 100%;
-  position: relative;
-  display: block;
-}
-#introTop .wrapper span {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 20px;
-  display: block;
-}
-.container .loginForm {
-  max-width: 300px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
+.topImage .logo {
+  position: absolute;
+  top: 30%;
 }
 .container #categoryList li {
   list-style-type: none;
+  background: #cddfd3;
+  float: left;
+  border: 1px solid #ffffff;
 }
+.container #categoryList li a {
+  color: #333333;
+}
+footer {
+  background: #000000;
+  color: #ffffff;
+}
+footer .container h3 {
+  color: #ffffff;
+}
+/* Image upload */
 #dropbox {
   border: 3px dashed #cddfd3;
   position: relative;
@@ -5443,11 +5451,11 @@ header {
 
 }
 #dropbox.hover {
-  background: #eee;
+  background: #eeeeee;
 }
 #dropbox .message {
   font-size: 24px;
-  color: #999;
+  color: #999999;
   text-align: center;
   padding: 110px 20px 0;
   display: block;
@@ -5463,7 +5471,7 @@ header {
 #dropbox .preview img {
   max-width: 240px;
   max-height: 180px;
-  border: 3px solid #fff;
+  border: 3px solid #ffffff;
   display: block;
   box-shadow: 0 0 2px #000;
 }
@@ -5491,7 +5499,7 @@ header {
   width: 100%;
   left: 0;
   bottom: 0;
-  box-shadow: 0 0 2px #000;
+  box-shadow: 0 0 2px #000000;
 }
 #dropbox .preview.done .progressHolder .progress {
   background-color: green;

@@ -1,6 +1,6 @@
-	<footer style="background:#000; color:#fff;">
+	<footer>
     <div class="container">
-		  <h3 style="color:#fff;">Det här är våran footer</h3>
+		  <h3>Det här är våran footer</h3>
     </div>
 	</footer>
 	<!-- JavaScript -->

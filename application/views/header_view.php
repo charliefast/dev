@@ -62,8 +62,8 @@
 
           <!-- Be sure to leave the brand out there if you want it shown -->
           <a class="brand" href="<?php echo base_url();?>">
-            <div class="logo" style="display:inline;">
-              <img style="height:23px;" src="<?php echo base_url();?>images/miniLogo.png" />
+            <div id="logoWrapper">
+              <img src="<?php echo base_url();?>images/miniLogo.png" />
             </div>
             Bytarna
           </a>

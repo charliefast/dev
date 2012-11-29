@@ -1,7 +1,8 @@
-<div class="imgWrapper" style="position:relative;">
-	<img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" />
-	<img class="logo" src="<?php echo base_url();?>images/logo.png" style="position: absolute;top: 35%;left: 50%;width: 450px;margin-left: -225px;" />
-</div>
+<section class="topImage row-fluid">
+    <img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" />
+	<h1><img class="logo span6 offset3 center" src="<?php echo base_url();?>images/logo.png" /></h1>
+</section>
+
 <div class="container">
 	<div class="row-fluid" style="margin-top:20px;">
 		<div class="span4">

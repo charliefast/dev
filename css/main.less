@@ -1,49 +1,68 @@
 @import 'bootstrap/bootstrap.less';
 @import 'bootstrap/responsive.less';
 
+/* Main styles */
 header {
 	height: 44px;
+	.navbar {
+		#logoWrapper {
+			display: inline;
+			img {
+				height: 23px;
+			}
+		}
+	}
 }
 
-#introTop {
-	background: #87C06B;
+
+
+.topImage {
 	min-height: 250px;
 	text-align: center;
 	position: relative;
-	.wrapper {
-		margin-top: 50px;
-		.logo {
-			margin: 0 auto;
-			max-width: 350px;
-			width: 100%;
-			position: relative;
-			display: block;
-		}
-		span {
-			font-size: 24px;
-			font-weight: bold;
-			margin-top: 20px;
-			display: block;
-		}
+	.logo {
+		position: absolute;
+		top: 30%;
 	}
 }
 
+
 .container {
-	.loginForm {
-		max-width: 300px;
-		width: 100%;
-		margin: 0 auto;
-		text-align: left;
-	}
 	#categoryList {
 		li {
 			list-style-type: none;
+			background: @thirdColor;
+			float: left;
+			border: 1px solid @white;
+			a {
+				
+			color: @textColor;
+			}
 		}
 	}
 }
 
+
+footer {
+	background: @black;
+	color: @white;
+	.container {
+		h3 {
+			color: @white;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+/* Image upload */
 #dropbox{
-	border: 3px dashed #cddfd3;
+	border: 3px dashed @thirdColor;
 	position: relative;
 	margin:80px auto 90px;
 	min-height: 220px;
@@ -52,11 +71,11 @@ header {
     width: 100%;
     max-width: 600px;
     &.hover {
-    	background: #eee;
+    	background: @grayLighter;
     }
 	.message{
 		font-size: 24px;
-		color: #999;
+		color: @grayLight;
 	    text-align: center;
 	    padding: 110px 20px 0;
 	    display: block;
@@ -74,7 +93,7 @@ header {
 		img{
 			max-width: 240px;
 			max-height:180px;
-			border:3px solid #fff;
+			border:3px solid @white;
 			display: block;
 			box-shadow:0 0 2px #000;
 		}
@@ -95,12 +114,12 @@ header {
 			--------------------------*/
 			.progressHolder{
 				position: absolute;
-				background-color:#252f38;
+				background-color: #252f38;
 				height:12px;
 				width:100%;
 				left:0;
 				bottom: 0;
-				box-shadow:0 0 2px #000;
+				box-shadow:0 0 2px @black;
 				.progress{
 					background-color:green;
 					// background-color:#2586d0;
