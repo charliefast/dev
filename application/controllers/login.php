@@ -62,6 +62,9 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
 		$status = 'logged out';
+    $this->load->view('header_view', $this->data);
+    $this->load->view('logout_view');
+    $this->load->view('footer_view');
 		if ($this->input->get('callback') == 'json' || $this->input->is_ajax_request())
 		{
       echo json_encode(array('status' => $status));

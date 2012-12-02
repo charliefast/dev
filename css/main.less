@@ -28,15 +28,34 @@ header {
 
 
 .container {
+	&.top {
+		margin-top: 20px;
+	}
+	.noResult {
+		font-style: italic;
+		color: @grayLight;
+	}
 	#categoryList {
 		li {
+			width: 23.304255%;
 			list-style-type: none;
-			background: @thirdColor;
 			float: left;
 			border: 1px solid @white;
+			position: relative;
+			margin: 0 0.8% 2%;
+			overflow: hidden;
 			a {
-				
-			color: @textColor;
+				width: 100%;
+				margin: 0;
+				position: absolute;
+				bottom: 0;
+				.border-radius(0px);
+				.opacity(70);
+				background: @black;
+				color: @white;
+				&:hover {
+					.opacity(100);
+				}
 			}
 		}
 	}
@@ -44,11 +63,12 @@ header {
 
 
 footer {
-	background: @black;
-	color: @white;
+	background: @white;
+	color: @black;
 	.container {
+		border-top: 1px solid @grayLighter;
 		h3 {
-			color: @white;
+			color: @black;
 		}
 	}
 }

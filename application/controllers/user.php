@@ -68,7 +68,7 @@ class User extends Auth_Controller {
       }
       if ( ! $this->content['presentation'])
       {
-        $this->content['presentation'] = 'Denna användare har ej skrivit någon presentation än';
+        $this->content['presentation'] = '<div class="noResult">Denna användare har ej skrivit någon presentation än</div>';
       }
     }
   }

@@ -1,10 +1,10 @@
 <!-- START -->
-<div class="container">
+<div class="container top">
 	<h2>Sök bland alla annonser</h2>
 	<div class="row-fluid">
 		<div class="span12">
 			<form id="searchForm">
-				<input id="search" type="text" placeholder="Sök i det här fältet">
+				<input id="search" type="text" class="span6" placeholder="Sök i det här fältet">
 
 				<label for="categories">Välj kategori</label>
 				<select id="categories">

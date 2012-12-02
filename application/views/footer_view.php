@@ -1,6 +1,6 @@
 	<footer>
     <div class="container">
-		  <h3>Det här är våran footer</h3>
+		  <h5>© Bytarna 2012</h5>
     </div>
 	</footer>
 	<!-- JavaScript -->
