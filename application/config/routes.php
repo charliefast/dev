@@ -61,8 +61,10 @@ $route['upload/image'] = 'upload';
 $route['user/edit/verify'] = 'user/verify_edit_info';
 $route['user/edit'] = 'user/edit_info/$1';
 $route['user/edit/(:any)'] = 'user/edit_info/$1';
+$route['user/send_message/(:any)'] = 'message/send_message/$1/$2';
 $route['user/(:any)'] = "user/get_user_info/$1";
-$route['user/send_message/(:any)'] = 'user/send_message/$1';
+$route['message/(:any)'] = 'message/view_message/$1/$2';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

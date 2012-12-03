@@ -17,7 +17,7 @@ class User extends Auth_Controller {
     $this->load->model('user_model','',TRUE);
     $this->load->model('message_model');
     $this->content = array('error' => 'Ingen användare funnen');
-    $this->data = 'Profilsida';
+    $this->data = array('title' => 'Profilsida');
     $this->logged_in_user = $this->session->userdata('logged_in');
     $this->load->library('form_validation');
     $this->lang->load('form_validation', 'swedish');
@@ -38,7 +38,7 @@ class User extends Auth_Controller {
     }
     $this->load->view('profile_view', $this->content);
     $this->load->view('footer_view');
-    }
+  }
 
   private function _set_content($id)
   {
