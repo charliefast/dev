@@ -5474,6 +5474,9 @@ header .navbar #logoWrapper img {
   font-style: italic;
   color: #999999;
 }
+.container .item span.icons {
+  margin-bottom: 5px;
+}
 .container .item span.icons a {
   margin-right: 5px;
 }
