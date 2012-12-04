@@ -184,7 +184,14 @@ Filedrop = {
 
 Validation = {
 	'Init': function() {
+		
+		Validation.LoginForm();
+		Validation.RegisterForm();
+		Validation.EditForm();
+		
 
+	},
+	'LoginForm': function() {
 		$('.loginForm form').validate({
 			rules: {
 				username: {
@@ -225,38 +232,12 @@ Validation = {
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
 			}
-			// submitHandler: function(form) {
-			//	form.submit(function(e) {
-			//		e.preventDefault();
-			//	});
-			//	// $(form).ajaxSubmit({
-			//	//	target: "#message"
-			//	// });
-			// }
-			//specifying a submitHandler prevents the default submit, good for the demo
-			// submitHandler: function(form, e) {
-			//console.log(form);
-			//e.preventDefault();
-			//// alert("submitted!");
-
-			//form.submit(function(e) {
-			//	e.preventDefault();
-
-			//	$.ajax({
-			//		url: 'http://bytarna/index.php/verifylogin/ajax_check',
-			//		type: post,
-			//		success: function(response) {
-			//			console.log(response);
-			//		},
-			//		error: function() {
-			//			console.log("hej");
-			//		}
-			//	});
-			//});
-			//}
 		});
 
+		
 
+	},
+	'RegisterForm': function() {
 		$('.registerForm form').validate({
 			rules: {
 				firstname: {
@@ -325,9 +306,95 @@ Validation = {
 				// set &nbsp; as text for IE
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+				
+				$.ajax({
+					url: '/index.php/verify/',
+					type: 'POST',
+					success: function(data) {
+						console.log(data);
+
+					}
+				});
+
+				// $.getJSON('/index.php/verifylogin/', function(data, form) {
+				// 	if (data.state === false) {
+				// 		console.log(data.message);
+				// 		return false;
+				// 	} else {
+				// 		return true;
+				// 	}
+				// });
+			}
+
+
+
+		});
+	},
+	'EditForm': function() {
+		$('.editForm form').validate({
+			rules: {
+				firstname: {
+					required:true
+				},
+				lastname: {
+					required:true
+				},
+				email: {
+					required:true,
+					email: true
+				},
+				password: {
+					required:true,
+					minlength: 8
+				}
+			},
+			messages: {
+				firstname: {
+					required: 'Du glömde fylla i det här fältet',
+					email: "Fyll i en korrekt mailadress"
+				},
+				lastname: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Lösenordet måste vara minst 8 tecken långt"
+				},
+				email: {
+					required: 'Du glömde fylla i det här fältet',
+					email: "Fyll i en korrekt mailadress"
+				},
+				password: {
+					required: 'Du måste fylla i lösenord för att kunna spara',
+					min: "Fyll i rätt lösenord"
+				}
+			},
+			errorPlacement: function(error, element) {
+				if ( element.is(":radio") ) {
+					error.appendTo( element.parent().next().next() );
+				} else if ( element.is(":checkbox") ) {
+					error.appendTo ( element.next() );
+				} else {
+					error.appendTo( element.parent() );
+					element.closest('.control-group').removeClass('success').addClass('error');
+				}
+			},
+			// set this class to error-labels to indicate valid fields
+			success: function(label) {
+				// set &nbsp; as text for IE
+				label.closest('.control-group').removeClass('error').addClass('success');
+				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+
+				$.getJSON('/index.php/user/edit/verify', function(data) {
+					if (data.state === false) {
+						console.log(data.message);
+					} else {
+						console.log(data.message);
+					}
+				});
 			}
 		});
-
 	}
 };
 

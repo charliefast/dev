@@ -5415,13 +5415,6 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
-.control-group .controls label.error {
-  display: inline;
-  color: #B94A48;
-}
-.control-group .controls label.error.checked {
-  color: #46a546;
-}
 /* Main styles */
 header {
   height: 44px;
@@ -5550,6 +5543,13 @@ footer .container ul:after {
 footer .container ul li {
   float: left;
   margin: 0 10px;
+}
+.control-group .controls label.error {
+  display: inline;
+  color: #B94A48;
+}
+.control-group .controls label.error.checked {
+  color: #46a546;
 }
 /* Image upload */
 #dropbox {

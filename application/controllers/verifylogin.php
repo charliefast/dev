@@ -26,7 +26,11 @@ class VerifyLogin extends CI_Controller {
       /*$this->load->view('header_view');
       $this->load->view('login_view');
       $this->load->view('footer_view');*/
-      echo 'login failed';
+      $response = array(
+        'state'  => false,
+        'message' => 'Login failed'
+      );
+      echo json_encode($response);
     }
     else
     {

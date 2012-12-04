@@ -12,6 +12,7 @@
         <!-- REGISTRERING -->
         <div class="control-group">
           <label class="control-label" for="firstname">Förnamn <span class="required">*</span></label>
+          <?php echo form_error('firstname'); ?>
           <div class="controls">
             <input id="firstname" type="text" name="firstname" maxlength="255" placeholder="Förnamn" value="<?php echo set_value('firstname'); ?>"  />
           </div>

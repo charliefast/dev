@@ -85,7 +85,13 @@ class User extends Auth_Controller {
   {
   if ($this->form_validation->run('change_profile_info') == FALSE) // validation hasn't been passed
     {
-      echo "något blev fel";
+
+      $response = array(
+        'state'  => false,
+        'message' => 'Något blev fel'
+      );
+
+      echo json_encode($response);
     }
     else // passed validation proceed to post success logic
     {
@@ -106,9 +112,19 @@ class User extends Auth_Controller {
                         ); 
       $result = $this->user_model->update_user_info($id, $pw, $data);
       if($result){
-        echo 'uppgifter ändrade';
+
+        $response = array(
+          'state'  => true,
+          'message' => 'Dina uppgifter har ändrats!'
+        );
+        echo json_encode($response);
       }else{
-        echo 'något gick snett';
+        
+        $response = array(
+          'state'  => false,
+          'message' => 'Något gick snett'
+        );
+        echo json_encode($response);
       }
     }
   }
