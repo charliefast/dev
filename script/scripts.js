@@ -14,58 +14,57 @@ $(document).ready(function () {
 Responsive = {
 	'Init': function() {
 	
-	  var currentBreakpoint; // default's to blank so it's always analysed on first load
-	  var didResize  = true; // default's to true so it's always analysed on first load
-	  var raw_slider = $("#featured").html(); // grab the unaltered HTML and store it
-	
-	  // on window resize, set the didResize to true
-	  $(window).resize(function() {
-	    didResize = true;
-	  });
-	
-	  // every 1/4 second, check if the browser was resized
-	  // we throttled this because some browsers fire the resize even continuously during resize
-	  // that causes excessive processing, this helps limit that
-	  setInterval(function() {
-	    if(didResize) {
-	      didResize = false;
-	
-	      // inspect the CSS to see what breakpoint the new window width has fallen into
-	      var newBreakpoint = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
-	
-	      /* tidy up after inconsistent browsers (some include quotation marks, they shouldn't) */
-	      newBreakpoint = newBreakpoint.replace(/"/g, "");
-	      newBreakpoint = newBreakpoint.replace(/'/g, "");
-	
-	      // if the new breakpoint is different to the old one, do some stuff
-	      if (currentBreakpoint != newBreakpoint) {
-	
-	        // remove the old flexslider (which has attached event handlers and adjusted DOM nodes)
-	        $("#featured").remove();
-	
-	        // now re-insert clean mark-up so flexslider can run on it properly
-	        
-	
-	        // execute JS specific to each breakpoint
-	        if (newBreakpoint === 'breakpoint_1') {
-	          // the narrowset breakpoint is now the current breakpoint
-	          currentBreakpoint = 'breakpoint_1';
-	          
-	          $("#articles").append("<div id='featured'></div>");
-	          $("#featured").html(raw_slider);
+		var currentBreakpoint; // default's to blank so it's always analysed on first load
+		var didResize  = true; // default's to true so it's always analysed on first load
+		var raw_slider = $("#featured").html(); // grab the unaltered HTML and store it
+		
+		// on window resize, set the didResize to true
+		$(window).resize(function() {
+			didResize = true;
+		});
+		
+		// every 1/4 second, check if the browser was resized
+		// we throttled this because some browsers fire the resize even continuously during resize
+		// that causes excessive processing, this helps limit that
+		setInterval(function() {
+			if(didResize) {
+				didResize = false;
+				
+				// inspect the CSS to see what breakpoint the new window width has fallen into
+				var newBreakpoint = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
+				
+				/* tidy up after inconsistent browsers (some include quotation marks, they shouldn't) */
+				newBreakpoint = newBreakpoint.replace(/"/g, "");
+				newBreakpoint = newBreakpoint.replace(/'/g, "");
+				
+				// if the new breakpoint is different to the old one, do some stuff
+				if (currentBreakpoint != newBreakpoint) {
+			
+					// remove the old flexslider (which has attached event handlers and adjusted DOM nodes)
+					$("#featured").remove();
+					
+					// now re-insert clean mark-up so flexslider can run on it properly
+					
+			
+					// execute JS specific to each breakpoint
+					if (newBreakpoint === 'breakpoint_1') {
+						// the narrowset breakpoint is now the current breakpoint
+						currentBreakpoint = 'breakpoint_1';
+						
+						$("#articles").append("<div id='featured'></div>");
+						$("#featured").html(raw_slider);
 
-	        }
-	        if (newBreakpoint === 'breakpoint_2') {
-	          // the second largest breakpoint is now the current one
-	          currentBreakpoint = 'breakpoint_2';
-	          	
-	          $("#articles").prepend("<div id='featured'></div>");
-	          $("#featured").html(raw_slider);
-
-	        }
-	      }
-	    }
-	  }, 250);
+					}
+					if (newBreakpoint === 'breakpoint_2') {
+						// the second largest breakpoint is now the current one
+						currentBreakpoint = 'breakpoint_2';
+							
+						$("#articles").prepend("<div id='featured'></div>");
+						$("#featured").html(raw_slider);
+					}
+				}
+			}
+		}, 250);
 	}
 };
 
@@ -82,7 +81,7 @@ Filedrop = {
 			paramname:'pic',
 			
 			maxfiles: 1,
-	    	maxfilesize: 1,
+			maxfilesize: 1,
 			url: 'post_file.php',
 			fallback_id: 'fallbackBtn',
 
@@ -91,17 +90,17 @@ Filedrop = {
 				// response is the JSON object that post_file.php returns
 			},
 			dragOver: function() {
-	        	// user dragging files over #dropzone
-	        	dropbox.addClass('hover');
-	    	},
-	    	dragLeave: function() {
-	        	// user dragging files out of #dropzone
-	        	dropbox.removeClass('hover');
-	    	},
-	    	error: function(err, file) {
+				// user dragging files over #dropzone
+				dropbox.addClass('hover');
+			},
+			dragLeave: function() {
+				// user dragging files out of #dropzone
+				dropbox.removeClass('hover');
+			},
+			error: function(err, file) {
 				switch(err) {
 					case 'BrowserNotSupported':
-						showMessage('Your browser does not support HTML5 file uploads!');
+						showMessage('Din webbläsare stödjer inte HTML5 filuppladdning!');
 						dropbox.hide();
 						$('.uploadForm').show();
 						break;
@@ -133,7 +132,7 @@ Filedrop = {
 			progressUpdated: function(i, file, progress) {
 				$.data(file).find('.progress').width(progress);
 			}
-	    	 
+
 		});
 		
 		var template = '<div class="preview">'+
@@ -144,12 +143,12 @@ Filedrop = {
 							'<div class="progressHolder">'+
 								'<div class="progress"></div>'+
 							'</div>'+
-						'</div>'; 
+						'</div>';
 		
 		
 		function createImage(file){
 
-			var preview = $(template), 
+			var preview = $(template),
 				image = $('img', preview);
 				
 			var reader = new FileReader();
@@ -182,7 +181,7 @@ Filedrop = {
 			message.html(msg);
 		}
 	}
-}
+};
 
 Validation = {
 	'Init': function() {
@@ -191,7 +190,7 @@ Validation = {
 			//debug: true,
 			// errorElement: "em",
 			// errorPlacement: function(error, element) {
-			// 	error.appendTo( element.parent("td").next("td") );
+			// error.appendTo( element.parent("td").next("td") );
 			// },
 			errorContainer: $("#message"),
 			rules: {
@@ -213,7 +212,7 @@ Validation = {
 					required: 'Du glömde fylla i det här fältet',
 					min: "Lösenordet måste vara minst 8 tecken långt"
 				}
-			}	
+			}
 		});
 
 
@@ -251,7 +250,7 @@ Validation = {
 					required: 'Du glömde fylla i det här fältet',
 					min: "Lösenordet måste vara minst 8 tecken långt"
 				}
-			}	
+			}
 		});
 
 	}
@@ -274,11 +273,11 @@ Search = {
 				var items = [];
 
 				$.each(data, function(key, val) {
-				   	items.push('<li>'+
-				   				'<h3><a href="#">'+val["headline"]+'</a></h3>'+
-				   				'<p>'+val["description"]+'</p>'+
-				   				'<span>'+val["id"]+'</span>'+
-				   				'</li>');
+					items.push('<li>'+
+								'<h3><a href="#">'+val["headline"]+'</a></h3>'+
+								'<p>'+val["description"]+'</p>'+
+								'<span>'+val["id"]+'</span>'+
+								'</li>');
 				});
 
 				resultList.html(items);
@@ -287,21 +286,21 @@ Search = {
 
 		// var items = [];
 		// $.get("data.json", function(data){
-		// 		notes = data.notes;
-		// 		showList("");
+		//	notes = data.notes;
+		//		showList("");
 
 		// }, "json");
 
 		// var qEl = $("#q");
 
 		// qEl.keyup(function(event){
-		// 	console.log( qEl.val() );
-		// 	showList( qEl.val() );
+		//  console.log( qEl.val() );
+		//  showList( qEl.val() );
 		// });
 
 		
 		// function showList( q ){
-		// 	$("#list").empty();
+		//	$("#list").empty();
 
 		// 	for (var i = 0; i < notes.length; i++){
 		// 		var note = notes[i];

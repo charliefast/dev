@@ -1,6 +1,7 @@
 <?php $user_data = $this->session->userdata('logged_in');
 $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 
+<!-- SKICKA MEDDELANDE TILL PROFIL -->
 <div class="container top">
   
   <?php if (! $error): ?>

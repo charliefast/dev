@@ -1,4 +1,4 @@
-
+<!-- LOGGA IN -->
   <section class="topImage row-fluid">
     <img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" />
     <h1><img class="logo span6 offset3 center" src="<?php echo base_url();?>images/logo.png" /></h1>

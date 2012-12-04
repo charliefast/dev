@@ -1,4 +1,4 @@
-<!-- START -->
+<!-- SÖK -->
 <div class="container top">
 	<h2>Sök bland alla annonser</h2>
 	<div class="row-fluid">

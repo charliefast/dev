@@ -1,3 +1,5 @@
+<!-- Kategorier meny -->
+
 <div class="container top">
 	<div class="row-fluid">
 		<h1>Kategorier</h1>

@@ -1,3 +1,5 @@
+<!-- Redigera användarinformation -->
+
 <?php $user_data = $this->session->userdata('logged_in');
 ?>
 <div class="container">
