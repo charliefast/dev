@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php $user_data = $this->session->userdata('logged_in'); ?>
+<?php $currentPage = basename($_SERVER['REQUEST_URI']); ?>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -83,10 +84,10 @@
             <div class="nav-collapse collapse">
               <!-- .nav, .navbar-search, .navbar-form, etc -->
               <ul class="nav">
-                <li class="active"><a href="<?php echo base_url();?>index.php/search"><i class="icon-search icon-white"></i>Sök</a></li>
-                <li><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
-                <li><a href="<?php echo base_url();?>index.php/item/new"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
-                <li><a href="<?php echo base_url();?>index.php/user/<?php echo $user_data['id']; ?>"><i class="icon-user icon-white"></i>Min sida</a></li>
+                <li <?php if($currentPage == "search") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>index.php/search"><i class="icon-search icon-white"></i>Sök</a></li>
+                <li <?php if($currentPage == "item") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>index.php/item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
+                <li <?php if($currentPage == "new") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>index.php/item/new"><i class="icon-edit icon-white"></i>Skapa annons</a></li>
+                <li <?php if($currentPage == "44") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>index.php/user/<?php echo $user_data['id']; ?>"><i class="icon-user icon-white"></i>Min sida</a></li>
               </ul>
               <!-- <form class="navbar-search pull-left" action="">
                 <input type="text" class="search-query span2" placeholder="Sök annons...">
