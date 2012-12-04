@@ -5441,6 +5441,13 @@ header .navbar #logoWrapper img {
   font-style: italic;
   color: #999999;
 }
+.container .item {
+  width: 23.304255%;
+  margin: 0 0.8% 2%;
+}
+.container .item:first-child {
+  margin: 0 0.8% 2%;
+}
 .container .item a.img img:hover {
   opacity: 0.7;
   filter: alpha(opacity=70);
@@ -5448,6 +5455,7 @@ header .navbar #logoWrapper img {
 .container .item h4 {
   font-size: 16px;
   line-height: 24px;
+  margin-bottom: 3px;
 }
 .container .item h4 a {
   color: #333333;
@@ -5458,6 +5466,9 @@ header .navbar #logoWrapper img {
   line-height: 16px;
   font-style: italic;
   color: #999999;
+}
+.container .item span.icons a {
+  margin-right: 5px;
 }
 .container #categoryList li {
   width: 23.304255%;
@@ -5490,10 +5501,45 @@ footer {
   color: #000000;
 }
 footer .container {
+  padding: 20px 10px;
   border-top: 1px solid #eeeeee;
+  position: relative;
+  *zoom: 1;
 }
-footer .container h3 {
+footer .container:before,
+footer .container:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+footer .container:after {
+  clear: both;
+}
+footer .container h5 {
   color: #000000;
+  margin: 0;
+  float: left;
+}
+footer .container ul {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  *zoom: 1;
+  list-style-type: none;
+  padding: 0;
+}
+footer .container ul:before,
+footer .container ul:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+footer .container ul:after {
+  clear: both;
+}
+footer .container ul li {
+  float: left;
+  margin: 0 10px;
 }
 /* Image upload */
 #dropbox {

@@ -36,6 +36,11 @@ header {
 		color: @grayLight;
 	}
 	.item {
+		width: 23.304255%;
+		margin: 0 0.8% 2%;
+		&:first-child {
+			margin: 0 0.8% 2%;
+		}
 		a.img {
 
 			img {
@@ -48,6 +53,7 @@ header {
 			font-size: 16px;
 			line-height: 24px;
 			// text-transform: uppercase;
+			margin-bottom: 3px;
 			a {
 				// font-weight: normal;
 				color: @textColor;
@@ -59,6 +65,11 @@ header {
 			line-height: 16px;
 			font-style: italic;
 			color: @grayLight;
+			&.icons {
+				a {
+					margin-right: 5px;
+				}
+			}
 		}
 	}
 	#categoryList {
@@ -92,9 +103,27 @@ footer {
 	background: @white;
 	color: @black;
 	.container {
+		padding: 20px 10px;
 		border-top: 1px solid @grayLighter;
-		h3 {
+		position: relative;
+		.clearfix();
+		h5 {
 			color: @black;
+			margin: 0;
+			float: left
+		}
+		ul {
+			position: absolute;
+			right: 0;
+			top: 20px;
+			.clearfix();
+			list-style-type: none;
+			padding: 0;
+			li {
+				float: left;
+				margin: 0 10px
+
+			}
 		}
 	}
 }

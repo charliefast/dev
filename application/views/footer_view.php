@@ -1,6 +1,13 @@
 	<footer>
     <div class="container">
 		  <h5>© Bytarna 2012</h5>
+      <ul>
+        <li><a href="#">Start</a></li>
+        <li><a href="#">Sök</a></li>
+        <li><a href="#">Kategorier</a></li>
+        <li><a href="#">Skapa annons</a></li>
+        <li><a href="#">Min sida</a></li>
+      </ul>
     </div>
 	</footer>
 	<!-- JavaScript -->
