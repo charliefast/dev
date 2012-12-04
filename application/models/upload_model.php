@@ -42,7 +42,7 @@ Class Upload_model extends CI_Model
       $save = $this->_insert_to_db();
       if ($save)
       {
-        return TRUE;
+        return $save;
       }
     }
     return FALSE;
@@ -72,7 +72,7 @@ Class Upload_model extends CI_Model
    * Saves image data to db
    * 
    * @access private
-   * @return BOOLEAN
+   * @return mixed
    */
   private function _insert_to_db()
   {
@@ -84,7 +84,8 @@ Class Upload_model extends CI_Model
     $this->db->insert('images', $data);  
     if ($this->db->affected_rows() == '1')
     {
-      return TRUE;
+      $id = $this->db->insert_id();
+      return  $id;
     }
     return FALSE;
   }

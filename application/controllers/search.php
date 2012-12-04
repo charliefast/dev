@@ -54,12 +54,18 @@ class Search extends Auth_Controller {
    */
   function index()
   {
-    $this->load->view('header_view', array('title' => 'Sök'));
+    $this->load->view('header_view', array('title' => 'Sök', 'page' => 'search'));
+    $this->load->view('item_view', array('content' => ''));
+    $this->load->view('result_view', array('result' => FALSE));
+    $this->load->view('footer_view');
+  }
+  
+  function load_page(){
+    $this->load->view('header_view', array('title' => 'Sök', 'page' => 'search'));
     $this->load->view('item_view', array('content' => ''));
     $this->load->view('result_view', array('result' => $this->get_items()));
     $this->load->view('footer_view');
   }
-  
   /**
    * Fetches and validates get parameters for search query
    * @param string $item
@@ -96,10 +102,6 @@ class Search extends Auth_Controller {
     if (! $this->result)
     {
       $this->result =  array( 'error' => 'Inget sökresultat för "' . $this->search_key. '"');
-    }
-    else
-    {
-      $this->result = array ('result' => $this->result);
     }
     if ($this->callback == 'json' OR $this->input->is_ajax_request())
       {

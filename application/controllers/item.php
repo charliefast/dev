@@ -16,7 +16,7 @@ class Item extends Auth_Controller {
   {
     parent::__construct();
     $this->load->model('item_model');
-    $this->data = array('title' => 'Kategorier');
+    $this->data = array('title' => 'Kategorier', 'page' => 'item');
     $this->categories = $this->list_categories();
     $this->content = array('result' => 'Inga annonser hittades i vald kategori');;
     

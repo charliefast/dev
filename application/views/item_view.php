@@ -3,7 +3,8 @@
 	<h2>Sök bland alla annonser</h2>
 	<div class="row-fluid">
 		<div class="span12">
-			<form id="searchForm">
+			<?php echo form_open('index.php/search/load', array('id' => 'searchForm')); 
+			/*<form id="searchForm">*/?>
 				<input id="search" type="text" class="span6" placeholder="Sök i det här fältet">
 
 				<label for="categories">Välj kategori</label>

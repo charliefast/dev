@@ -16,7 +16,7 @@ class Message extends Auth_Controller {
    {
      parent::__construct();
      $this->load->model('message_model');
-     $this->data = array('title' => 'Meddelande');
+     $this->data = array('title' => 'Meddelande', 'page' => 'message');
    }
      /**
    * Sends messages to other users

@@ -4,7 +4,7 @@
 		<ul id="results" class="thumbnails">
 		<?php if (isset($result['error'])):
 		  echo $result['error'];
-		else:
+    elseif($result):
 		foreach ($result as $row):?>
 		<li class="span3 item">
 			<a href="#" class="img"><img src="http://placehold.it/300x200"></a>

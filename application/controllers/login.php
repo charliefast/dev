@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
     $this->load->model('item_model');
-		$this->data = array( 'title' => 'Välkommen');
+		$this->data = array( 'title' => 'Välkommen', 'page' => 'front');
 	}
   /**
    * Default function. Loads firstpage.

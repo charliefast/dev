@@ -9,6 +9,7 @@ class Upload extends Auth_Controller {
   private $user_id;
   private $demo_mode;
   private $allowed_ext;
+  private $form_data;
 
   /**
    * Constructor
@@ -27,7 +28,7 @@ class Upload extends Auth_Controller {
    * Loads default upload form view
    */
   function index(){
-    $this->load->view('header_view', array('title' => 'Ladda upp bild'));
+    $this->load->view('header_view', array('title' => 'Ladda upp bild', 'page' => 'upload_image'));
     // $this->load->view('category_menu_view', $categories);
     $this->load->view('upload_form_view');
     $this->load->view('footer_view');
@@ -35,18 +36,25 @@ class Upload extends Auth_Controller {
   /**
    * Loads view for new item
    */
-  function new_item(){
-    $this->load->view('header_view', array('title' => 'Ny annons'));
+  function new_item_view(){
+    $this->load->view('header_view', array('title' => 'Ny annons', 'page' => 'new_item'));
     // $this->load->view('category_menu_view', $categories);
     $this->load->view('new_item_form_view');
     $this->load->view('upload_form_view');
     $this->load->view('footer_view');
   }
-
+  function new_item()
+  {
+  }
+  function verify_new_item()
+  {
+      var_dump($_FILES);
+  }
+  
   /**
    * Validates and handles file upload request
    */
-  function upload_pic(){
+  function upload_pic($item=''){
     if(strtolower($_SERVER['REQUEST_METHOD']) != 'post')
     {
       $this->__exit_status('Error! Wrong HTTP method!');
@@ -58,8 +66,8 @@ class Upload extends Auth_Controller {
       {
         $this->_exit_status('Only '.implode(',',$this->allowed_ext).' files are allowed!');
       } 
-      
-      if($this->upload_model->save_image($pic, $this->user_id))
+      $this->pic_id = $this->upload_model->save_image($pic, $this->user_id);
+      if($this->pic_id)
       {
         $this->_exit_status('File was uploaded successfully!');
       } 

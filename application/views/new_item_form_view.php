@@ -3,7 +3,8 @@
     <h1>Skapa en annons</h1>
 
 
-    <form class="form-horizontal">
+    <?php echo form_open('index.php/item/verify_new',array('class' => 'form-horizontal')) 
+   // <form class="form-horizontal">?>
       <div class="control-group">
         <label class="control-label" for="selectCategory">Kategori</label>
         <select id="selectCategory">
