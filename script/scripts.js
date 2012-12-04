@@ -185,13 +185,8 @@ Filedrop = {
 Validation = {
 	'Init': function() {
 
+
 		$('.loginForm form').validate({
-			//debug: true,
-			// errorElement: "em",
-			// errorPlacement: function(error, element) {
-			// error.appendTo( element.parent("td").next("td") );
-			// },
-			errorContainer: $("#message"),
 			rules: {
 				username: {
 					required:true,
@@ -199,7 +194,7 @@ Validation = {
 				},
 				password: {
 					required:true,
-					min: 8
+					minlength: 8
 				}
 			},
 			messages: {
@@ -209,9 +204,54 @@ Validation = {
 				},
 				password: {
 					required: 'Du glömde fylla i det här fältet',
-					min: "Lösenordet måste vara minst 8 tecken långt"
+					minlength: "Lösenordet måste vara minst 8 tecken långt"
 				}
+			},
+			// the errorPlacement has to take the table layout into account
+			errorPlacement: function(error, element) {
+				if ( element.is(":radio") ) {
+					error.appendTo( element.parent().next().next() );
+				} else if ( element.is(":checkbox") ) {
+					error.appendTo ( element.next() );
+				} else {
+					error.appendTo( element.parent() );
+					// element.css('borderColor', 'red');
+					element.closest('.control-group').addClass('error');
+				}
+
+			},
+			// set this class to error-labels to indicate valid fields
+			success: function(label) {
+				// set &nbsp; as text for IE
+				label.closest('.control-group').removeClass('error').addClass('success');
+				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+				$(form).ajaxSubmit({
+					target: "#message"
+				});
 			}
+			//specifying a submitHandler prevents the default submit, good for the demo
+			// submitHandler: function(form, e) {
+			// 	console.log(form);
+			// 	e.preventDefault();
+			// 	// alert("submitted!");
+
+			// 	form.submit(function(e) {
+			// 		e.preventDefault();
+
+			// 		$.ajax({
+			// 			url: 'http://bytarna/index.php/verifylogin/ajax_check',
+			// 			type: post,
+			// 			success: function(response) {
+			// 				console.log(response);
+			// 			},
+			// 			error: function() {
+			// 				console.log("hej");
+			// 			}
+			// 		});
+			// 	});
+			// }
 		});
 
 
@@ -233,7 +273,7 @@ Validation = {
 				},
 				password: {
 					required:true,
-					min: 8
+					minlength: 8
 				},
 				passconf: {
 					required:true,
@@ -241,14 +281,48 @@ Validation = {
 				}
 			},
 			messages: {
+				firstname: {
+					required: 'Du glömde fylla i det här fältet',
+					email: "Fyll i en korrekt mailadress"
+				},
+				lastname: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Lösenordet måste vara minst 8 tecken långt"
+				},
 				email: {
 					required: 'Du glömde fylla i det här fältet',
 					email: "Fyll i en korrekt mailadress"
 				},
+				emailconf: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Fyll i korrekt mailadress"
+				},
 				password: {
 					required: 'Du glömde fylla i det här fältet',
-					min: "Lösenordet måste vara minst 8 tecken långt"
+					email: "Lösenordet måste vara minst 8 tecken långt"
+				},
+				passconf: {
+					required: 'Du glömde fylla i det här fältet',
+					min: "Fyll i rätt lösenord"
 				}
+			},
+			errorPlacement: function(error, element) {
+				if ( element.is(":radio") ) {
+					error.appendTo( element.parent().next().next() );
+				} else if ( element.is(":checkbox") ) {
+					error.appendTo ( element.next() );
+				} else {
+					error.appendTo( element.parent() );
+					// element.css('borderColor', 'red');
+					element.closest('.control-group').addClass('error');
+				}
+
+			},
+			// set this class to error-labels to indicate valid fields
+			success: function(label) {
+				// set &nbsp; as text for IE
+				label.closest('.control-group').removeClass('error').addClass('success');
+				label.html("&nbsp;").addClass("checked");
 			}
 		});
 

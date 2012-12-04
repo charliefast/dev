@@ -1,6 +1,21 @@
 @import 'bootstrap/bootstrap.less';
 @import 'bootstrap/responsive.less';
 
+
+// validation errors
+.control-group {
+	.controls {
+		label.error {
+			display: inline;
+			color: #B94A48;
+			&.checked {
+				color: @green;
+			}
+		}
+	}
+}
+
+
 /* Main styles */
 header {
 	height: 44px;
@@ -14,8 +29,6 @@ header {
 	}
 }
 
-
-
 .topImage {
 	min-height: 250px;
 	text-align: center;
@@ -25,7 +38,6 @@ header {
 		top: 30%;
 	}
 }
-
 
 .container {
 	&.top {

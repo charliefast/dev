@@ -1,57 +1,66 @@
-<h1>Registrering</h1>
-<div class="registerForm">
-  <?php $attributes = array('class' => '', 'id' => ''); ?>
-  <?php echo form_open('index.php/verify');/*, $attributes); */?>
-  <?php //echo validation_errors(); ?> 
-    <?php /*<label for="username">Användarnamn <span class="required">*</span></label>
-    <?php echo form_error('username'); ?>
-    <input id="username" type="text" name="username" maxlength="255" value="<?php echo set_value('username'); ?>"  />
-  */?>
+<div class="container">
+  <h1>Skapa konto</h1>
+  <div class="row-fluid">
+    <div class="registerForm">
+      <?php $attributes = array('class' => '', 'id' => ''); ?>
+      <?php echo form_open('index.php/verify');/*, $attributes); */?>
+        <?php //echo validation_errors(); ?> 
+          <?php /*<label for="username">Användarnamn <span class="required">*</span></label>
+          <?php echo form_error('username'); ?>
+          <input id="username" type="text" name="username" maxlength="255" value="<?php echo set_value('username'); ?>"  />
+        */?>
+        <!-- REGISTRERING -->
+        <div class="control-group">
+          <label class="control-label" for="firstname">Förnamn <span class="required">*</span></label>
+          <div class="controls">
+            <input id="firstname" type="text" name="firstname" maxlength="255" placeholder="Förnamn" value="<?php echo set_value('firstname'); ?>"  />
+          </div>
+        </div>
 
+        <div class="control-group">
+          <label class="control-label" for="lastname">Efternamn <span class="required">*</span></label>
+          <?php echo form_error('lastname'); ?>
+          <div class="controls">
+            <input id="lastname" type="text" name="lastname" maxlength="255" placeholder="Efternamn" value="<?php echo set_value('lastname'); ?>"  />
+          </div>
+        </div>                                          
 
-  <!-- REGISTRERING -->
-  <p>
-    <label for="firstname">Förnamn <span class="required">*</span></label>
-    <?php echo form_error('firstname'); ?>
-    <input id="firstname" type="text" name="firstname" maxlength="255" value="<?php echo set_value('firstname'); ?>"  />
-  </p>
+        <div class="control-group">
+          <label class="control-label" for="email">Mailadress <span class="required">*</span></label>
+          <?php echo form_error('email'); ?>
+          <div class="controls">
+            <input id="email" type="text" name="email" placeholder="Mailadress" value="<?php echo set_value('email'); ?>"  />
+          </div>
+        </div>
 
-  <p>
-    <label for="lastname">Efternamn <span class="required">*</span></label>
-    <?php echo form_error('lastname'); ?>
-    <input id="lastname" type="text" name="lastname" maxlength="255" value="<?php echo set_value('lastname'); ?>"  />
-  </p>                                            
+        <div class="control-group">
+          <label class="control-label" for="emailconf">Upprepa mailadress <span class="required">*</span></label>
+          <?php echo form_error('emailconf'); ?>
+          <div class="controls">
+            <input id="emailconf" type="text" name="emailconf" placeholder="Upprepa mailadress" value="<?php echo set_value('emailconf'); ?>"  />
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <label class="control-label" for="password">Lösenord <span class="required">*</span></label>
+          <?php echo form_error('password'); ?>
+          <div class="controls">
+            <input id="password" type="password" name="password" maxlength="255" placeholder="Lösenord" value="<?php echo set_value('password'); ?>"  />
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <label class="control-label" for="passconf">Upprepa lösenord <span class="required">*</span></label>
+          <?php echo form_error('passconf'); ?>
+          <div class="controls">
+            <input id="passconf" type="password" name="passconf" maxlength="255" placeholder="Upprepa lösenord" value="<?php echo set_value('passconf'); ?>"  />
+          </div>
+        </div>
+        
+        <?php echo form_submit( 'submit', 'Skapa konto', 'class="btn btn-primary"'); ?>
 
-  <p>
-    <label for="email">Email <span class="required">*</span></label>
-    <?php echo form_error('email'); ?>
-    <input id="email" type="text" name="email"  value="<?php echo set_value('email'); ?>"  />
-  </p>
+      <?php echo form_close(); ?>
 
-  <p>
-    <label for="emailconf">Upprepa email <span class="required">*</span></label>
-    <?php echo form_error('emailconf'); ?>
-    <input id="emailconf" type="text" name="emailconf"  value="<?php echo set_value('emailconf'); ?>"  />
-  </p>
-
-  <p>
-    <label for="password">Lösenord <span class="required">*</span></label>
-    <?php echo form_error('password'); ?>
-    <input id="password" type="password" name="password" maxlength="255" value="<?php echo set_value('password'); ?>"  />
-  </p>
-  <p>
-    <label for="passconf">Upprepa lösenord <span class="required">*</span></label>
-    <?php echo form_error('passconf'); ?>
-    <input id="passconf" type="password" name="passconf" maxlength="255" value="<?php echo set_value('passconf'); ?>"  />
-  </p>
-  <p>
-    <?php echo form_submit( 'submit', 'Skapa konto'); ?>
-  </p>
-
-  <?php echo form_close(); ?>
+    </div>
+  </div>
 </div>
-<script type="text/javascript" src="<?php echo base_url();?>script/jquery-1.8.0.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>script/modernizr-2.6.1.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>script/jquery.validate.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>script/scripts.js"></script>
-<!-- <div class="fb-registration" data-fields="[{'name':'name'}, {'name':'email'},{'name':'favourite_dish','description':'Vilken är din favoriträtt?','type':'text'}]" data-redirect-uri="http://localhost/git/dev/index.php/home"></div> -->
