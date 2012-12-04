@@ -73,19 +73,12 @@ class User extends Auth_Controller {
     }
   }
 
-  function edit_info($where)
+  function edit_profile()
   {
     $this->_set_content($this->logged_in_user['id']);
-    switch ($where):
-      case 'all': 
-      $this->load->view('header_view', $this->data);
-      $this->load->view('edit_profile_view', $this->content);
-      $this->load->view('footer_view'); 
-      break;
-      case 'avatar':
-      echo 'blöh';
-      break;
-    endswitch;
+    $this->load->view('header_view', $this->data);
+    $this->load->view('edit_profile_view', $this->content);
+    $this->load->view('footer_view'); 
   }
 
   function verify_edit_info()

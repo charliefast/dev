@@ -82,7 +82,7 @@ Filedrop = {
 			
 			maxfiles: 1,
 			maxfilesize: 1,
-			url: 'post_file.php',
+			url: 'verify_upload',
 			fallback_id: 'fallbackBtn',
 
 			uploadFinished:function(i,file,response){

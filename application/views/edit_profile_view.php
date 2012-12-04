@@ -6,7 +6,7 @@
   <?php echo form_open('index.php/user/edit/verify', '', $user_data); ?> 
   <a href='#'>
   <img src="<?php echo $avatar?>"/>
-  <?php echo anchor('upload/image','Ladda upp bild');?>
+  <?php echo anchor('index.php/user/edit/pic','Ladda upp bild');?>
   </a>
   <p>
     <label for="firstname">Förnamn <span class="required">*</span></label>
@@ -18,7 +18,7 @@
     <label for="lastname">Efternamn <span class="required">*</span></label>
     <?php echo form_error('lastname'); ?>
     <input id="lastname" type="text" name="lastname" maxlength="255" value="<?php echo $lastname; ?>"  />
-  </p>                                            
+  </p>
 
   <p>
     <label for="email">Email <span class="required">*</span></label>

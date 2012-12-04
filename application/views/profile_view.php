@@ -16,7 +16,7 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
       <a href='#'>
         <img src="<?php echo $avatar?>"/>
       </a>
-      <?php if($edit) echo anchor('index.php/user/edit/avatar','Ändra bild', 'class=edit_pic');?>
+      <?php if($edit) echo anchor('index.php/user/edit/pic','Ändra bild', 'class=edit_pic');?>
       <p>Finns i: <?php echo $place; ?></p>
       <p>Medlem sedan:<?php echo $sign_up_date; ?></p>
 
