@@ -185,7 +185,6 @@ Filedrop = {
 Validation = {
 	'Init': function() {
 
-
 		$('.loginForm form').validate({
 			rules: {
 				username: {
@@ -225,33 +224,36 @@ Validation = {
 				// set &nbsp; as text for IE
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
-			},
-			submitHandler: function(form) {
-				$(form).ajaxSubmit({
-					target: "#message"
-				});
 			}
+			// submitHandler: function(form) {
+			//	form.submit(function(e) {
+			//		e.preventDefault();
+			//	});
+			//	// $(form).ajaxSubmit({
+			//	//	target: "#message"
+			//	// });
+			// }
 			//specifying a submitHandler prevents the default submit, good for the demo
 			// submitHandler: function(form, e) {
-			// 	console.log(form);
-			// 	e.preventDefault();
-			// 	// alert("submitted!");
+			//console.log(form);
+			//e.preventDefault();
+			//// alert("submitted!");
 
-			// 	form.submit(function(e) {
-			// 		e.preventDefault();
+			//form.submit(function(e) {
+			//	e.preventDefault();
 
-			// 		$.ajax({
-			// 			url: 'http://bytarna/index.php/verifylogin/ajax_check',
-			// 			type: post,
-			// 			success: function(response) {
-			// 				console.log(response);
-			// 			},
-			// 			error: function() {
-			// 				console.log("hej");
-			// 			}
-			// 		});
-			// 	});
-			// }
+			//	$.ajax({
+			//		url: 'http://bytarna/index.php/verifylogin/ajax_check',
+			//		type: post,
+			//		success: function(response) {
+			//			console.log(response);
+			//		},
+			//		error: function() {
+			//			console.log("hej");
+			//		}
+			//	});
+			//});
+			//}
 		});
 
 
