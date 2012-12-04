@@ -26,7 +26,7 @@ class Item extends Auth_Controller {
   function index()
   {
     $this->load->view('header_view', $this->data);
-    $this->load->view('category_menu_view', $this->categories);
+    $this->load->view('category_menu_view', array('list' => $this->categories));
     $this->load->view('result_view', $this->content);
     $this->load->view('footer_view'); 
   }
@@ -55,18 +55,11 @@ class Item extends Auth_Controller {
   function list_categories(){
     $result = $this->item_model->get_categories_from_db();
     if ($result > 0){
-      $list['url'] = array();
-      foreach ($result as $row)
-      {
-     	  $name = $row -> name;
-       	$slug = $row-> slug;
-        $list['url'][] = anchor('index.php/item/'.$slug, $name);
-      }
       if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
-          echo create_json(array('result'=> $list));
+          echo create_json(array('result'=> $result));
           exit();
       }
-    return $list;
+    return $result;
     }
     else
     {
