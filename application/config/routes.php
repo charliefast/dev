@@ -57,8 +57,9 @@ $route['item/verify_upload'] = 'upload/new_item';
 $route['item/verify_new'] = 'upload/verify_new_item';
 $route['item/search'] = "search/get_items/$1";
 $route['item/search/load'] = "search/load_page";
-$route['item/(:num)/search'] = "search/get_items/$1";
+$route['item/(:any)/search'] = "search/get_items/$1";
 $route['item/(:num)'] = "item/show_item_by_id/$1";
+$route['item/(:any)'] = "item/get_items/$1";
 $route['item'] = "item/get_items/$1";
 $route['logout'] = "login/logout";
 $route['(:any)/logout'] = "login/logout";
@@ -71,6 +72,7 @@ $route['user/edit/all'] = 'user/edit_profile';
 $route['user/send_message/(:any)'] = 'message/send_message/$1/$2/$3';
 $route['user/(:num)'] = "user/get_user_info/$1";
 $route['message/(:any)'] = 'message/view_message/$1/$2';
+$route['starred/(:num)/(:num)'] = 'login/get_starred_items/$1/$2';
 
 
 /* End of file routes.php */

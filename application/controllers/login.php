@@ -29,7 +29,7 @@ class Login extends CI_Controller {
 	{
 		$this->load->helper(array('form','url'));
 		$this->load->view('header_view', $this->data);
-		($this->logged_in())?$this->load->view('start_view', $this->get_starrred_items()):$this->load->view('login_view');
+		($this->logged_in())?$this->load->view('start_view', $this->get_starred_items()):$this->load->view('login_view');
 		$this->load->view('footer_view');
 	}
   
@@ -79,9 +79,11 @@ class Login extends CI_Controller {
    * 
    * @return mixed
    */
-  function get_starrred_items()
+  function get_starred_items($offset, $number)
   {
-    $result = $this->item_model->get_item();
+    $limit = ($offset>0 OR $number>0)?$number.', '.$offset: '20, 0';
+    var_dump($limit);
+    $result = $this->item_model->get_item('', '', $limit);
     if ($result){
       if ($this->input->get('callback') == 'json' || $this->input->is_ajax_request())
       {

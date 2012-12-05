@@ -22,7 +22,7 @@ Class Item_model extends CI_Model
    * @param (optional) string $limit
    * @return mixed
    */
-  function get_item($category = '', $search = '', $desc = TRUE, $limit = '20, 0'){
+  function get_item($category = '', $search = '', $limit = '20, 0', $desc = TRUE){
     //SELECT items.id, headline, description, date_added, end_date, name, user_id  FROM items JOIN categories ON categories.id = items.category_id WHERE categories.name = '$variabel'
     //$this -> db -> select('items.id, headline, description, date_added, end_date, user_id');
     //$this -> db -> from('items');
@@ -33,7 +33,7 @@ Class Item_model extends CI_Model
       $this -> db -> select('*');
       $this -> db -> from($category);
     }else{
-      $this -> db -> select('items.id, 
+      $this->db->select('items.id, 
         headline, 
         description, 
         date_added, 
@@ -41,19 +41,19 @@ Class Item_model extends CI_Model
         user_id, 
         users.firstname, 
         users.lastname');
-      $this -> db -> from('items');
-      $this -> db -> join('users','items.user_id = users.id');
+      $this->db->from('items');
+      $this->db->join('users','items.user_id = users.id');
     }
     if ($search){
       foreach ($search as $key => $value) {
-      $this -> db -> where($key. " LIKE '%" . $value . "%'");
+      $this->db->where($key. " LIKE '%" . $value . "%'");
       }
     }
     if ($desc){
       $this->db->order_by("date_added", "desc"); 
     }
     $this->db->limit($limit);
-    $query = $this -> db -> get();
+    $query = $this->db->get();
     
     return $query->result();
   }
@@ -76,20 +76,6 @@ Class Item_model extends CI_Model
       ->limit('1,0');
       $query = $this -> db -> get();
     return $query->result();
-  }
-  function get_categories_from_db(){
-  	$this -> db -> select('name, slug');
-    $this -> db -> from('categories');
-    $query = $this -> db -> get();
-
-    if($query -> num_rows() > 0)
-    {
-      return $query->result();
-    }
-    else
-    {
-      return false;
-    }
   }
   /**
    * @access public

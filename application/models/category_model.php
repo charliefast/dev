@@ -2,10 +2,8 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Category model class
- * 
- * @author Carina Möllbrink
  */
-class Category extends CI_Controller {
+class Category_model extends CI_Model {
 
   /**
    * Constructor
@@ -26,6 +24,21 @@ class Category extends CI_Controller {
   private function create_slug($name)
   {
     
+  }
+  
+  function get_categories_from_db(){
+    $this->db->select('name, slug');
+    $this->db->from('categories');
+    $query = $this->db ->get();
+
+    if($query->num_rows() > 0)
+    {
+      return $query->result();
+    }
+    else
+    {
+      return false;
+    }
   }
 
 }

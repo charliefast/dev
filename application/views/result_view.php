@@ -19,7 +19,7 @@
 		      		<i class="icon-user"></i>
 					<!-- <?php  echo $row->firstname.' '.$row -> lastname; ?> -->
 		      	</a>
-		      	<a href="item/message/<?php echo $row->id;?>"><i class="icon-pencil"></i></a>
+		      	<a href="message/<?php echo $row->id;?>"><i class="icon-pencil"></i></a>
 		      	<a href="#"><i class="icon-star"></i></a>
 			</span>
 			<span>Upplagd den <?php  echo $row->date_added; ?></span>

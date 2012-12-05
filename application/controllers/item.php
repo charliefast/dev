@@ -1,5 +1,4 @@
-<?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Controller item class
  * 
@@ -11,19 +10,25 @@ class Item extends Auth_Controller {
   private $data;
   private $categories;
   private $content;
-
+  
+  /**
+   * Constructor
+   */
   function __construct()
   {
     parent::__construct();
     $this->load->model('item_model');
     $this->load->model('message_model');
+    $this->load->model('category_model');
     $this->data = array('title' => 'Kategorier', 'page' => 'item');
-    $this->categories = $this->list_categories();
+    $this->categories = $this->category_model->get_categories_from_db();
     $this->content = array('result' => 'Inga annonser hittades i vald kategori');;
     
     
   }
-
+  /**
+   * Index
+   */
   function index()
   {
     $this->load->view('header_view', $this->data);
@@ -31,7 +36,12 @@ class Item extends Auth_Controller {
     $this->load->view('result_view', $this->content);
     $this->load->view('footer_view'); 
   }
-
+  
+  /**
+   * Gets items
+   * 
+   * @param (optional) string $item
+   */
   function get_items($item = null){
     $type = '';
     //$search = '';
@@ -52,6 +62,11 @@ class Item extends Auth_Controller {
       }
     $this->index();
   }
+  /**
+   * Shows item by id with messages
+   * 
+   * @param int $id
+   */
   function show_item_by_id($id)
   {
     $result = $this->item_model->get_item_by_id($id);
@@ -72,25 +87,6 @@ class Item extends Auth_Controller {
     $this->load->view('message_view', $message_content);
     $this->load->view('footer_view'); 
   }
-
-  function list_categories(){
-    $result = $this->item_model->get_categories_from_db();
-    if ($result > 0){
-      if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
-          echo create_json(array('result'=> $result));
-          exit();
-      }
-    return $result;
-    }
-    else
-    {
-      echo'något blev fel';
-    }
-  }
-
-  function get_item_by_query($category, $query){
-    echo $category.' '.$query.' ';
-
-  }
-
 }
+/* End of file item.php */
+/* Location: ./application/controllers/item.php */

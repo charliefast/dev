@@ -10,6 +10,7 @@ class Upload extends Auth_Controller {
   private $demo_mode;
   private $allowed_ext;
   private $form_data;
+  private $categories;
 
   /**
    * Constructor
@@ -17,10 +18,12 @@ class Upload extends Auth_Controller {
   function __construct() {
     parent::__construct();
     $this->user_id = $this->session->userdata['logged_in']['id'];
-    $this->load->model('upload_model','',TRUE);
+    $this->load->model('upload_model');
+    $this->load->model('category_model');
     $this->load->library('form_validation');
     $this->lang->load('form_validation', 'swedish');
     $this->allowed_ext = array('jpg','jpeg','png','gif');
+    $this->categories = $this->category_model->get_categories_from_db();
   }
   /**
    * Default function
@@ -39,7 +42,7 @@ class Upload extends Auth_Controller {
   function new_item_view(){
     $this->load->view('header_view', array('title' => 'Ny annons', 'page' => 'new_item'));
     // $this->load->view('category_menu_view', $categories);
-    $this->load->view('new_item_form_view');
+    $this->load->view('new_item_form_view', array('categories' => $this->categories));
     $this->load->view('upload_form_view');
     $this->load->view('footer_view');
   }

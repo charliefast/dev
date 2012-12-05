@@ -8,13 +8,10 @@
       <div class="control-group">
         <label class="control-label" for="selectCategory">Kategori</label>
         <select id="selectCategory">
-          <option>Välj en kategori</option>
-          <option>Kategori 1</option>
-          <option>Kategori 2</option>
-          <option>Kategori 3</option>
-          <option>Kategori 4</option>
-          <option>Kategori 5</option>
-          <option>Kategori 6</option>
+          <option>--Välj en kategori</option>
+          <?php foreach ($categories as $cat): ?>
+          <option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
       <div class="control-group">

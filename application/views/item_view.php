@@ -3,19 +3,17 @@
 	<h2>Sök bland alla annonser</h2>
 	<div class="row-fluid">
 		<div class="span12">
-			<?php echo form_open('index.php/search/load', array('id' => 'searchForm')); 
+			<?php echo form_open('search/load', array('id' => 'searchForm')); 
 			/*<form id="searchForm">*/?>
 				<input id="search" type="text" class="span6" placeholder="Sök i det här fältet">
-
 				<label for="categories">Välj kategori</label>
 				<select id="categories">
-					<option>Välj alla</option>
-					<option>Hushåll</option>
-					<option>Hushåll</option>
-					<option>Hushåll</option>
+          <option value='0'>Välj alla</option>
+				  <?php foreach ($categories as $cat): ?>
+					<option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
+				  <?php endforeach; ?>
 				</select>
-
-
+				
 				<input id="submit" type="submit" class="btn btn-primary" value="sök">
 			</form>
 		</div>

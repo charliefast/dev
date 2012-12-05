@@ -20,6 +20,7 @@ class Search extends Auth_Controller {
   private $args;
   private $result;
   private $search_criterias;
+  private $categories;
 
   /**
    * Constructor
@@ -27,6 +28,7 @@ class Search extends Auth_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model('item_model');
+    $this->load->model('category_model');
     $this->args = array(
       'key' => '',
       'county' => '',
@@ -47,6 +49,7 @@ class Search extends Auth_Controller {
     $this->search_criterias = array('searchtype' => '', 'key'=> '', 'callback'=>'');
     // $categories = $this->list_categories();
     $this->searchtype = 'and';
+    $this->categories = $this->category_model->get_categories_from_db();
     
   }
   /**
@@ -55,15 +58,16 @@ class Search extends Auth_Controller {
   function index()
   {
     $this->load->view('header_view', array('title' => 'Sök', 'page' => 'search'));
-    $this->load->view('item_view', array('content' => ''));
+    $this->load->view('item_view', array('content' => '', 'categories' => $this->categories));
     $this->load->view('result_view', array('result' => FALSE));
     $this->load->view('footer_view');
   }
   
   function load_page(){
+    $category = $this->input->post('categories');
     $this->load->view('header_view', array('title' => 'Sök', 'page' => 'search'));
-    $this->load->view('item_view', array('content' => ''));
-    $this->load->view('result_view', array('result' => $this->get_items()));
+    $this->load->view('item_view', array('content' => '', 'categories' => $this->categories));
+    $this->load->view('result_view', array('result' => $this->get_items($category)));
     $this->load->view('footer_view');
   }
   /**
@@ -74,9 +78,9 @@ class Search extends Auth_Controller {
   function get_items($item = null)
   {
     $category = '';
-    if ($this -> input -> get())
+    if ($this->input->get())
     {
-      $url = $this -> input -> get();
+      $url = $this->input->get();
       foreach ($url as $key => $val)
       {
         if ($this->_validate($key, $val))
@@ -87,17 +91,24 @@ class Search extends Auth_Controller {
             $this->search_key = $val;
             $this->search['headline'] = $this->_build_key($this->search_key);
           }
+          elseif($key == 'categories')
+          {
+            $category = $val;
+          }
           else{
             $this->$key = $val;
           }
         }
       }
     }
+    if ($this->input->post('categories'))
+    {
+      $category = $this->input->post('categories');
+    }
     // $search[] = array ('headline' => explode( ' ', $key ) );
     if ($item != '$1') {
       $category = $item;
     }
-
     $this->result = $this->item_model->get_item($category, $this->search);
     if (! $this->result)
     {
@@ -151,13 +162,13 @@ class Search extends Auth_Controller {
     }
     return TRUE;
   }
-    /**
-   * Checks if get param is valid.
-   * @param string $key
-   * @param string $val
-   * @param string $where
-   * @return BOOLEAN
-   */
+  /**
+  * Checks if get param is valid.
+  * @param string $key
+  * @param string $val
+  * @param string $where
+  * @return BOOLEAN
+  */
   private function _is_valid_value($key, $val, $where) {
     if (isset($this->args[$key][$where])) {
       if (! in_array($val, $this -> args[$key][$where])) {
