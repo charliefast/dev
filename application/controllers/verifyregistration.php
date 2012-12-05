@@ -21,7 +21,11 @@ class VerifyRegistration extends CI_Controller {
     
     if ($this->form_validation->run('signup') == FALSE) // validation hasn't been passed
     {
-      echo "något blev fel";
+      $response = array(
+        'state'  => false,
+        'message' => 'Något blev fel, försök igen!'
+      );
+      echo json_encode($response);
   	}
     else // passed validation proceed to post success logic
     {

@@ -28,7 +28,7 @@ class VerifyLogin extends CI_Controller {
       $this->load->view('footer_view');*/
       $response = array(
         'state'  => false,
-        'message' => 'Login failed'
+        'message' => 'Inloggningen misslyckades, försök igen!'
       );
       echo json_encode($response);
     }

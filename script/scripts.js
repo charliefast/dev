@@ -231,6 +231,25 @@ Validation = {
 				// set &nbsp; as text for IE
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+				$.ajax({
+					url: '/index.php/verifylogin/',
+					data: $(form).serialize(),
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+
+						if(data === null) {
+							document.location.href = '/index.php/';
+						} else if ( data.state === false ) {
+
+							var errorDiv = $('<div class="alert alert-error"></div>');
+							errorDiv.html(data.message);
+							errorDiv.appendTo('#message');
+						}
+					}
+				});
 			}
 		});
 
@@ -308,24 +327,20 @@ Validation = {
 				label.html("&nbsp;").addClass("checked");
 			},
 			submitHandler: function(form) {
-				
+
 				$.ajax({
 					url: '/index.php/verify/',
+					data: $(form).serialize(),
 					type: 'POST',
+					dataType: 'json',
 					success: function(data) {
-						console.log(data);
-
+							document.location.href = '/index.php/verify/';
+						// if (data.state === false) {
+						// 	console.log(data.message);
+						// } else {
+						// }
 					}
 				});
-
-				// $.getJSON('/index.php/verifylogin/', function(data, form) {
-				// 	if (data.state === false) {
-				// 		console.log(data.message);
-				// 		return false;
-				// 	} else {
-				// 		return true;
-				// 	}
-				// });
 			}
 
 
