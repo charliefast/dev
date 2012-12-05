@@ -134,5 +134,22 @@ $config = array(
                                             'label' => 'Lösenord',
                                             'rules' => 'required|trim|xss_clean|callback_check_database'
                                          ),
-                                    )                      
-               );
+                                    ),
+                'new_item' => array(
+                                     array(
+                                            'field' => 'selectCategory',
+                                            'label' => 'Kategorier',
+                                            'rules' => 'required|trim|xss_clean|max_length[255]'
+                                         ),
+                                    array(
+                                            'field' => 'inputTitle',
+                                            'label' => 'Titel',
+                                            'rules' => 'required|trim|xss_clean|max_length[255]'
+                                         ),
+                                    array(
+                                            'field' => 'inputDescription',
+                                            'label' => 'Beskrivning',
+                                            'rules' => 'required|trim|xss_clean|max_length[255]'
+                                         )
+               )
+);

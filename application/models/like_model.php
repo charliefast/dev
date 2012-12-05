@@ -36,7 +36,7 @@ Class Like_model extends CI_Model
         description, 
         date_added, 
         end_date, 
-        user_id, 
+        items.user_id, 
         users.firstname, 
         users.lastname')
       ->from('likes')

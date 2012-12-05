@@ -20,8 +20,9 @@ class Upload extends Auth_Controller {
     $this->user_id = $this->session->userdata['logged_in']['id'];
     $this->load->model('upload_model');
     $this->load->model('category_model');
-    $this->load->library('form_validation');
+    $this->load->library('form_validation','email');
     $this->lang->load('form_validation', 'swedish');
+    $this->load->helper('form', 'url', 'string');
     $this->allowed_ext = array('jpg','jpeg','png','gif');
     $this->categories = $this->category_model->get_categories_from_db();
   }
@@ -51,7 +52,35 @@ class Upload extends Auth_Controller {
   }
   function verify_new_item()
   {
-      var_dump($_FILES);
+   /* $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+    
+    if ($this->form_validation->run('new_item') == FALSE) // validation hasn't been passed
+    {
+      $this->_exit_status('Något blev fel, försök igen!');
+    }
+    else // passed validation proceed to post success logic
+    {
+      $category = set_value('selectCategory');
+      $date = date('Y-m-d h:i:s');
+      $form_data = array(
+                        'category_id' => 0,
+                        'headline' => set_value('inputTitle'),
+                        'description' => set_value('set_value('),
+                        'user_id' => $this->session->user_data['logged_in']['id'],
+                        'date_added' => $date,
+                        'end_date' => '',
+                        'status' => 0
+                        );      
+      // run insert model to write data to db
+     }
+      $item_id = $this->item_model->insert_item($form_data);
+      if ($item_id) // the information has therefore been successfully saved in the db
+      {
+        
+        $this->load->view('header_view', array('title' => 'Förhandsgranskning', 'page' => 'preview_item'));
+        $this->load->view('new_item_preview_view', array('content' => $this->item_model->get_item_by_id($item_id)));
+        $this->load->view('footer_view');
+      } */
   }
   
   /**

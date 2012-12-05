@@ -87,7 +87,7 @@ Class Item_model extends CI_Model
     
     if ($this->db->affected_rows() == '1')
     {
-      return TRUE;
+      return $this->db->insert_id();
     }
     
     return FALSE;
