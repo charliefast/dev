@@ -6,7 +6,7 @@
  * Handles existing users
  */
 class User extends Auth_Controller {
-  
+    
   private $data;
   private $content;
   private $logged_in_user;
@@ -14,8 +14,9 @@ class User extends Auth_Controller {
   function __construct()
   {
     parent::__construct();
-    $this->load->model('user_model','',TRUE);
+    $this->load->model('user_model');
     $this->load->model('message_model');
+    $this->load->model('like_model');
     $this->content = array('error' => 'Ingen användare funnen');
     $this->data = array('title' => 'Profilsida', 'page' => 'profile');
     $this->logged_in_user = $this->session->userdata('logged_in');
@@ -59,7 +60,8 @@ class User extends Auth_Controller {
           'avatar' => NULL,
           'presentation' => NULL,
           'comments' => $this->message_model->fetch_all_messages($row->id),
-          'error' => FALSE
+          'error' => FALSE,
+          'likes' => $this->like_model->fetch_likes($row->id)
           );
       }
       if ( ! $this->content['avatar'])

@@ -50,8 +50,8 @@ $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 $route['search'] = "search";
 $route['search/(:num)'] = "search/get_items/$1";
 //$route['search'] = "search/get_items/$1";
-$route['item/message/(:any)'] = 'message/load_form/$1';
-$route['item/send_message/(:any)'] = 'message/send_message/0/0/$1';
+$route['item/message/(:num)'] = 'message/load_form/$1';
+$route['item/send_message/(:num)'] = 'message/send_message/0/0/$1';
 $route['item/new'] = 'upload/new_item_view';
 $route['item/verify_upload'] = 'upload/new_item';
 $route['item/verify_new'] = 'upload/verify_new_item';
@@ -73,6 +73,8 @@ $route['user/send_message/(:any)'] = 'message/send_message/$1/$2/$3';
 $route['user/(:num)'] = "user/get_user_info/$1";
 $route['message/(:any)'] = 'message/view_message/$1/$2';
 $route['starred/(:num)/(:num)'] = 'login/get_starred_items/$1/$2';
+$route['like/(:num)'] = 'like/like_item/$1';
+$route['user/like/(:num)'] = 'like/get_likes/$1';
 
 
 /* End of file routes.php */

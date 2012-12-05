@@ -166,6 +166,28 @@ Class User_model extends CI_Model
     }
     return FALSE;  
   }
+  function insert_like($item_id, $user_id)
+  {
+    
+  }
+  function fetch_likes($user_id)
+  {
+    $this->db->select('items.id, 
+        headline, 
+        description, 
+        date_added, 
+        end_date, 
+        user_id, 
+        users.firstname, 
+        users.lastname')
+      ->from('likes')
+      ->join('items','likes.item_id = items.id')
+      ->join('users','likes.user_id = users.id')
+      ->where('items.id', $id)
+      ->limit('29,0');
+      $query = $this -> db -> get();
+    return $query->result();
+  }
 }
 /* End of file user_model.php */
 /* Location: ./application/models/user_model.php */
