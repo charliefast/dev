@@ -53,9 +53,10 @@ Class Message_model extends CI_Model
    * @param (optional) BOOLEAN $desc
    * @param (optional) string $limit
    * @param (optional) int $message_id
+   * @param (optional) int $item_id
    * @return mixed
    */
-  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '20, 0', $message_id = '')
+  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '20, 0', $message_id = '', $item_id = '')
   {
     $this->db->select('messages.id AS message_id, message, date_sent, firstname, lastname, parent_id')
       ->from('messages')
@@ -63,6 +64,9 @@ Class Message_model extends CI_Model
     //$str = "SELECT * FROM messages WHERE to_id = ?";
     if ($user_id != ''){
       $this->db->where('to_id', $user_id);
+    }
+    if ($item_id != ''){
+      $this->db->where('item_id', $item_id);
     }
     if ($message_id != ''){
       $this->db->where('messages.id', $message_id);

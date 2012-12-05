@@ -48,15 +48,17 @@ $route['verifylogin'] = "verifylogin";
 $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 
 $route['search'] = "search";
-$route['search/(:any)'] = "search/get_items/$1";
+$route['search/(:num)'] = "search/get_items/$1";
 //$route['search'] = "search/get_items/$1";
+$route['item/message/(:any)'] = 'message/load_form/$1';
+$route['item/send_message/(:any)'] = 'message/send_message/0/0/$1';
 $route['item/new'] = 'upload/new_item_view';
 $route['item/verify_upload'] = 'upload/new_item';
 $route['item/verify_new'] = 'upload/verify_new_item';
 $route['item/search'] = "search/get_items/$1";
 $route['item/search/load'] = "search/load_page";
-$route['item/(:any)/search'] = "search/get_items/$1";
-$route['item/(:any)'] = "item/get_items/$1";
+$route['item/(:num)/search'] = "search/get_items/$1";
+$route['item/(:num)'] = "item/show_item_by_id/$1";
 $route['item'] = "item/get_items/$1";
 $route['logout'] = "login/logout";
 $route['(:any)/logout'] = "login/logout";
@@ -66,8 +68,8 @@ $route['user/edit/verify'] = 'user/verify_edit_info';
 $route['user/edit/verify_upload'] = 'upload/upload_pic';
 $route['user/edit/pic'] = 'upload';
 $route['user/edit/all'] = 'user/edit_profile';
-$route['user/send_message/(:any)'] = 'message/send_message/$1/$2';
-$route['user/(:any)'] = "user/get_user_info/$1";
+$route['user/send_message/(:any)'] = 'message/send_message/$1/$2/$3';
+$route['user/(:num)'] = "user/get_user_info/$1";
 $route['message/(:any)'] = 'message/view_message/$1/$2';
 
 

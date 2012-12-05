@@ -16,6 +16,7 @@ class Item extends Auth_Controller {
   {
     parent::__construct();
     $this->load->model('item_model');
+    $this->load->model('message_model');
     $this->data = array('title' => 'Kategorier', 'page' => 'item');
     $this->categories = $this->list_categories();
     $this->content = array('result' => 'Inga annonser hittades i vald kategori');;
@@ -50,6 +51,26 @@ class Item extends Auth_Controller {
         $this->content['result'] = $result;
       }
     $this->index();
+  }
+  function show_item_by_id($id)
+  {
+    $result = $this->item_model->get_item_by_id($id);
+      if ($result){
+      $message_content = array (
+      'comments' => $this->message_model->fetch_all_messages('', FALSE, '20, 0', '', $id),
+      'error' => FALSE,
+      'form_to' => 'item/send_message/'.$id);
+        if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
+          echo create_json(array('result'=> $result, 'messages' => $message_content));
+          exit();
+        }
+        $this->content['result'] = $result;
+      }
+    
+    $this->load->view('header_view', $this->data);
+    $this->load->view('result_view', $this->content);
+    $this->load->view('message_view', $message_content);
+    $this->load->view('footer_view'); 
   }
 
   function list_categories(){

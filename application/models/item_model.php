@@ -33,7 +33,14 @@ Class Item_model extends CI_Model
       $this -> db -> select('*');
       $this -> db -> from($category);
     }else{
-      $this -> db -> select('items.id, headline, description, date_added, end_date, user_id, users.firstname, users.lastname');
+      $this -> db -> select('items.id, 
+        headline, 
+        description, 
+        date_added, 
+        end_date, 
+        user_id, 
+        users.firstname, 
+        users.lastname');
       $this -> db -> from('items');
       $this -> db -> join('users','items.user_id = users.id');
     }
@@ -53,6 +60,22 @@ Class Item_model extends CI_Model
 
   function get_queried_item($category, $query){
     echo $category.' '.$query.' ';
+  }
+  function get_item_by_id($id){
+    $this->db->select('items.id, 
+        headline, 
+        description, 
+        date_added, 
+        end_date, 
+        user_id, 
+        users.firstname, 
+        users.lastname')
+      ->from('items')
+      ->join('users','items.user_id = users.id')
+      ->where('items.id', $id)
+      ->limit('1,0');
+      $query = $this -> db -> get();
+    return $query->result();
   }
   function get_categories_from_db(){
   	$this -> db -> select('name, slug');
