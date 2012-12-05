@@ -79,7 +79,7 @@ class Login extends CI_Controller {
    * 
    * @return mixed
    */
-  function get_starred_items($offset, $number)
+  function get_starred_items($offset = '', $number = '')
   {
     $limit = ($offset>0 OR $number>0)?$number.', '.$offset: '20, 0';
     var_dump($limit);
