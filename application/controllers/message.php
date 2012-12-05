@@ -36,6 +36,11 @@ class Message extends Auth_Controller {
         'date_sent'  => $this->input->post('date')
       );
       $insert = $this->message_model->insert_message($form_data);
+      if ($this->input->is_ajax_request())
+      {
+        echo create_json(array('status' => 'message sent'));
+        exit();
+      }
       if ($insert)
       {
         if ($item_id)
