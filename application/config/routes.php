@@ -44,6 +44,7 @@ $route['404_override'] = 'errors/page_missing';
 $route['register'] = "verifyregistration";
 $route['verify'] = "verifyregistration/register";
 $route['verifylogin'] = "verifylogin";
+$route['activate_user'] = "verifyregistration/send_email_activation_key";
 
 $route['confirm/(:any)'] = "verifyregistration/register_confirm/$1";
 

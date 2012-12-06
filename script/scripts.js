@@ -234,14 +234,14 @@ Validation = {
 			},
 			submitHandler: function(form) {
 				$.ajax({
-					url: '/index.php/verifylogin/',
+					url: 'verifylogin',
 					data: $(form).serialize(),
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
 
 						if(data === null) {
-							document.location.href = '/index.php/';
+							document.location.href = 'login';
 						} else if ( data.state === false ) {
 
 							var errorDiv = $('<div class="alert alert-error"></div>');
@@ -329,12 +329,12 @@ Validation = {
 			submitHandler: function(form) {
 
 				$.ajax({
-					url: '/index.php/verify/',
+					url: 'verify',
 					data: $(form).serialize(),
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
-							document.location.href = '/index.php/verify/';
+							document.location.href = 'login';
 						// if (data.state === false) {
 						// 	console.log(data.message);
 						// } else {
@@ -401,7 +401,7 @@ Validation = {
 			},
 			submitHandler: function(form) {
 
-				$.getJSON('/index.php/user/edit/verify', function(data) {
+				$.getJSON('user/edit/verify', function(data) {
 					if (data.state === false) {
 						console.log(data.message);
 					} else {
@@ -426,7 +426,7 @@ Search = {
 			e.preventDefault();
 			resultList.empty();
 
-			$.getJSON("/index.php/item/search/?key="+query.val()+"&callback=json", function(data) {
+			$.getJSON("item/search/?key="+query.val()+"&callback=json", function(data) {
 				var items = [];
 
 				$.each(data, function(key, val) {

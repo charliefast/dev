@@ -3,8 +3,8 @@
   <div class="row-fluid">
     <div class="registerForm">
       <?php $attributes = array('class' => '', 'id' => ''); ?>
-      <?php echo form_open('index.php/verify');/*, $attributes); */?>
-        <?php //echo validation_errors(); ?> 
+      <?php echo form_open('verify');/*, $attributes); */?>
+        <?php echo validation_errors(); ?> 
           <?php /*<label for="username">Användarnamn <span class="required">*</span></label>
           <?php echo form_error('username'); ?>
           <input id="username" type="text" name="username" maxlength="255" value="<?php echo set_value('username'); ?>"  />
