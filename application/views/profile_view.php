@@ -9,16 +9,21 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 
   <div class="row-fluid">
     <div class="span3 profileSidebar">
-
+      <?php foreach($result as $row):?>
       <h2>
-        <?php echo $firstname.' '.$lastname; ?>
+        <?php echo $row->firstname.' '.$row->lastname; ?>
       </h2>
       <a href='#'>
-        <img src="<?php echo $avatar?>"/>
+        <?php if (! $row->url):?>
+          <img src="http://placehold.it/150x150"/>
+        <?php else: ?>
+        <img src="<?php echo base_url().$row->url?>"/>
+        <?php endif; ?>
       </a>
       <?php if($edit) echo anchor('index.php/user/edit/pic','Ändra bild', 'class=edit_pic');?>
+      <?php $place = ($row->city && $row->country)?$row->city.', '.$row->country:'ej angivet'; ?>
       <p>Finns i: <?php echo $place; ?></p>
-      <p>Medlem sedan:<?php echo $sign_up_date; ?></p>
+      <p>Medlem sedan:<?php echo $row->sign_up_date; ?></p>
 
       <?php if($edit) echo anchor('index.php/user/edit/all','Ändra profil');?>
     </div>  
@@ -27,9 +32,13 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 
       <div>
       	<h2>Presentation</h2>
-      	<?php echo $presentation ?>
+      	<?php if (! $row->presentation):?>
+                 <div class="noResult">Denna användare har ej skrivit någon presentation än</div>
+              <?php else:
+                echo $row->presentation; 
+              endif; ?>
       </div>
-
+<?php endforeach; ?>
     </div>
   </div>
 

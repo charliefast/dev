@@ -27,7 +27,7 @@ class Category_model extends CI_Model {
   }
   
   function get_categories_from_db(){
-    $this->db->select('name, slug');
+    $this->db->select('id, name, slug');
     $this->db->from('categories');
     $query = $this->db ->get();
 

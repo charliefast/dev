@@ -56,7 +56,7 @@ Class Message_model extends CI_Model
    * @param (optional) int $item_id
    * @return mixed
    */
-  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '20, 0', $message_id = '', $item_id = '')
+  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '10, 0', $message_id = '', $item_id = '')
   {
     $this->db->select('messages.id AS message_id, message, date_sent, firstname, lastname, parent_id')
       ->from('messages')

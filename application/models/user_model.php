@@ -139,14 +139,15 @@ Class User_model extends CI_Model
    * @return mixed
    */
   function get_user($id){
-    $str = "SELECT * FROM users WHERE id = ? LIMIT 1";
-    $query = $this -> db -> query($str, $id);
-    $this->user = $query->result();
-    if ($this->user)
-    {
-      return $this->user;
-    }
-    return FALSE;
+    $this->db->select('users.id, firstname, lastname, country, city, zip, phone,
+      email, sign_up_date, last_active, images.name, images.url, presentation')
+      ->from('users')
+      ->join('images','images.user_id = users.id')
+      ->where('users.id', $id)
+      ->order_by('images.id', 'DESC')
+      ->limit('1,0');
+      $query = $this->db->get();
+    return $query->result();
   }
   /**
    * Updates user by ID
@@ -164,12 +165,14 @@ Class User_model extends CI_Model
     {
      return TRUE;
     }
-    return FALSE;  
+    return FALSE;
   }
+
   function insert_like($item_id, $user_id)
   {
     
   }
+  
   function fetch_likes($user_id)
   {
     $this->db->select('items.id, 

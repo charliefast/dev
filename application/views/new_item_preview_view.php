@@ -1,36 +1,33 @@
-<!-- SKAPA ANNONS -->
-  <div class="container top">
-    <h1>Skapa en annons</h1>
-
-
-    <?php echo form_open('index.php/item/verify_new',array('class' => 'form-horizontal')) 
-   // <form class="form-horizontal">?>
-      <div class="control-group">
-        <label class="control-label" for="selectCategory">Kategori</label>
-        <select id="selectCategory">
-          <option>--Välj en kategori</option>
-          <?php foreach ($categories as $cat): ?>
-          <option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">Titel</label>
-        <div class="controls">
-          <input type="text" id="inputTitle" placeholder="Titel">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inputPassword">Beskrivning</label>
-        <div class="controls">
-          <textarea type="text" id="inputDescription" placeholder="Beskrivning..."></textarea>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <div class="controls">
-          <button type="submit" class="btn btn-primary">Kontrollera annons</button>
-          <button type="submit" class="btn">Avbryt</button>
-        </div>
-      </div>
-    </form>
+<!-- ITEM PREVIEW -->
+<div class="container">
+  <div class="row-fluid">
+    <ul id="results" class="thumbnails">
+    <?php if (isset($result['error'])):
+      echo $result['error'];
+    elseif($result):
+    foreach ($result as $row):?>
+    <li class="span3 item">
+      <a href="#" class="img"><img src="http://placehold.it/300x200"></a>
+      <h4><a href="#"><?php echo $row->headline; ?></a></h4>
+      <p><?php  echo $row->description; ?></p>
+      <span class="icons">
+        <!-- Av:
+        <a href="<?php  echo base_url(); ?>index.php/user/<?php  echo $row->user_id; ?>">
+        <?php  echo $row->firstname.' '.$row->lastname; ?>
+        </a> -->
+        <a href="<?php  echo base_url(); ?>index.php/user/<?php  echo $row->user_id; ?>">
+              <i class="icon-user"></i>
+          <!-- <?php  echo $row->firstname.' '.$row -> lastname; ?> -->
+            </a>
+            <a href="message/<?php echo $row->id;?>"><i class="icon-pencil"></i></a>
+            <a href="#"><i class="icon-star"></i></a>
+      </span>
+      <span>Upplagd den <?php  echo $row->date_added; ?></span>
+      <!-- <p><?php  echo $row -> id; ?></p> -->
+      <!-- <p><?php  echo $row->end_date; ?></p> -->
+    </li>
+    <?php endforeach;
+    endif ?>
+    </ul>
+  </div>
+</div>

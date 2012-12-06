@@ -43,7 +43,8 @@ class VerifyRegistration extends CI_Controller {
                         //'phone' => set_value('phone'),
                         'email' => set_value('email'),
                         'password' => SHA1('shru7hTTls'.$password),
-                        'activation_key' => $activationkey
+                        'activation_key' => $activationkey,
+                        'sign_up_date' => date('Y-m-d h:i:s')
                         );      
       // run insert model to write data to db
         

@@ -101,6 +101,11 @@ $config = array(
                                             'rules' => 'trim|xss_clean|max_length[80]|is_numeric'
                                          ),
                                     array(
+                                            'field' => 'presentation',
+                                            'label' => 'Beskrivning',
+                                            'rules' => 'trim|xss_clean'
+                                         ),
+                                    array(
                                             'field' => 'email',
                                             'label' => 'Email',
                                             'rules' => 'required|trim|xss_clean|max_length[255]|valid_email'
@@ -139,7 +144,7 @@ $config = array(
                                      array(
                                             'field' => 'selectCategory',
                                             'label' => 'Kategorier',
-                                            'rules' => 'required|trim|xss_clean|max_length[255]'
+                                            'rules' => 'required'
                                          ),
                                     array(
                                             'field' => 'inputTitle',

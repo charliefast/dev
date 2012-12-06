@@ -3,14 +3,14 @@
     <h1>Skapa en annons</h1>
 
 
-    <?php echo form_open('index.php/item/verify_new',array('class' => 'form-horizontal')) 
+    <?php echo form_open('item/verify_new',array('class' => 'form-horizontal')) 
    // <form class="form-horizontal">?>
       <div class="control-group">
         <label class="control-label" for="selectCategory">Kategori</label>
         <select id="selectCategory">
           <option>--Välj en kategori</option>
           <?php foreach ($categories as $cat): ?>
-          <option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
+          <option value='<?php echo $cat->id?>'><?php echo $cat->name ?></option>
           <?php endforeach; ?>
         </select>
       </div>

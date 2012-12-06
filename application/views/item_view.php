@@ -10,7 +10,7 @@
 				<select id="categories">
           <option value='0'>Välj alla</option>
 				  <?php foreach ($categories as $cat): ?>
-					<option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
+					<option value='<?php echo $cat->id?>'><?php echo $cat->name ?></option>
 				  <?php endforeach; ?>
 				</select>
 				

@@ -52,8 +52,9 @@ class Upload extends Auth_Controller {
   }
   function verify_new_item()
   {
-   /* $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-    
+    $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+    var_dump($this->input->post('inputTitle'));
+    exit;
     if ($this->form_validation->run('new_item') == FALSE) // validation hasn't been passed
     {
       $this->_exit_status('Något blev fel, försök igen!');
@@ -65,7 +66,8 @@ class Upload extends Auth_Controller {
       $form_data = array(
                         'category_id' => 0,
                         'headline' => set_value('inputTitle'),
-                        'description' => set_value('set_value('),
+                        'description' => set_value('inputDescription'),
+                        'category_id' => set_value('selectCategory'),
                         'user_id' => $this->session->user_data['logged_in']['id'],
                         'date_added' => $date,
                         'end_date' => '',
@@ -76,11 +78,14 @@ class Upload extends Auth_Controller {
       $item_id = $this->item_model->insert_item($form_data);
       if ($item_id) // the information has therefore been successfully saved in the db
       {
-        
+        if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 )
+        {
+          $this->upload_pic($item_id);
+        }
         $this->load->view('header_view', array('title' => 'Förhandsgranskning', 'page' => 'preview_item'));
         $this->load->view('new_item_preview_view', array('content' => $this->item_model->get_item_by_id($item_id)));
         $this->load->view('footer_view');
-      } */
+      }
   }
   
   /**
@@ -89,7 +94,7 @@ class Upload extends Auth_Controller {
   function upload_pic($item=''){
     if(strtolower($_SERVER['REQUEST_METHOD']) != 'post')
     {
-      $this->__exit_status('Error! Wrong HTTP method!');
+      $this->_exit_status('Error! Wrong HTTP method!');
     }
     if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 )
     {
@@ -98,7 +103,7 @@ class Upload extends Auth_Controller {
       {
         $this->_exit_status('Only '.implode(',',$this->allowed_ext).' files are allowed!');
       } 
-      $this->pic_id = $this->upload_model->save_image($pic, $this->user_id);
+      $this->pic_id = $this->upload_model->save_image($pic, $this->user_id, $item_id);
       if($this->pic_id)
       {
         $this->_exit_status('File was uploaded successfully!');

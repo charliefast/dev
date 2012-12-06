@@ -79,7 +79,7 @@ Class Item_model extends CI_Model
   }
   /**
    * @access public
-   * @return BOOLEAN
+   * @return mixed
    */
   function insert_item($form_data)
   {
