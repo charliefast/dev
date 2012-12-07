@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » \Auth_Controller</title>
+<title>phpDocumentor » \Message</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -55,33 +55,108 @@
 <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list"><li class="nav-header">
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li></ul>
-</li></ul>
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_load_form" title="load_form :: Loads message form"><span class="description">Loads message form</span><pre>load_form()</pre></a></li>
+<li class="method public "><a href="#method_send_message" title="send_message :: Sends messages to other users"><span class="description">Sends messages to other users</span><pre>send_message()</pre></a></li>
+<li class="method public "><a href="#method_view_message" title="view_message :: Loads page with parent message and children"><span class="description">Loads page with parent message and children</span><pre>view_message()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property_data" title="$data :: "><span class="description"></span><pre>$data</pre></a></li></ul>
+</li>
+</ul>
 </div>
 <div class="span8">
-<a id="\Auth_Controller"></a><ul class="breadcrumb">
+<a id="\Message"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Auth_Controller.html">Auth_Controller</a>
+<span class="divider">\</span><a href="../classes/Message.html">Message</a>
 </li>
 </ul>
-<div class="element class"><div class="details">
+<div class="element class">
+<p class="short_description">Controller messages class</p>
+<div class="details">
+<div class="long_description"><p>Handles messages</p></div>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Constructor</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="method_load_form"></a><div class="element clickable method public method_load_form" data-toggle="collapse" data-target=".method_load_form .collapse">
+<h2>Loads message form</h2>
+<pre>load_form(int $item_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$item_id</h4>
+<code>int</code>
+</div>
 </div></div>
+</div>
+<a id="method_send_message"></a><div class="element clickable method public method_send_message" data-toggle="collapse" data-target=".method_send_message .collapse">
+<h2>Sends messages to other users</h2>
+<pre>send_message(\(optional) $to_id, \(optional) $parent_id, \(optional) $item_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$to_id</h4>
+<code>\(optional)</code><p>int $to_id</p>
+</div>
+<div class="subelement argument">
+<h4>$parent_id</h4>
+<code>\(optional)</code><p>int $parent_id</p>
+</div>
+<div class="subelement argument">
+<h4>$item_id</h4>
+<code>\(optional)</code><p>int $item_id</p>
+</div>
+</div></div>
+</div>
+<a id="method_view_message"></a><div class="element clickable method public method_view_message" data-toggle="collapse" data-target=".method_view_message .collapse">
+<h2>Loads page with parent message and children</h2>
+<pre>view_message(int $to_id, int $message_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$to_id</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message_id</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_data"> </a><div class="element clickable property private property_data" data-toggle="collapse" data-target=".property_data .collapse">
+<h2></h2>
+<pre>$data </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="row"><footer class="span12">

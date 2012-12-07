@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -71,17 +73,15 @@
 <div class="namespace-indent">
 <h3>
 <i class="icon-custom icon-function"></i> Functions</h3>
-<a id="function_edit_link"></a><div class="element clickable function  function_edit_link" data-toggle="collapse" data-target=".function_edit_link .collapse">
-<h2>edit_link()
+<a id="function_create_json"></a><div class="element clickable function  function_create_json" data-toggle="collapse" data-target=".function_create_json .collapse">
+<h2>create_json()
         </h2>
-<pre>edit_link($var, $text, $class) </pre>
+<pre>create_json($json) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$var</h4></div>
-<div class="subelement argument"><h4>$text</h4></div>
-<div class="subelement argument"><h4>$class</h4></div>
+<div class="subelement argument"><h4>$json</h4></div>
 </div></div>
 </div>
 <h3>
@@ -100,12 +100,12 @@
 <div class="details collapse"></div>
 <a href="../classes/BaseFacebook.html" class="more">« More »</a>
 </div>
-<div id="Category" class="element ajax clickable class">
-<h1>Category<a href="../classes/Category.html">¶</a>
+<div id="Category_model" class="element ajax clickable class">
+<h1>Category_model<a href="../classes/Category_model.html">¶</a>
 </h1>
 <p class="short_description">Category model class</p>
 <div class="details collapse"></div>
-<a href="../classes/Category.html" class="more">« More »</a>
+<a href="../classes/Category_model.html" class="more">« More »</a>
 </div>
 <div id="Facebook" class="element ajax clickable class">
 <h1>Facebook<a href="../classes/Facebook.html">¶</a>
@@ -122,12 +122,12 @@ PHP sessions to store user ids and access tokens.</p>
 <div class="details collapse"></div>
 <a href="../classes/FacebookApiException.html" class="more">« More »</a>
 </div>
-<div id="Form" class="element ajax clickable class">
-<h1>Form<a href="../classes/Form.html">¶</a>
+<div id="Item" class="element ajax clickable class">
+<h1>Item<a href="../classes/Item.html">¶</a>
 </h1>
-<p class="short_description"></p>
+<p class="short_description">Controller item class</p>
 <div class="details collapse"></div>
-<a href="../classes/Form.html" class="more">« More »</a>
+<a href="../classes/Item.html" class="more">« More »</a>
 </div>
 <div id="Item_model" class="element ajax clickable class">
 <h1>Item_model<a href="../classes/Item_model.html">¶</a>
@@ -135,6 +135,20 @@ PHP sessions to store user ids and access tokens.</p>
 <p class="short_description">Item model class</p>
 <div class="details collapse"></div>
 <a href="../classes/Item_model.html" class="more">« More »</a>
+</div>
+<div id="Like" class="element ajax clickable class">
+<h1>Like<a href="../classes/Like.html">¶</a>
+</h1>
+<p class="short_description">Controller like class</p>
+<div class="details collapse"></div>
+<a href="../classes/Like.html" class="more">« More »</a>
+</div>
+<div id="Like_model" class="element ajax clickable class">
+<h1>Like_model<a href="../classes/Like_model.html">¶</a>
+</h1>
+<p class="short_description">Like model class</p>
+<div class="details collapse"></div>
+<a href="../classes/Like_model.html" class="more">« More »</a>
 </div>
 <div id="Login" class="element ajax clickable class">
 <h1>Login<a href="../classes/Login.html">¶</a>
@@ -150,19 +164,27 @@ PHP sessions to store user ids and access tokens.</p>
 <div class="details collapse"></div>
 <a href="../classes/MY_Input.html" class="more">« More »</a>
 </div>
+<div id="Message" class="element ajax clickable class">
+<h1>Message<a href="../classes/Message.html">¶</a>
+</h1>
+<p class="short_description">Controller messages class</p>
+<div class="details collapse"></div>
+<a href="../classes/Message.html" class="more">« More »</a>
+</div>
+<div id="Message_model" class="element ajax clickable class">
+<h1>Message_model<a href="../classes/Message_model.html">¶</a>
+</h1>
+<p class="short_description">Message model class
+inserts and retrieves messages</p>
+<div class="details collapse"></div>
+<a href="../classes/Message_model.html" class="more">« More »</a>
+</div>
 <div id="Search" class="element ajax clickable class">
 <h1>Search<a href="../classes/Search.html">¶</a>
 </h1>
 <p class="short_description">Controller search class</p>
 <div class="details collapse"></div>
 <a href="../classes/Search.html" class="more">« More »</a>
-</div>
-<div id="Start" class="element ajax clickable class">
-<h1>Start<a href="../classes/Start.html">¶</a>
-</h1>
-<p class="short_description"></p>
-<div class="details collapse"></div>
-<a href="../classes/Start.html" class="more">« More »</a>
 </div>
 <div id="Template" class="element ajax clickable class">
 <h1>Template<a href="../classes/Template.html">¶</a>
@@ -174,14 +196,14 @@ PHP sessions to store user ids and access tokens.</p>
 <div id="Upload" class="element ajax clickable class">
 <h1>Upload<a href="../classes/Upload.html">¶</a>
 </h1>
-<p class="short_description"></p>
+<p class="short_description">Controller upload class</p>
 <div class="details collapse"></div>
 <a href="../classes/Upload.html" class="more">« More »</a>
 </div>
 <div id="Upload_model" class="element ajax clickable class">
 <h1>Upload_model<a href="../classes/Upload_model.html">¶</a>
 </h1>
-<p class="short_description"></p>
+<p class="short_description">Upload model class</p>
 <div class="details collapse"></div>
 <a href="../classes/Upload_model.html" class="more">« More »</a>
 </div>
@@ -209,23 +231,9 @@ PHP sessions to store user ids and access tokens.</p>
 <div id="VerifyRegistration" class="element ajax clickable class">
 <h1>VerifyRegistration<a href="../classes/VerifyRegistration.html">¶</a>
 </h1>
-<p class="short_description"></p>
+<p class="short_description">Controller Verifyregistration class</p>
 <div class="details collapse"></div>
 <a href="../classes/VerifyRegistration.html" class="more">« More »</a>
-</div>
-<div id="Welcome" class="element ajax clickable class">
-<h1>Welcome<a href="../classes/Welcome.html">¶</a>
-</h1>
-<p class="short_description"></p>
-<div class="details collapse"></div>
-<a href="../classes/Welcome.html" class="more">« More »</a>
-</div>
-<div id="item" class="element ajax clickable class">
-<h1>item<a href="../classes/item.html">¶</a>
-</h1>
-<p class="short_description"></p>
-<div class="details collapse"></div>
-<a href="../classes/item.html" class="more">« More »</a>
 </div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
@@ -307,7 +315,7 @@ PHP sessions to store user ids and access tokens.</p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

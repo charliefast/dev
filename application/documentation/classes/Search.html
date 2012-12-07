@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -58,29 +60,18 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_get_items" title="get_items :: get_items:"><span class="description">get_items:</span><pre>get_items()</pre></a></li>
-<li class="method public "><a href="#method_index" title="index :: "><span class="description">index()
-        </span><pre>index()</pre></a></li>
-<li class="method public "><a href="#method_output_json" title="output_json :: Sets output to json"><span class="description">Sets output to json</span><pre>output_json()</pre></a></li>
-<li class="method public "><a href="#method_set_search_query" title="set_search_query :: "><span class="description">set_search_query()
-        </span><pre>set_search_query()</pre></a></li>
+<li class="method public "><a href="#method_get_items" title="get_items :: Fetches and validates get parameters for search query"><span class="description">Fetches and validates get parameters for search query</span><pre>get_items()</pre></a></li>
+<li class="method public "><a href="#method_index" title="index :: Loads default item page."><span class="description">Loads default item page.</span><pre>index()</pre></a></li>
+<li class="method public "><a href="#method_load_page" title="load_page :: "><span class="description">load_page()
+        </span><pre>load_page()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="method private "><a href="#method__build_key" title="_build_key :: "><span class="description">_build_key()
-        </span><pre>_build_key()</pre></a></li>
+<li class="method private "><a href="#method__build_key" title="_build_key :: Builds key for search"><span class="description">Builds key for search</span><pre>_build_key()</pre></a></li>
 <li class="method private "><a href="#method__clean_string" title="_clean_string :: Removes non-alphanumeric characters"><span class="description">Removes non-alphanumeric characters</span><pre>_clean_string()</pre></a></li>
-<li class="method private "><a href="#method__is_search_type" title="_is_search_type :: _is_searchtype: checks if get param is allowed."><span class="description">_is_searchtype: checks if get param is allowed.</span><pre>_is_search_type()</pre></a></li>
-<li class="method private "><a href="#method__is_valid_value" title="_is_valid_value :: "><span class="description">_is_valid_value()
-        </span><pre>_is_valid_value()</pre></a></li>
-<li class="method private "><a href="#method__set_json" title="_set_json :: "><span class="description">_set_json()
-        </span><pre>_set_json()</pre></a></li>
-<li class="method private "><a href="#method__updateSelection" title="_updateSelection :: Iterates through private array $selections
-and checks if selection options isset and saves to private variables accordingly
-and updates boolean $this-&gt;selected."><span class="description">Iterates through private array $selections
-and checks if selection options isset and saves to private variables accordingly
-and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a></li>
+<li class="method private "><a href="#method__is_search_type" title="_is_search_type :: Checks if get param is allowed."><span class="description">Checks if get param is allowed.</span><pre>_is_search_type()</pre></a></li>
+<li class="method private "><a href="#method__is_valid_value" title="_is_valid_value :: Checks if get param is valid."><span class="description">Checks if get param is valid.</span><pre>_is_valid_value()</pre></a></li>
 <li class="method private "><a href="#method__validate" title="_validate :: Validates as valid searchtype and value"><span class="description">Validates as valid searchtype and value</span><pre>_validate()</pre></a></li>
 </ul>
 </li>
@@ -92,10 +83,10 @@ and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a><
                     <ul>
 <li class="property private "><a href="#property_args" title="$args :: "><span class="description"></span><pre>$args</pre></a></li>
 <li class="property private "><a href="#property_callback" title="$callback :: "><span class="description"></span><pre>$callback</pre></a></li>
+<li class="property private "><a href="#property_categories" title="$categories :: "><span class="description"></span><pre>$categories</pre></a></li>
 <li class="property private "><a href="#property_category" title="$category :: "><span class="description"></span><pre>$category</pre></a></li>
 <li class="property private "><a href="#property_county" title="$county :: "><span class="description"></span><pre>$county</pre></a></li>
 <li class="property private "><a href="#property_item" title="$item :: "><span class="description"></span><pre>$item</pre></a></li>
-<li class="property private "><a href="#property_json" title="$json :: "><span class="description"></span><pre>$json</pre></a></li>
 <li class="property private "><a href="#property_result" title="$result :: "><span class="description"></span><pre>$result</pre></a></li>
 <li class="property private "><a href="#property_search" title="$search :: "><span class="description"></span><pre>$search</pre></a></li>
 <li class="property private "><a href="#property_search_criterias" title="$search_criterias :: "><span class="description"></span><pre>$search_criterias</pre></a></li>
@@ -130,8 +121,8 @@ and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a><
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_get_items"></a><div class="element clickable method public method_get_items" data-toggle="collapse" data-target=".method_get_items .collapse">
-<h2>get_items:</h2>
-<pre>get_items(string $item) : void</pre>
+<h2>Fetches and validates get parameters for search query</h2>
+<pre>get_items(string $item) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -140,37 +131,41 @@ and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a><
 <h4>$item</h4>
 <code>string</code>
 </div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
 <a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
-<h2>index()
-        </h2>
+<h2>Loads default item page.</h2>
 <pre>index() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_output_json"></a><div class="element clickable method public method_output_json" data-toggle="collapse" data-target=".method_output_json .collapse">
-<h2>Sets output to json</h2>
-<pre>output_json() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_set_search_query"></a><div class="element clickable method public method_set_search_query" data-toggle="collapse" data-target=".method_set_search_query .collapse">
-<h2>set_search_query()
+<a id="method_load_page"></a><div class="element clickable method public method_load_page" data-toggle="collapse" data-target=".method_load_page .collapse">
+<h2>load_page()
         </h2>
-<pre>set_search_query() </pre>
+<pre>load_page() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method__build_key"></a><div class="element clickable method private method__build_key" data-toggle="collapse" data-target=".method__build_key .collapse">
-<h2>_build_key()
-        </h2>
-<pre>_build_key($str) </pre>
+<h2>Builds key for search</h2>
+<pre>_build_key(string $str) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$str</h4></div>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$new_str</div>
 </div></div>
 </div>
 <a id="method__clean_string"></a><div class="element clickable method private method__clean_string" data-toggle="collapse" data-target=".method__clean_string .collapse">
@@ -190,7 +185,7 @@ and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a><
 </div></div>
 </div>
 <a id="method__is_search_type"></a><div class="element clickable method private method__is_search_type" data-toggle="collapse" data-target=".method__is_search_type .collapse">
-<h2>_is_searchtype: checks if get param is allowed.</h2>
+<h2>Checks if get param is allowed.</h2>
 <pre>_is_search_type(string $search) : BOOLEAN</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -205,36 +200,27 @@ and updates boolean $this-&gt;selected.</span><pre>_updateSelection()</pre></a><
 </div></div>
 </div>
 <a id="method__is_valid_value"></a><div class="element clickable method private method__is_valid_value" data-toggle="collapse" data-target=".method__is_valid_value .collapse">
-<h2>_is_valid_value()
-        </h2>
-<pre>_is_valid_value($key, $val, $where) </pre>
+<h2>Checks if get param is valid.</h2>
+<pre>_is_valid_value(string $key, string $val, string $where) : BOOLEAN</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$key</h4></div>
-<div class="subelement argument"><h4>$val</h4></div>
-<div class="subelement argument"><h4>$where</h4></div>
-</div></div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
 </div>
-<a id="method__set_json"></a><div class="element clickable method private method__set_json" data-toggle="collapse" data-target=".method__set_json .collapse">
-<h2>_set_json()
-        </h2>
-<pre>_set_json($val) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$val</h4></div>
-</div></div>
+<div class="subelement argument">
+<h4>$val</h4>
+<code>string</code>
 </div>
-<a id="method__updateSelection"></a><div class="element clickable method private method__updateSelection" data-toggle="collapse" data-target=".method__updateSelection .collapse">
-<h2>Iterates through private array $selections
-and checks if selection options isset and saves to private variables accordingly
-and updates boolean $this-&gt;selected.</h2>
-<pre>_updateSelection() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="subelement argument">
+<h4>$where</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
+</div></div>
 </div>
 <a id="method__validate"></a><div class="element clickable method private method__validate" data-toggle="collapse" data-target=".method__validate .collapse">
 <h2>Validates as valid searchtype and value</h2>
@@ -242,6 +228,10 @@ and updates boolean $this-&gt;selected.</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument"><h4>$key</h4></div>
 <div class="subelement argument"><h4>$val</h4></div>
@@ -263,6 +253,12 @@ and updates boolean $this-&gt;selected.</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="property_categories"> </a><div class="element clickable property private property_categories" data-toggle="collapse" data-target=".property_categories .collapse">
+<h2></h2>
+<pre>$categories </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="property_category"> </a><div class="element clickable property private property_category" data-toggle="collapse" data-target=".property_category .collapse">
 <h2></h2>
 <pre>$category </pre>
@@ -278,12 +274,6 @@ and updates boolean $this-&gt;selected.</h2>
 <a id="property_item"> </a><div class="element clickable property private property_item" data-toggle="collapse" data-target=".property_item .collapse">
 <h2></h2>
 <pre>$item </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_json"> </a><div class="element clickable property private property_json" data-toggle="collapse" data-target=".property_json .collapse">
-<h2></h2>
-<pre>$json </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -336,7 +326,7 @@ and updates boolean $this-&gt;selected.</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

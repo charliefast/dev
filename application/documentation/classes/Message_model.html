@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » \Auth_Controller</title>
+<title>phpDocumentor » \Message_model</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,31 +57,97 @@
 </div>
 <ul class="side-nav nav nav-list"><li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li></ul>
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_delete_message" title="delete_message :: Deletes message"><span class="description">Deletes message</span><pre>delete_message()</pre></a></li>
+<li class="method public "><a href="#method_fetch_all_messages" title="fetch_all_messages :: Fetches all users messages"><span class="description">Fetches all users messages</span><pre>fetch_all_messages()</pre></a></li>
+<li class="method public "><a href="#method_insert_message" title="insert_message :: Inserts message"><span class="description">Inserts message</span><pre>insert_message()</pre></a></li>
+</ul>
 </li></ul>
 </div>
 <div class="span8">
-<a id="\Auth_Controller"></a><ul class="breadcrumb">
+<a id="\Message_model"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Auth_Controller.html">Auth_Controller</a>
+<span class="divider">\</span><a href="../classes/Message_model.html">Message_model</a>
 </li>
 </ul>
-<div class="element class"><div class="details">
+<div class="element class">
+<p class="short_description">Message model class
+inserts and retrieves messages</p>
+<div class="details">
+<div class="long_description"></div>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Constructor</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="method_delete_message"></a><div class="element clickable method public method_delete_message" data-toggle="collapse" data-target=".method_delete_message .collapse">
+<h2>Deletes message</h2>
+<pre>delete_message(int $id) : BOOLEAN</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>int</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
 </div></div>
+</div>
+<a id="method_fetch_all_messages"></a><div class="element clickable method public method_fetch_all_messages" data-toggle="collapse" data-target=".method_fetch_all_messages .collapse">
+<h2>Fetches all users messages</h2>
+<pre>fetch_all_messages(\(optional)int $user_id, \(optional) $desc, \(optional) $limit, \(optional) $message_id, \(optional) $item_id) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>\(optional)int</code>
+</div>
+<div class="subelement argument">
+<h4>$desc</h4>
+<code>\(optional)</code><p>BOOLEAN $desc</p>
+</div>
+<div class="subelement argument">
+<h4>$limit</h4>
+<code>\(optional)</code><p>string $limit</p>
+</div>
+<div class="subelement argument">
+<h4>$message_id</h4>
+<code>\(optional)</code><p>int $message_id</p>
+</div>
+<div class="subelement argument">
+<h4>$item_id</h4>
+<code>\(optional)</code><p>int $item_id</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_insert_message"></a><div class="element clickable method public method_insert_message" data-toggle="collapse" data-target=".method_insert_message .collapse">
+<h2>Inserts message</h2>
+<pre>insert_message($form_data) : BOOLEAN</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$form_data</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
+</div></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="row"><footer class="span12">

@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -61,7 +63,11 @@
 <li class="method public "><a href="#method_activate_user" title="activate_user :: Activates user"><span class="description">Activates user</span><pre>activate_user()</pre></a></li>
 <li class="method public "><a href="#method_check_exists_email" title="check_exists_email :: Checks if email exist in database"><span class="description">Checks if email exist in database</span><pre>check_exists_email()</pre></a></li>
 <li class="method public "><a href="#method_check_exists_username" title="check_exists_username :: Checks if username exist in database"><span class="description">Checks if username exist in database</span><pre>check_exists_username()</pre></a></li>
+<li class="method public "><a href="#method_fetch_likes" title="fetch_likes :: "><span class="description">fetch_likes()
+        </span><pre>fetch_likes()</pre></a></li>
 <li class="method public "><a href="#method_get_user" title="get_user :: Fetches user by ID"><span class="description">Fetches user by ID</span><pre>get_user()</pre></a></li>
+<li class="method public "><a href="#method_insert_like" title="insert_like :: "><span class="description">insert_like()
+        </span><pre>insert_like()</pre></a></li>
 <li class="method public "><a href="#method_login" title="login :: Adds salt and queries database"><span class="description">Adds salt and queries database</span><pre>login()</pre></a></li>
 <li class="method public "><a href="#method_register_user" title="register_user :: Inserts form data to table users"><span class="description">Inserts form data to table users</span><pre>register_user()</pre></a></li>
 <li class="method public "><a href="#method_update_user_info" title="update_user_info :: Updates user by ID"><span class="description">Updates user by ID</span><pre>update_user_info()</pre></a></li>
@@ -147,6 +153,17 @@
 <div class="subelement response"><code>BOOLEAN</code></div>
 </div></div>
 </div>
+<a id="method_fetch_likes"></a><div class="element clickable method public method_fetch_likes" data-toggle="collapse" data-target=".method_fetch_likes .collapse">
+<h2>fetch_likes()
+        </h2>
+<pre>fetch_likes($user_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$user_id</h4></div>
+</div></div>
+</div>
 <a id="method_get_user"></a><div class="element clickable method public method_get_user" data-toggle="collapse" data-target=".method_get_user .collapse">
 <h2>Fetches user by ID</h2>
 <pre>get_user(int $id) : mixed</pre>
@@ -164,6 +181,18 @@
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_insert_like"></a><div class="element clickable method public method_insert_like" data-toggle="collapse" data-target=".method_insert_like .collapse">
+<h2>insert_like()
+        </h2>
+<pre>insert_like($item_id, $user_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$item_id</h4></div>
+<div class="subelement argument"><h4>$user_id</h4></div>
 </div></div>
 </div>
 <a id="method_login"></a><div class="element clickable method public method_login" data-toggle="collapse" data-target=".method_login .collapse">
@@ -239,7 +268,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

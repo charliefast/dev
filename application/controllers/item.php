@@ -99,6 +99,8 @@ class Item extends Auth_Controller {
   }
   /**
   * Loads view for new item
+  * 
+  * @param int $item_id
   */
   function new_item_view($item_id){
     $result = array((object) array('id' => FALSE, 'headline' => '', 'description' => '', 'url' => '', 'category_id' => ''));
@@ -122,9 +124,10 @@ class Item extends Auth_Controller {
     //$this->load->view('upload_form_view');
     $this->load->view('footer_view');
   }
-  function new_item()
-  {
-  }
+
+  /**
+   * Validates and insert new item
+   */
   function verify_new_item()
   {
     $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -159,6 +162,10 @@ class Item extends Auth_Controller {
         $this->load->view('footer_view');
       }
   }
+
+  /**
+   *  Creates new empty item
+   */
   function create_item()
   {
     $form_data = array(

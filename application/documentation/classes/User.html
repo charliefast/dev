@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -59,19 +61,15 @@
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
         </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_edit_info" title="edit_info :: "><span class="description">edit_info()
-        </span><pre>edit_info()</pre></a></li>
-<li class="method public "><a href="#method_get_user_info" title="get_user_info :: "><span class="description">get_user_info()
-        </span><pre>get_user_info()</pre></a></li>
+<li class="method public "><a href="#method_edit_profile" title="edit_profile :: Loads edit profile page"><span class="description">Loads edit profile page</span><pre>edit_profile()</pre></a></li>
+<li class="method public "><a href="#method_get_user_info" title="get_user_info :: Loads page with user info"><span class="description">Loads page with user info</span><pre>get_user_info()</pre></a></li>
 <li class="method public "><a href="#method_index" title="index :: "><span class="description">index()
         </span><pre>index()</pre></a></li>
-<li class="method public "><a href="#method_verify_edit_info" title="verify_edit_info :: "><span class="description">verify_edit_info()
-        </span><pre>verify_edit_info()</pre></a></li>
+<li class="method public "><a href="#method_verify_edit_info" title="verify_edit_info :: Verifies new profile info"><span class="description">Verifies new profile info</span><pre>verify_edit_info()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method__set_content" title="_set_content :: "><span class="description">_set_content()
-        </span><pre>_set_content()</pre></a></li></ul>
+                    <ul><li class="method private "><a href="#method__set_content" title="_set_content :: Sets content"><span class="description">Sets content</span><pre>_set_content()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
@@ -109,26 +107,23 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_edit_info"></a><div class="element clickable method public method_edit_info" data-toggle="collapse" data-target=".method_edit_info .collapse">
-<h2>edit_info()
-        </h2>
-<pre>edit_info($where) </pre>
+<a id="method_edit_profile"></a><div class="element clickable method public method_edit_profile" data-toggle="collapse" data-target=".method_edit_profile .collapse">
+<h2>Loads edit profile page</h2>
+<pre>edit_profile() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$where</h4></div>
-</div></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_get_user_info"></a><div class="element clickable method public method_get_user_info" data-toggle="collapse" data-target=".method_get_user_info .collapse">
-<h2>get_user_info()
-        </h2>
-<pre>get_user_info($id) </pre>
+<h2>Loads page with user info</h2>
+<pre>get_user_info(\in $id) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$id</h4></div>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>\in</code>
+</div>
 </div></div>
 </div>
 <a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
@@ -139,21 +134,30 @@
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_verify_edit_info"></a><div class="element clickable method public method_verify_edit_info" data-toggle="collapse" data-target=".method_verify_edit_info .collapse">
-<h2>verify_edit_info()
-        </h2>
-<pre>verify_edit_info() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method__set_content"></a><div class="element clickable method private method__set_content" data-toggle="collapse" data-target=".method__set_content .collapse">
-<h2>_set_content()
-        </h2>
-<pre>_set_content($id) </pre>
+<h2>Verifies new profile info</h2>
+<pre>verify_edit_info() : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__set_content"></a><div class="element clickable method private method__set_content" data-toggle="collapse" data-target=".method__set_content .collapse">
+<h2>Sets content</h2>
+<pre>_set_content(int $id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$id</h4></div>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>int</code>
+</div>
 </div></div>
 </div>
 <h3>
@@ -183,7 +187,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

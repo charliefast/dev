@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -58,14 +60,10 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_get_starrred_items" title="get_starrred_items :: "><span class="description">get_starrred_items()
-        </span><pre>get_starrred_items()</pre></a></li>
-<li class="method public "><a href="#method_index" title="index :: "><span class="description">index()
-        </span><pre>index()</pre></a></li>
-<li class="method public "><a href="#method_logged_in" title="logged_in :: "><span class="description">logged_in()
-        </span><pre>logged_in()</pre></a></li>
-<li class="method public "><a href="#method_logout" title="logout :: "><span class="description">logout()
-        </span><pre>logout()</pre></a></li>
+<li class="method public "><a href="#method_get_starred_items" title="get_starred_items :: Gets starred items"><span class="description">Gets starred items</span><pre>get_starred_items()</pre></a></li>
+<li class="method public "><a href="#method_index" title="index :: Default function."><span class="description">Default function.</span><pre>index()</pre></a></li>
+<li class="method public "><a href="#method_logged_in" title="logged_in :: Checks if user is logged in"><span class="description">Checks if user is logged in</span><pre>logged_in()</pre></a></li>
+<li class="method public "><a href="#method_logout" title="logout :: Logout user and destroys session"><span class="description">Logout user and destroys session</span><pre>logout()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -106,33 +104,54 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_get_starrred_items"></a><div class="element clickable method public method_get_starrred_items" data-toggle="collapse" data-target=".method_get_starrred_items .collapse">
-<h2>get_starrred_items()
-        </h2>
-<pre>get_starrred_items() </pre>
+<a id="method_get_starred_items"></a><div class="element clickable method public method_get_starred_items" data-toggle="collapse" data-target=".method_get_starred_items .collapse">
+<h2>Gets starred items</h2>
+<pre>get_starred_items(\(optional) $offset, \(optional) $number) : mixed</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>todo</th>
+<td>make it actually make it specific to user</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>\(optional)</code><p>int $offset</p>
+</div>
+<div class="subelement argument">
+<h4>$number</h4>
+<code>\(optional)</code><p>int $number</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
 </div>
 <a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
-<h2>index()
-        </h2>
+<h2>Default function.</h2>
 <pre>index() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Loads firstpage.</p></div></div></div>
 </div>
 <a id="method_logged_in"></a><div class="element clickable method public method_logged_in" data-toggle="collapse" data-target=".method_logged_in .collapse">
-<h2>logged_in()
-        </h2>
-<pre>logged_in() </pre>
+<h2>Checks if user is logged in</h2>
+<pre>logged_in() : BOOLEAN</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>BOOLEAN</code></div>
+</div></div>
 </div>
 <a id="method_logout"></a><div class="element clickable method public method_logout" data-toggle="collapse" data-target=".method_logout .collapse">
-<h2>logout()
-        </h2>
-<pre>logout() </pre>
+<h2>Logout user and destroys session</h2>
+<pre>logout() : mixed</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
@@ -155,7 +174,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

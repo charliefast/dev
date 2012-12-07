@@ -32,9 +32,11 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">246</span></a></li>
+                <span class="label label-info">231</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">2</span></a></li>
 </ul>
@@ -57,20 +59,16 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_index" title="index :: "><span class="description">index()
-        </span><pre>index()</pre></a></li>
-<li class="method public "><a href="#method_upload_pic" title="upload_pic :: "><span class="description">upload_pic()
-        </span><pre>upload_pic()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_add_image_to_item" title="add_image_to_item :: Adds image to item and redirects"><span class="description">Adds image to item and redirects</span><pre>add_image_to_item()</pre></a></li>
+<li class="method public "><a href="#method_index" title="index :: Index"><span class="description">Index</span><pre>index()</pre></a></li>
+<li class="method public "><a href="#method_upload_pic" title="upload_pic :: Validates and handles file upload request"><span class="description">Validates and handles file upload request</span><pre>upload_pic()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="method private "><a href="#method_exit_status" title="exit_status :: "><span class="description">exit_status()
-        </span><pre>exit_status()</pre></a></li>
-<li class="method private "><a href="#method_get_extension" title="get_extension :: "><span class="description">get_extension()
-        </span><pre>get_extension()</pre></a></li>
+<li class="method private "><a href="#method__exit_status" title="_exit_status :: Outputs jsonencoded status string"><span class="description">Outputs jsonencoded status string</span><pre>_exit_status()</pre></a></li>
+<li class="method private "><a href="#method__get_extension" title="_get_extension :: Fetches exstension from file"><span class="description">Fetches exstension from file</span><pre>_get_extension()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -80,7 +78,9 @@
 <li class="nav-header private">» Private
                     <ul>
 <li class="property private "><a href="#property_allowed_ext" title="$allowed_ext :: "><span class="description"></span><pre>$allowed_ext</pre></a></li>
+<li class="property private "><a href="#property_categories" title="$categories :: "><span class="description"></span><pre>$categories</pre></a></li>
 <li class="property private "><a href="#property_demo_mode" title="$demo_mode :: "><span class="description"></span><pre>$demo_mode</pre></a></li>
+<li class="property private "><a href="#property_form_data" title="$form_data :: "><span class="description"></span><pre>$form_data</pre></a></li>
 <li class="property private "><a href="#property_user_id" title="$user_id :: "><span class="description"></span><pre>$user_id</pre></a></li>
 </ul>
 </li>
@@ -96,50 +96,86 @@
 <span class="divider">\</span><a href="../classes/Upload.html">Upload</a>
 </li>
 </ul>
-<div class="element class"><div class="details">
+<div class="element class">
+<p class="short_description">Controller upload class</p>
+<div class="details">
+<div class="long_description"><p>Handles uploads</p></div>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Constructor</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
-<h2>index()
-        </h2>
-<pre>index() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_upload_pic"></a><div class="element clickable method public method_upload_pic" data-toggle="collapse" data-target=".method_upload_pic .collapse">
-<h2>upload_pic()
-        </h2>
-<pre>upload_pic() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_exit_status"></a><div class="element clickable method private method_exit_status" data-toggle="collapse" data-target=".method_exit_status .collapse">
-<h2>exit_status()
-        </h2>
-<pre>exit_status($str) </pre>
+<a id="method_add_image_to_item"></a><div class="element clickable method public method_add_image_to_item" data-toggle="collapse" data-target=".method_add_image_to_item .collapse">
+<h2>Adds image to item and redirects</h2>
+<pre>add_image_to_item($item_id) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>uses</th>
+<td>\global\upload_pic()</td>
+</tr></table>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$str</h4></div>
+<div class="subelement argument"><h4>$item_id</h4></div>
 </div></div>
 </div>
-<a id="method_get_extension"></a><div class="element clickable method private method_get_extension" data-toggle="collapse" data-target=".method_get_extension .collapse">
-<h2>get_extension()
-        </h2>
-<pre>get_extension($file_name) </pre>
+<a id="method_index"></a><div class="element clickable method public method_index" data-toggle="collapse" data-target=".method_index .collapse">
+<h2>Index</h2>
+<pre>index() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Loads default upload form view</p></div></div></div>
+</div>
+<a id="method_upload_pic"></a><div class="element clickable method public method_upload_pic" data-toggle="collapse" data-target=".method_upload_pic .collapse">
+<h2>Validates and handles file upload request</h2>
+<pre>upload_pic(\(optional) $item_id) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$file_name</h4></div>
+<div class="subelement argument">
+<h4>$item_id</h4>
+<code>\(optional)</code><p>int $item_id</p>
+</div>
+</div></div>
+</div>
+<a id="method__exit_status"></a><div class="element clickable method private method__exit_status" data-toggle="collapse" data-target=".method__exit_status .collapse">
+<h2>Outputs jsonencoded status string</h2>
+<pre>_exit_status(string $str) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method__get_extension"></a><div class="element clickable method private method__get_extension" data-toggle="collapse" data-target=".method__get_extension .collapse">
+<h2>Fetches exstension from file</h2>
+<pre>_get_extension(string $file_name) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$ext</div>
 </div></div>
 </div>
 <h3>
@@ -150,9 +186,21 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="property_categories"> </a><div class="element clickable property private property_categories" data-toggle="collapse" data-target=".property_categories .collapse">
+<h2></h2>
+<pre>$categories </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="property_demo_mode"> </a><div class="element clickable property private property_demo_mode" data-toggle="collapse" data-target=".property_demo_mode .collapse">
 <h2></h2>
 <pre>$demo_mode </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_form_data"> </a><div class="element clickable property private property_form_data" data-toggle="collapse" data-target=".property_form_data .collapse">
+<h2></h2>
+<pre>$form_data </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -162,13 +210,14 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a11</a> and<br>
-            generated on 2012-11-28T10:49:21+01:00.<br></footer></div>
+            generated on 2012-12-07T15:39:26+01:00.<br></footer></div>
 </div>
 </body>
 </html>

@@ -64,7 +64,10 @@ class Upload extends Auth_Controller {
       if( ! in_array($this->_get_extension($pic['name']),$this->allowed_ext))
       {
         $this->_exit_status('Only '.implode(',',$this->allowed_ext).' files are allowed!');
-      } 
+      }
+      if ($item_id){
+        $this->user_id = '';
+      }
       $this->pic_id = $this->upload_model->save_image($pic, $this->user_id, $item_id);
       if($this->pic_id)
       {
