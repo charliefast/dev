@@ -75,13 +75,18 @@ Filedrop = {
 
 		var dropbox = $('#dropbox'),
 			message = $('.message', dropbox);
+	  var parts = {},
+    bits = location.pathname.substr(1).split('/'); // get rid of first / and split on slashes
+    for (var i = 0; i<bits.length; i++) {
+      parts[i] = bits[i];
+    }
 		
 		dropbox.filedrop({
 			// The name of the $_FILES entry:
 			paramname:'pic',
 			maxfiles: 1,
 			maxfilesize: 1,
-			url: 'verify_upload',
+			url: 'verify_upload/'+ parts[2],
 			fallback_id: 'fallbackBtn',
 
 			uploadFinished:function(i,file,response){

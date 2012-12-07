@@ -1,7 +1,15 @@
-<?php
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Controller Verifyregistration class
+ * 
+ * Handles verification of registration
+ *
+ */
 class VerifyRegistration extends CI_Controller {
-               
+
+  /**
+   * Constructor
+   */
   function __construct()
   {
     parent::__construct();
@@ -9,13 +17,23 @@ class VerifyRegistration extends CI_Controller {
     $this->lang->load('form_validation', 'swedish');
     $this->load->helper('form', 'url', 'string');
     $this->load->model('user_model','',TRUE);
-  }   
+  }
+  
+  /**
+   * Index
+   */
   function index()
   {
     $this->load->view('header_view', array('title' => 'Registrering'));
     $this->load->view('registration_view');
     $this->load->view('footer_view');
   }
+  
+  /**
+   * Registers users
+   * 
+   * @return mixed
+   */
   function register(){
     $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     
@@ -37,10 +55,6 @@ class VerifyRegistration extends CI_Controller {
                         //'username' => set_value('username'),
                         'firstname' => set_value('firstname'),
                         'lastname' => set_value('lastname'),
-                        //'city' => set_value('city'),
-                        //'country' => set_value('country'),
-                        //'zip' => set_value('zip'),
-                        //'phone' => set_value('phone'),
                         'email' => set_value('email'),
                         'password' => SHA1('shru7hTTls'.$password),
                         'activation_key' => $activationkey,
@@ -59,6 +73,14 @@ class VerifyRegistration extends CI_Controller {
       }
     }
   }
+  /**
+   * Sends email with activation key
+   * 
+   * @todo incorporate or remove?
+   * 
+   * @param (optional) string $activation key 
+   * @return BOOLEAN
+   */
   function send_email_activation_key($activation_key = ''){
     $activation_key = 'hejhejhej';
     $this->load->library('email');
@@ -82,7 +104,14 @@ class VerifyRegistration extends CI_Controller {
     return TRUE;
   }
 
-
+  /**
+   * check if user exists
+   * 
+   * @todo remove?
+   * 
+   * @param string $username
+   * @return BOOLEAN
+   */
   function user_not_exist($username){
     $this -> form_validation -> set_message('user_not_exist', 'Användarnamnet är upptaget');
 
@@ -93,8 +122,16 @@ class VerifyRegistration extends CI_Controller {
       return FALSE;
     }
     return TRUE;
-
   }
+
+  /**
+   * check if email exists
+   * 
+   * @todo remove?
+   * 
+   * @param string $email
+   * @return BOOLEAN
+   */
   function email_not_exist($email){
     $this -> form_validation -> set_message('email_not_exist', 'Det finns redan ett konto registrerat på den här emailadressen.');
     
@@ -106,11 +143,15 @@ class VerifyRegistration extends CI_Controller {
     }
     return TRUE;
   }
-
+  /**
+   * Activates user
+   * @todo incorporate or remove?
+   * 
+   * @param string $activation key 
+   * @return mixed
+   */
   function register_confirm($activation_key){
-  
     //$activation_key = $this->uri->segment(3);
-  
     if (!$activation_key){
       echo 'Ingen aktiveringskod funnen i URL';
       exit ();
@@ -124,3 +165,5 @@ class VerifyRegistration extends CI_Controller {
     }
   }
 }
+/* End of file verifyregistration.php */
+/* Location: ./application/controllers/verifyregistration.php */

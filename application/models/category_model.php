@@ -25,7 +25,11 @@ class Category_model extends CI_Model {
   {
     
   }
-  
+  /**
+   * Gets catigories from db
+   * 
+   * @return mixed
+   */
   function get_categories_from_db(){
     $this->db->select('id, name, slug');
     $this->db->from('categories');

@@ -77,6 +77,8 @@ class Login extends CI_Controller {
    * Gets starred items
    * @todo make it actually make it specific to user
    * 
+   * @param (optional) int $offset 
+   * @param (optional) int $number
    * @return mixed
    */
   function get_starred_items($offset = '', $number = '')

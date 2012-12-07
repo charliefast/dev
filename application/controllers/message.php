@@ -21,7 +21,7 @@ class Message extends Auth_Controller {
   /**
   * Sends messages to other users
   *
-  * @param int $to_id
+  * @param (optional) int $to_id
   * @param (optional) int $parent_id
   * @param (optional) int $item_id
   */
@@ -58,6 +58,12 @@ class Message extends Auth_Controller {
       echo 'message sent failed';
     }
   }
+  
+  /**
+   * Loads message form
+   * 
+   * @param int $item_id
+   */
   function load_form($item_id)
   {
     $this->content = array('item_id' => $item_id);
@@ -71,7 +77,13 @@ class Message extends Auth_Controller {
     $this->load->view('footer_view');
   }
   
-  function view_message($to_id,$message_id)
+  /**
+   * Loads page with parent message and children
+   * 
+   * @param int $to_id
+   * @param int $message_id
+   */
+  function view_message($to_id, $message_id)
   {
     $this->content = array (
       'comments' => $this->message_model->fetch_all_messages('', FALSE, $limit = '20, 0', $message_id),

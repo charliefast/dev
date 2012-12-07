@@ -23,26 +23,22 @@ Class Item_model extends CI_Model
    * @return mixed
    */
   function get_item($category = '', $search = '', $limit = '20, 0', $desc = TRUE){
-    //SELECT items.id, headline, description, date_added, end_date, name, user_id  FROM items JOIN categories ON categories.id = items.category_id WHERE categories.name = '$variabel'
-    //$this -> db -> select('items.id, headline, description, date_added, end_date, user_id');
-    //$this -> db -> from('items');
-
-    if ($category){
-      //$this -> db -> join('categories', 'categories.id = items.category_id');
-      //$this -> db -> where('categories.slug = ' . "'" . $category . "'");
-      $this -> db -> select('*');
-      $this -> db -> from($category);
-    }else{
       $this->db->select('items.id, 
         headline, 
         description, 
         date_added, 
         end_date, 
-        user_id, 
+        items.user_id,
         users.firstname, 
-        users.lastname');
-      $this->db->from('items');
-      $this->db->join('users','items.user_id = users.id');
+        users.lastname,
+        images.name,
+        images.url')
+      ->from('items')
+      ->join('users','items.user_id = users.id')
+      ->join('images','images.item_id = items.id','left');
+    if ($category){
+      $this->db->join('categories', 'categories.id = items.category_id');
+      $this->db->where('categories.slug', $category);
     }
     if ($search){
       foreach ($search as $key => $value) {
@@ -53,6 +49,7 @@ Class Item_model extends CI_Model
       $this->db->order_by("date_added", "desc"); 
     }
     $this->db->limit($limit);
+    $this->db->where('status', '1');
     $query = $this->db->get();
     
     return $query->result();
@@ -61,20 +58,28 @@ Class Item_model extends CI_Model
   function get_queried_item($category, $query){
     echo $category.' '.$query.' ';
   }
-  function get_item_by_id($id){
+  function get_item_by_id($id, $status, $user_id = ''){
     $this->db->select('items.id, 
         headline, 
         description, 
         date_added, 
         end_date, 
-        user_id, 
+        items.user_id, 
         users.firstname, 
-        users.lastname')
+        users.lastname,
+        images.name,
+        images.url')
       ->from('items')
       ->join('users','items.user_id = users.id')
+      ->join('images','images.item_id = items.id','left')
       ->where('items.id', $id)
+      ->where('status', $status)
       ->limit('1,0');
-      $query = $this -> db -> get();
+      if ($user_id)
+      {
+        $this->db->where('items.user_id', $user_id);
+      }
+      $query = $this->db->get();
     return $query->result();
   }
   /**
@@ -83,7 +88,7 @@ Class Item_model extends CI_Model
    */
   function insert_item($form_data)
   {
-    $this->db->insert('item', $form_data);
+    $this->db->insert('items', $form_data);
     
     if ($this->db->affected_rows() == '1')
     {

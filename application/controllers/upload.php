@@ -27,7 +27,7 @@ class Upload extends Auth_Controller {
     $this->categories = $this->category_model->get_categories_from_db();
   }
   /**
-   * Default function
+   * Index
    * 
    * Loads default upload form view
    */
@@ -37,61 +37,23 @@ class Upload extends Auth_Controller {
     $this->load->view('upload_form_view');
     $this->load->view('footer_view');
   }
-  /**
-   * Loads view for new item
-   */
-  function new_item_view(){
-    $this->load->view('header_view', array('title' => 'Ny annons', 'page' => 'new_item'));
-    // $this->load->view('category_menu_view', $categories);
-    $this->load->view('new_item_form_view', array('categories' => $this->categories));
-    $this->load->view('upload_form_view');
-    $this->load->view('footer_view');
-  }
-  function new_item()
-  {
-  }
-  function verify_new_item()
-  {
-    $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-    var_dump($this->input->post('inputTitle'));
-    exit;
-    if ($this->form_validation->run('new_item') == FALSE) // validation hasn't been passed
-    {
-      $this->_exit_status('Något blev fel, försök igen!');
-    }
-    else // passed validation proceed to post success logic
-    {
-      $category = set_value('selectCategory');
-      $date = date('Y-m-d h:i:s');
-      $form_data = array(
-                        'category_id' => 0,
-                        'headline' => set_value('inputTitle'),
-                        'description' => set_value('inputDescription'),
-                        'category_id' => set_value('selectCategory'),
-                        'user_id' => $this->session->user_data['logged_in']['id'],
-                        'date_added' => $date,
-                        'end_date' => '',
-                        'status' => 0
-                        );      
-      // run insert model to write data to db
-     }
-      $item_id = $this->item_model->insert_item($form_data);
-      if ($item_id) // the information has therefore been successfully saved in the db
-      {
-        if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 )
-        {
-          $this->upload_pic($item_id);
-        }
-        $this->load->view('header_view', array('title' => 'Förhandsgranskning', 'page' => 'preview_item'));
-        $this->load->view('new_item_preview_view', array('content' => $this->item_model->get_item_by_id($item_id)));
-        $this->load->view('footer_view');
-      }
-  }
   
   /**
-   * Validates and handles file upload request
+   * Adds image to item and redirects
+   * 
+   * @uses upload_pic()
    */
-  function upload_pic($item=''){
+  function add_image_to_item($item_id)
+  {
+    $this->upload_pic($item_id);
+    redirect('item/new/'.$item_id);
+  }
+  /**
+   * Validates and handles file upload request
+   * 
+   * @param (optional) int $item_id 
+   */
+  function upload_pic($item_id=''){
     if(strtolower($_SERVER['REQUEST_METHOD']) != 'post')
     {
       $this->_exit_status('Error! Wrong HTTP method!');
@@ -109,7 +71,7 @@ class Upload extends Auth_Controller {
         $this->_exit_status('File was uploaded successfully!');
       } 
     }
-  $this->_exit_status('Something went wrong with your upload!');
+    $this->_exit_status('Something went wrong with your upload!');
   }
 
   /**

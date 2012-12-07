@@ -27,9 +27,17 @@ class User extends Auth_Controller {
   function index()
   { 
   }
-
+  /**
+   * Loads page with user info
+   * 
+   * @param in $id
+   */
   function get_user_info($id)
   {
+    if ($this->logged_in_user['id'] == $id)
+    {
+      $this->data['page'] = 'my_profile';
+    }
     $this->_set_content($id);
     $this->load->view('header_view', $this->data);
     if ($this->input->is_ajax_request())
@@ -40,7 +48,13 @@ class User extends Auth_Controller {
     $this->load->view('profile_view', $this->content);
     $this->load->view('footer_view');
   }
-
+  
+  /**
+   * Sets content
+   * 
+   * @access private
+   * @param int $id
+   */
   private function _set_content($id)
   {
     $result = $this->user_model->get_user($id);
@@ -50,36 +64,12 @@ class User extends Auth_Controller {
         'result' => $result, 
         'comments' => $this->message_model->fetch_all_messages($id),
         'error' => FALSE);
-     /*foreach($result as $row){
-        $this->data = array ('title' => $row->firstname.' '.$row->lastname);
-        $place = ($row->city && $row->country)?$row->city.', '.$row->country:'ej angivet';
-        $this->content = array(
-          'id' => $row->id,
-          'firstname' => $row->firstname,
-          'lastname' => $row->lastname,
-          'city' => $row->city,
-          'country' => $row->country,
-          'place' => $place,
-          'sign_up_date' => $row->sign_up_date,
-          'email' => $row->email,
-          'avatar' => $row->url,
-          'presentation' => NULL,
-          'comments' => $this->message_model->fetch_all_messages($row->id),
-          'error' => FALSE,
-          'likes' => $this->like_model->fetch_likes($row->id)
-          );*/
       }
-     /* if ( ! $this->content['avatar'])
-      {
-        $this->content['avatar'] = 'http://placehold.it/150x150';
-      } */
-      /*if ( ! $this->content['presentation'])
-      {
-        $this->content['presentation'] = '<div class="noResult">Denna användare har ej skrivit någon presentation än</div>';
-      }
-    }*/
   }
-
+  
+  /**
+   * Loads edit profile page
+   */
   function edit_profile()
   {
     $this->_set_content($this->logged_in_user['id']);
@@ -87,7 +77,12 @@ class User extends Auth_Controller {
     $this->load->view('edit_profile_view', $this->content);
     $this->load->view('footer_view'); 
   }
-
+  
+  /**
+   * Verifies new profile info
+   * 
+   * @return mixed
+   */
   function verify_edit_info()
   {
     $id = $this->logged_in_user['id'];

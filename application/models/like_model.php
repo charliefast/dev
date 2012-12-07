@@ -14,6 +14,12 @@ Class Like_model extends CI_Model
   {
     parent::__construct();
   }
+  
+  /**
+   * Inserts likes to db
+   * 
+   * @return mixed
+   */
   function insert_like($item_id, $user_id)
   {
     $date = date('Y-m-d H:i:s');
@@ -29,6 +35,12 @@ Class Like_model extends CI_Model
     }
     return FALSE;
   }
+  /**
+   * Fetches users likes
+   * 
+   * @param int $user_id
+   * @return mixed
+   */
   function fetch_likes($user_id)
   {
     $this->db->select('items.id, 

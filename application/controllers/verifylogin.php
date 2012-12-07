@@ -5,11 +5,13 @@
  * 
  * Handles verification of login and sets session
  *
- * @author Carina Möllbrink
  */
 
 class VerifyLogin extends CI_Controller {
 
+  /**
+   * Constructor
+   */
   function __construct()
   {
     parent::__construct();
@@ -17,15 +19,16 @@ class VerifyLogin extends CI_Controller {
     $this->load->library('form_validation');
     $this->lang->load('form_validation', 'swedish');
   }
-
+  
+  /**
+   * Index
+   * 
+   * @return mixed
+   */
   function index()
   {
     if($this->form_validation->run('login') == FALSE)
     {
-      //Field validation failed.&nbsp; User redirected to login page
-      /*$this->load->view('header_view');
-      $this->load->view('login_view');
-      $this->load->view('footer_view');*/
       $response = array(
         'state'  => false,
         'message' => 'Inloggningen misslyckades, försök igen!'
@@ -39,7 +42,13 @@ class VerifyLogin extends CI_Controller {
     } 
 
   }
-
+  
+  /**
+   * Validates against database and sets session
+   * 
+   * @param string $password
+   * @return BOOLEAN
+   */
   function check_database($password)
   {
     //Field validation succeeded.&nbsp; Validate against database
@@ -62,22 +71,7 @@ class VerifyLogin extends CI_Controller {
     else
     {
       $this->form_validation->set_message('check_database', 'Invalid username or password');
-      return false;
-    }
-  }
-
-  //use this function when using ajax validation. use "echo site_url('index.php/verifylogin/ajax_check');" for example and type must be 'post'.
-  function ajax_check() {
-    if($this->input->post('ajax') == '1') {
-      if($this->form_validation->run('login') == FALSE){
-      //Field validation failed.
-        echo validation_errors();
-      }
-      else
-      {
-      //Go to private area
-      echo 'login successful';
-      }
+      return FALSE;
     }
   }
 }

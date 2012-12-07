@@ -142,7 +142,7 @@ Class User_model extends CI_Model
     $this->db->select('users.id, firstname, lastname, country, city, zip, phone,
       email, sign_up_date, last_active, images.name, images.url, presentation')
       ->from('users')
-      ->join('images','images.user_id = users.id')
+      ->join('images','images.user_id = users.id','left')
       ->where('users.id', $id)
       ->order_by('images.id', 'DESC')
       ->limit('1,0');

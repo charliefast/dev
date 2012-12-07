@@ -10,7 +10,10 @@ class Like extends Auth_Controller {
   private $data;
   private $content;
   private $logged_in_user;
-
+  
+  /**
+   * Constructor
+   */
   function __construct()
   {
     parent::__construct();
@@ -18,6 +21,12 @@ class Like extends Auth_Controller {
     $this->load->model('like_model');
   }
   
+  /**
+   * Adds likes
+   * 
+   * @param int $item_id
+   * @return mixed
+   */
   function like_item($item_id)
   {
     $result = $this->like_model->insert_like($item_id, $this->logged_in_user['id']);
@@ -30,6 +39,13 @@ class Like extends Auth_Controller {
       echo 'något gick snett';
     }
   }
+  
+  /**
+   * Fetches likes
+   * 
+   * @param int $item_id
+   * @return mixed
+   */
   function get_likes($user_id)
   {
     $result = $this->like_model->fetch_likes($user_id);

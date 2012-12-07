@@ -4,11 +4,11 @@
 <!-- SKICKA MEDDELANDE TILL PROFIL -->
 <div class="container top">
   
-  <?php if (! $error): ?>
+
 
   <div class="row-fluid">
     <div class="span9 offset3">
-
+    <?php if (! $error): ?>
       <div class='guestbook'>
         <?php if ($comments>0): ?>
         <?php foreach ($comments as $comment): ?>
@@ -31,11 +31,9 @@
           <?php echo form_close() ?>
         </div>
       </div>
-
+    <?php endif?>
     </div>
   </div>
 
 </div> <!-- end container -->
 
-<?php else: echo $error; ?>
-<?php endif?>
