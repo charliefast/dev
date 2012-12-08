@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Skapa konto</h1>
   <div class="row-fluid">
-    <div class="registerForm">
+    <div class="registerForm span4 offset4">
       <?php $attributes = array('class' => '', 'id' => ''); ?>
       <?php echo form_open('verify');/*, $attributes); */?>
         <?php echo validation_errors(); ?> 

@@ -23,7 +23,6 @@
   ================================================== -->
   <link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css" media="screen" />
   
-  
   <!-- JavaScript -->
   <!--<script type="text/javascript" src="<?php echo base_url();?>script/jquery-1.8.0.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>script/modernizr-2.6.1.min.js"></script>

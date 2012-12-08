@@ -13,6 +13,30 @@
     header {
       height: 54px;
     }
+    .topImage {
+      min-height: 270px !important;
+      padding: 0px 20px;
+      margin-top: 0px;
+      margin-right: -20px;
+      margin-left: -20px;
+      .logo {
+        width: 50%;
+        margin-left: 23%;
+        &:first-child {
+          margin-left: 23%;
+        }
+      }
+    }
+    .container {
+      .item {
+        width: 31.704255%;
+        float: left;
+        &:first-child {
+          margin: 0 0.8% 2%;
+        }
+      }
+    }
+
     footer {
       margin-left: -20px;
       margin-right: -20px;
@@ -213,12 +237,23 @@
 
 
   // UPDATED STYLES 
-
-  .container {
-    #categoryList {
-      li {
-        width: 47.904255% !important;
+  body {
+    .container {
+      #categoryList {
+        li {
+          width: 47.904255% !important;
+        }
       }
+      .item {
+        width: 47.999999%;
+        &:first-child {
+          margin: 0 0.8% 2%;
+        }
+      }
+    }
+
+    .topImage {
+      min-height: 170px !important;
     }
   }
 

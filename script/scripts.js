@@ -403,30 +403,23 @@ Validation = {
 				// set &nbsp; as text for IE
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
-			},
-			submitHandler: function(form) {
-
-				/*$.getJSON('index.php/user/edit/verify', function(data) {
-					if (data.state === false) {
-						console.log(data.message);
-					} else {
-						console.log(data.message);
-					}
-				});*/
-				$.ajax({
-          url: './verify',
-          data: $(form).serialize(),
-          type: 'POST',
-          dataType: 'json',
-          success: function(data) {
-              //document.location.href = '';
-            // if (data.state === false) {
-            //  console.log(data.message);
-            // } else {
-            // }
-          }
-        });
 			}
+			// submitHandler: function(form) {
+
+			// 	$.ajax({
+			// 		url: './verify',
+			// 		data: $(form).serialize(),
+			// 		type: 'POST',
+			// 		dataType: 'json',
+			// 		success: function(data) {
+   //            		//document.location.href = '';
+		 //            // if (data.state === false) {
+		 //            //  console.log(data.message);
+		 //            // } else {
+		 //            // }
+   //       			}
+   //      		});
+			// }
 		});
 	}
 };

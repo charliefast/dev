@@ -1,19 +1,18 @@
 <!-- LOGGA IN -->
   <section class="topImage row-fluid">
-    <img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" />
     <h1><img class="logo span6 offset3 center" src="<?php echo base_url();?>images/logo.png" /></h1>
   </section>
 
 <div class="content">
   <section class="row-fluid">
     <div class="container">
-      <div class="loginForm">
+      <div class="loginForm span4 offset4">
         <h2>Logga in</h2>
         <div id="message"></div>
         <?php echo validation_errors(); ?>
 
         <?php //echo form_open('index.php/verifylogin'); ?>
-        <form method="post" action="<?php echo base_url(); ?>index.php/verifylogin/">
+        <form method="post" action="<?php echo base_url(); ?>verifylogin/">
 
           <div class="control-group">
             <label class="control-label" for="username">Mailadress:</label>
@@ -29,7 +28,7 @@
             </div>
           </div>
 
-          <a href="index.php/register" class="btn btn-primary">Skapa konto</a>
+          <a href="register" class="btn btn-primary">Skapa konto</a>
           <?php echo form_submit('submit','Logga in', 'class="btn"') ?>
 
         </form>
