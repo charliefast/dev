@@ -1,24 +1,24 @@
 <!-- FÖRSTA SIDAN SOM INLOGGAD -->
 <?php $user_data = $this->session->userdata('logged_in');?>
-<section class="topImage row-fluid">
-    <!-- <img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" /> -->
+<!-- <section class="topImage row-fluid">
+    <img src="<?php echo base_url();?>/images/front.jpeg" style="width:100%;" />
 	<h1 class="span4 offset4 logo"><img class="" src="<?php echo base_url();?>images/logo.png" /></h1>
-</section>
+</section> -->
 
-<div class="container">
-	<div class="row-fluid" style="margin-top:20px;">
-		<div class="span4">
-			<p style="margin:10px; background:#87C06B; padding:40px; color:#333; font-size:20px;">
+<div class="container top">
+	<div class="row-fluid">
+		<div class="span4 info-first">
+			<p>
 				Lite info om vad man kan göra på siten.
 			</p>
 		</div>
-		<div class="span4">
-			<p style="margin:10px; background:#90D3CD; padding:40px; color:#333; font-size:20px;">
+		<div class="span4 info-second">
+			<p>
 				Lite annan rolig info eller kanske tips
 			</p>
 		</div>
-		<div class="span4 last">
-			<p style="margin:10px; background:#CDDFD3; padding:40px; color:#333; font-size:20px;">
+		<div class="span4 info-last">
+			<p>
 				Onödig fakta.
 			</p>
 		</div>

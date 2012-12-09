@@ -5,8 +5,11 @@
 <?php foreach($result as $row):?>
 <div class="container top">
   <div class="editForm">
+   <!--  <div class="finishedSuccess">
+      <p><i class="icon-ok icon-white"></i>Dina ändringar har sparats</p>
+    </div> -->
     
-    <?php echo form_open('index.php/user/edit/verify', '', $user_data); ?> 
+    <?php echo form_open('user/edit/verify', '', $user_data); ?> 
       
       <a href='#'>
         <?php if (! $row->url):?>
@@ -14,7 +17,7 @@
         <?php else: ?>
         <img src="<?php echo base_url().$row->url?>"/>
         <?php endif; ?>
-        <?php echo anchor('index.php/user/edit/pic','Ladda upp bild');?>
+        <?php echo anchor('user/edit/pic','Ladda upp bild');?>
       </a>
       
       <div class="control-group">
@@ -79,6 +82,7 @@
           <input id="password" type="password" name="password" maxlength="255" placeholder="Lösenord" value="<?php echo set_value('password'); ?>"  />
         </div>
       </div>
+      <div id="message"></div>
 
       <?php //echo form_submit('submit','Spara ändringar', 'class="btn"') ?>
       <button type="submit" value="save" class="btn">Spara ändringar</button>

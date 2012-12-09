@@ -251,7 +251,7 @@ Validation = {
 
 							var errorDiv = $('<div class="alert alert-error"></div>');
 							errorDiv.html(data.message);
-							errorDiv.appendTo('#message');
+							errorDiv.fadeIn().appendTo('#message');
 						}
 					}
 				});
@@ -403,23 +403,35 @@ Validation = {
 				// set &nbsp; as text for IE
 				label.closest('.control-group').removeClass('error').addClass('success');
 				label.html("&nbsp;").addClass("checked");
-			}
-			// submitHandler: function(form) {
+			},
+			submitHandler: function(form) {
+				$.ajax({
+					url: 'verify',
+					data: $(form).serialize(),
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if (data.state === true) {
+							$('.alert-error, .finishedSuccess').remove();
 
-			// 	$.ajax({
-			// 		url: './verify',
-			// 		data: $(form).serialize(),
-			// 		type: 'POST',
-			// 		dataType: 'json',
-			// 		success: function(data) {
-   //            		//document.location.href = '';
-		 //            // if (data.state === false) {
-		 //            //  console.log(data.message);
-		 //            // } else {
-		 //            // }
-   //       			}
-   //      		});
-			// }
+							var successDiv = $('<div></div>');
+							successDiv
+								.html($('<p><i class="icon-ok icon-white"></i>'+data.message+'</p>'))
+								.addClass('finishedSuccess')
+								.appendTo($('.container'))
+								.fadeIn()
+								.delay(3000)
+								.fadeOut();
+						} else {
+							$('.alert-error, .finishedSuccess').remove();
+							var errorDiv = $('<div class="alert alert-error"></div>');
+							errorDiv.html(data.message);
+							errorDiv.prepend($('<button type="button" class="close" data-dismiss="alert">&times;</button>'));
+							errorDiv.fadeIn().appendTo('#message');
+						}
+					}
+				});
+			}
 		});
 	}
 };

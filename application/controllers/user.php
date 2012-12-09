@@ -94,10 +94,9 @@ class User extends Auth_Controller {
     {
     if ($this->form_validation->run('change_profile_info') == FALSE) // validation hasn't been passed
       {
-  
         $response = array(
           'state'  => false,
-          'message' => 'Något blev fel'
+          'message' => 'Nu blev det fel'
         );
   
         echo create_json($response);
@@ -123,15 +122,14 @@ class User extends Auth_Controller {
         if($result){
           $response = array(
             'state'  => true,
-            'message' => 'Dina uppgifter har ändrats!'
+            'message' => 'Dina ändringar har sparats!'
           );
           echo create_json($response);
           exit;
         }else{
-          
           $response = array(
             'state'  => false,
-            'message' => 'Något gick snett'
+            'message' => 'Du kanske inte har gjort någon ändring i formuläret, eller så är ditt lösenord fel. Försök igen!'
           );
           echo create_json($response);
           exit;

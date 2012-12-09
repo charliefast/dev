@@ -83,6 +83,7 @@
             <div class="nav-collapse collapse">
               <!-- .nav, .navbar-search, .navbar-form, etc -->
               <ul class="nav">
+                <li class="divider"></li>
                 <li <?php if($currentPage == "search") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>search"><i class="icon-search icon-white"></i>Sök</a></li>
                 <li <?php if($currentPage == "item") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>item"><i class="icon-th-large icon-white"></i>Kategorier</a></li>
                 <li <?php if($currentPage == "new") echo ' class="active"'; ?> ><a href="<?php echo base_url();?>item/new"><i class="icon-edit icon-white"></i>Skapa annons</a></li>

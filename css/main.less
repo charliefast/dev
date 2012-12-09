@@ -43,8 +43,47 @@ header {
 }
 
 .container {
+	.finishedSuccess{
+		background-color: #333;
+		width: 200px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -10%;
+		margin-left: -100px;
+		padding: 20px;
+		.opacity(90);
+		.border-radius(10px);
+		text-align: center;
+		font-weight: bold;
+		color: @white;
+		display: none;
+		i {
+			display: block;
+			margin: 0 auto 10px;
+		}
+	}
 	&.top {
 		margin-top: 20px;
+		.row-fluid {
+			.span4 {
+				p {
+					padding: 30px 20px;
+					font-size: 20px;
+					color: #333;
+				}
+
+				&.info-first {
+					background: @mainColor;
+				}
+				&.info-second {
+					background: @secondColor;
+				}
+				&.info-last {
+					background: @thirdColor; 
+				}
+			}
+		}
 	}
 	.noResult {
 		font-style: italic;
