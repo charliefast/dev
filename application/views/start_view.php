@@ -60,9 +60,9 @@
       <span>Upplagd den <?php  echo $row->date_added; ?></span>
       <!-- <p><?php  echo $row -> id; ?></p> -->
       <!-- <p><?php  echo $row->end_date; ?></p> -->
-    </li>
-    <?php endforeach;
-    endif ?>
+      </li>
+      <?php endforeach;
+      endif ?>
     </ul>
   </div>
 </div>

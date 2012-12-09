@@ -19,8 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
 
-  <!-- CSS
-  ================================================== -->
+  <!-- CSS -->
   <link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css" media="screen" />
   
   <!-- JavaScript -->

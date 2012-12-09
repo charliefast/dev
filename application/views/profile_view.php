@@ -45,29 +45,29 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
   <div class="row-fluid">
     <div class="span9 offset3">
 
-      <div class='guestbook'>
+      <div>
+        <?php $date = array('date' => date('Y-m-d H:i:s'));
+        $hidden = array_merge($user_data, $date); ?>
+        <?php echo form_open('index.php/user/send_message/'.$id, '', $hidden); ?> 
+          <label for="message">Meddelande:</label>
+          <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30">
+          </textarea>
+          <?php echo form_submit('submit','Skicka', 'class="btn btn-primary"') ?>
+        <?php echo form_close() ?>
+      </div>
+      <ul class='guestbook media-list'>
         <?php if ($comments>0): ?>
         <?php foreach ($comments as $comment): ?>
           <?php $class = ($comment->parent_id > 0)?'comment-child':'comment-parent';?>
-          <div class ='<?php echo $class; ?>'>
-            <h3><?php echo $comment->firstname.' '.$comment->lastname; ?></h3>
+          <li class ='<?php echo $class; ?> media'>
             <p><?php echo $comment->message; ?></p>
-            <p><?php echo $comment->date_sent; ?></p>
+            <p class="user">Av: <?php echo $comment->firstname.' '.$comment->lastname; ?></p>
+            <p class="date">Den: <?php echo $comment->date_sent; ?></p>
             <a href='../message/<?php echo $id.'/'.$comment->message_id; ?>'>Svara</a>
-          </div>
+          </li>
         <?php endforeach; ?>
         <?php endif; ?>
-        <div>
-          <?php $date = array('date' => date('Y-m-d H:i:s'));
-          $hidden = array_merge($user_data, $date); ?>
-          <?php echo form_open('index.php/user/send_message/'.$id, '', $hidden); ?> 
-          <label for="message">Meddelande:</label>
-          <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." 
-            class="message span12" rows="5" cols="30"></textarea>
-          <?php echo form_submit('submit','Skicka', 'class="btn btn-primary"') ?>
-          <?php echo form_close() ?>
-        </div>
-      </div>
+      </ul>
 
     </div>
   </div>
