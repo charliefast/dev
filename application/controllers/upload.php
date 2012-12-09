@@ -43,8 +43,9 @@ class Upload extends Auth_Controller {
    * 
    * @uses upload_pic()
    */
-  function add_image_to_item($item_id)
+  function add_image_to_item($item_id = '')
   {
+    //$item_id = $this->input->post('item_id');
     $this->upload_pic($item_id);
     redirect('item/new/'.$item_id);
   }

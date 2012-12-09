@@ -10,7 +10,13 @@
         echo anchor('item/new/'.$row->id,'Gå tillbaka');?>
         <li class="span3 item">
           <p>Kategori:<?php echo $row->category_name ?> <p>
-          <a href="#" class="img"><img src="http://placehold.it/300x200"></a>
+          <a href="#" class="img">
+          <?php if (! $row->url):?>
+            <img src="http://placehold.it/150x150"/>
+            <?php else: ?>
+            <img src="<?php echo base_url().$row->url?>"/>
+            <?php endif;?>
+          </a>
           <h4><a href="#"><?php echo $row->headline; ?></a></h4>
           <p><?php  echo $row->description; ?></p>
           <span class="icons">
