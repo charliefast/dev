@@ -6,20 +6,23 @@
 			<?php echo form_open('search/load', array('id' => 'searchForm')); 
 			/*<form id="searchForm">*/?>
 				<input id="search" type="text" class="span6" placeholder="Sök i det här fältet">
-				<label for="categories">Välj kategori</label>
-				<select id="categories">
-          <option value='0'>Välj alla</option>
-				  <?php foreach ($categories as $cat): ?>
-					<option value='<?php echo $cat->id?>'><?php echo $cat->name ?></option>
-				  <?php endforeach; ?>
-				</select>
+				<div class="control-input">
+					<label for="categories">Välj kategori</label>
+					<select id="categories">
+	          			<option value='0'>-- Välj alla --</option>
+						<?php foreach ($categories as $cat): ?>
+							<option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 				
 				<input id="submit" type="submit" class="btn btn-primary" value="sök">
-			</form>
+			<!-- </form> -->
 		</div>
 	</div>
 
-	<div class="row-fluid">
+	<!-- <div class="row-fluid">
 		<?php echo $content ?>
-	</div>
+	</div> -->
+	
 </div>

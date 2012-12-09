@@ -441,26 +441,62 @@ Search = {
 
 		var form = $("#searchForm"),
 			submit = $("#submit"),
-			query = $("#search"),
-			resultList = $('#results');
-
+			resultList = $('#results'),
+			query = '';
 
 		submit.on('click', function(e) {
 			e.preventDefault();
 			resultList.empty();
 
-			$.getJSON("item/search/?key="+query.val()+"&callback=json", function(data) {
-				var items = [];
+			var selectValue = $("form select option:selected").val(),
+				txtValue = $("#search").val();
 
-				$.each(data, function(key, val) {
-					items.push('<li>'+
-								'<h3><a href="#">'+val["headline"]+'</a></h3>'+
-								'<p>'+val["description"]+'</p>'+
-								'<span>'+val["id"]+'</span>'+
-								'</li>');
-				});
+			if (selectValue !== "0") {
+				query = 'item/'+selectValue+'/search/?key='+txtValue+'&callback=json';
+			} else {
+				query = 'item/search/?key='+txtValue+'&callback=json';
+			}
 
-				resultList.html(items);
+			$('#results').addClass('loading');
+			$.ajax({
+				url: query,
+				dataType: 'json',
+				data: form.serialize(),
+				type: 'POST',
+				success: function(data) {
+					$('#results').removeClass('loading');
+					
+					var items = [];
+					
+					if(data.error) {
+						$('#results').append($('<div class="alert alert-error">'+data.error+'<div>'));
+					} else {
+						$.each(data, function(key, val) {
+							items.push('<li class="span3 item">'+
+										'<a href="#" class="img">'+
+											'<img src="http://placehold.it/300x200">'+
+										'</a>'+
+										'<h4>'+
+											'<a href="'+val.url+'">'+val.headline+'</a>'+
+										'</h4>'+
+										'<span class="icons">'+
+											'<a href="#">'+
+												'<i class="icon-user"></i>'+
+											'</a>'+
+											'<a href="#"><i class="icon-pencil"></i></a>'+
+											'<a href="#"><i class="icon-star"></i></a>'+
+										'</span>'+
+										'<span>Upplagd den '+val.date_added+'</span>'+
+										'</li>');
+
+						});
+
+						resultList.html(items);
+
+					}
+					
+
+				}
 			});
 		});
 

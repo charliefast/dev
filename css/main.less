@@ -1,10 +1,6 @@
 @import 'bootstrap/bootstrap.less';
 @import 'bootstrap/responsive.less';
 
-// body {
-// 	background: url('/images/bg.jpg') no-repeat 0 0;
-// }
-
 /* Main styles */
 header {
 	height: 44px;
@@ -85,9 +81,46 @@ header {
 			}
 		}
 	}
+	&.resultsContainer {
+		&.loading {
+			.loader {
+				display: block;
+			}
+		}
+		.loader {
+			background: url('/images/loader.gif') no-repeat 0 0;
+			width: 40px;
+			height: 40px;
+			margin: 0 auto;
+			display: none;
+		}
+	}
 	.noResult {
 		font-style: italic;
 		color: @grayLight;
+	}
+	.profileSidebar {
+		img {
+			width: 100%;
+		}
+	}
+	.guestbook {
+		li {
+			border-bottom: 1px solid @gray;
+			&.comment-child {
+				padding-left: 50px;
+				.user {
+					font-style: italic;
+					margin-bottom: 0;
+					font-size: @fontSizeMini;
+				}
+				.date {
+					font-style: italic;
+					font-size: @fontSizeMini;
+				}
+
+			}
+		}
 	}
 	.item {
 		width: 23.304255%;
