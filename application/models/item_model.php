@@ -22,7 +22,7 @@ Class Item_model extends CI_Model
    * @param (optional) string $limit
    * @return mixed
    */
-  function get_item($category = '', $search = '', $limit = '20, 0', $desc = TRUE){
+  function get_item($category = '', $search = '', $limit = '20', $offset = '0', $desc = TRUE){
       $this->db->select('items.id, 
         headline, 
         description, 
@@ -49,10 +49,9 @@ Class Item_model extends CI_Model
     if ($desc){
       $this->db->order_by("date_added", "desc"); 
     }
-    $this->db->limit($limit);
+    $this->db->limit($limit, $offset);
     $this->db->where('status', '1');
     $query = $this->db->get();
-    
     return $query->result();
   }
 

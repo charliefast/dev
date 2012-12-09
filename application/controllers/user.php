@@ -34,6 +34,11 @@ class User extends Auth_Controller {
    */
   function get_user_info($id)
   {
+    $user = $this->facebook->getUser();
+    if ($user)
+    {
+      $this->load_facebook_profile_page();
+    }
     if ($this->logged_in_user['id'] == $id)
     {
       $this->data['page'] = 'my_profile';
@@ -49,6 +54,14 @@ class User extends Auth_Controller {
     $this->load->view('footer_view');
   }
   
+  function load_facebook_profile_page()
+  {
+    $this->content = $this->facebook->api('/me');
+    $this->load->view('header_view', $this->data);
+    $this->load->view('fb_profile_view', $this->content);
+    $this->load->view('footer_view');
+  }
+
   /**
    * Sets content
    * 

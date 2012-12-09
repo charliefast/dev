@@ -88,9 +88,9 @@ Class User_model extends CI_Model
 
     $query = "SELECT email FROM users WHERE email = ?";
 
-    $result = $this -> db -> query($query,$email);
+    $result = $this->db->query($query,$email);
 
-    if ($result -> num_rows() > 0 )
+    if ($result->num_rows() > 0 )
     {
       //email exists
       return TRUE;

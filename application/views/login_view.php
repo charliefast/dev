@@ -2,7 +2,6 @@
   <section class="topImage row-fluid">
     <h1><img class="logo span6 offset3 center" src="<?php echo base_url();?>images/logo.png" /></h1>
   </section>
-
 <div class="content">
   <section class="row-fluid">
     <div class="container">
@@ -36,7 +35,7 @@
 
         <p>eller</p>
 
-        <a href="#">Logga in med Facebook</a>
+        <a href="<?php echo $login_url ?>">Logga in med Facebook</a>
       </div>   
     </div>
   </section> 

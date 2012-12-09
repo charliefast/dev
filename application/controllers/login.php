@@ -12,6 +12,7 @@ class Login extends CI_Controller {
 
 	private $data;
   private $user_id;
+  private $fb_data;
 
 	/**
 	 * Constructor 
@@ -20,16 +21,18 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
     $this->load->model('item_model');
+    $this->load->model('user_model');
 		$this->data = array( 'title' => 'Välkommen', 'page' => 'front');
+    $this->load->helper(array('form','url'));
 	}
   /**
    * Default function. Loads firstpage.
    */
 	function index()
 	{
-		$this->load->helper(array('form','url'));
+    $this->fb_data = $this->_set_fb_data();
 		$this->load->view('header_view', $this->data);
-		($this->logged_in())?$this->load->view('start_view', $this->get_starred_items()):$this->load->view('login_view');
+		($this->logged_in())?$this->load->view('start_view', $this->get_starred_items()):$this->load->view('login_view', $this->fb_data);
 		$this->load->view('footer_view');
 	}
   
@@ -44,11 +47,11 @@ class Login extends CI_Controller {
     $this->user_id = $is_logged_in['id'];
 		if(!isset($is_logged_in) || $is_logged_in != true)
 		{
-		return FALSE;
+		  return FALSE;
 		}
 		else
 		{
-		return TRUE;
+		  return TRUE;
 		}
 	}
 
@@ -61,6 +64,11 @@ class Login extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
+    $user = $this->facebook->getUser();
+    if($user)
+    {
+      $this->facebook->destroySession();
+    }
 		$status = 'logged out';
     $this->load->view('header_view', $this->data);
     $this->load->view('logout_view');
@@ -81,11 +89,10 @@ class Login extends CI_Controller {
    * @param (optional) int $number
    * @return mixed
    */
-  function get_starred_items($offset = '', $number = '')
+  function get_starred_items($offset = '', $limit = '')
   {
-    $limit = ($offset>0 OR $number>0)?$number.', '.$offset: '20, 0';
-    var_dump($limit);
-    $result = $this->item_model->get_item('', '', $limit);
+    var_dump($limit.', '.$offset);
+    $result = $this->item_model->get_item('', '', $limit, $offset);
     if ($result){
       if ($this->input->get('callback') == 'json' || $this->input->is_ajax_request())
       {
@@ -104,6 +111,33 @@ class Login extends CI_Controller {
      exit();
    }
    return $this->content;
+  }
+
+  private function _set_fb_data()
+  {
+    if ($this->user_model->check_exists_email($email))
+    {
+
+    }
+    $user = $this->facebook->getUser();
+    if ($user)
+    {
+        try {
+            $this->fb_data['user_profile'] = $this->facebook->api('/me');
+            $sess_array = array(
+              'id' => $this->fb_data['user_profile']['id'],
+              'username' => $this->fb_data['user_profile']['email']
+        );
+        $this->session->set_userdata('logged_in', $sess_array);
+        } catch (FacebookApiException $e) {
+            $user = null;
+        }
+    }
+    if (! $user)
+    {
+      $this->fb_data['login_url'] = $this->facebook->getLoginUrl(array('scope' => 'email'));
+    }
+    return $this->fb_data;
   }
 }
 /* End of file login.php */
