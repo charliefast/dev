@@ -10,7 +10,7 @@
 		$edit = ($user_data['id'] === $row->user_id)?TRUE:FALSE; ?>
 		<li class="span3 item">
 		  <?php if($edit): 
-		    echo anchor('#','Ändra annons', 'class=""');
+		    echo anchor(base_url().'item/edit/'.$row->id,'Ändra annons', 'class=""');
 		    echo anchor('#','Radera annons', 'class=""');
 		    endif;?>
 			<a href="#" class="img">

@@ -1,10 +1,10 @@
 <!-- SKAPA ANNONS -->
 <?php foreach($result as $row):?>
   <div class="container top">
-    <h1>Skapa en annons</h1>
+    <h1>Ändra annons</h1>
     
     <?php echo anchor('item/upload/'.$row->id,'Ändra/lägg till bild', 'class=edit_pic');?> 
-    <?php echo form_open('item/verify_new',array('class' => 'form-horizontal'), array('item_id' => $row->id)); 
+    <?php echo form_open('item/edit_item',array('class' => 'form-horizontal'), array('item_id' => $row->id)); 
    // <form class="form-horizontal">?>
       <a href='#'>
         <?php if (! $row->url):?>
@@ -41,8 +41,9 @@
 
       <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-primary">Kontrollera annons</button>
-          <button type="submit" class="btn">Avbryt</button>
+          <button type="submit" value="save" name="submit" class="btn btn-primary">Uppdatera annons</button>
+          <button type="submit" value="delete" name="submit" class="btn btn-primary">Ta bort annons</button>
+          <button type="submit" value="abort" name="submit" class="btn">Avbryt</button>
         </div>
       </div>
     </form>

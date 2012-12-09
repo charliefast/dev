@@ -32,12 +32,13 @@ Class Item_model extends CI_Model
         users.firstname, 
         users.lastname,
         images.name,
-        images.url')
+        images.url,
+        categories.name')
       ->from('items')
       ->join('users','items.user_id = users.id')
+      ->join('categories', 'categories.id = items.category_id')
       ->join('images','images.item_id = items.id','left');
     if ($category){
-      $this->db->join('categories', 'categories.id = items.category_id');
       $this->db->where('categories.slug', $category);
     }
     if ($search){
@@ -58,7 +59,7 @@ Class Item_model extends CI_Model
   function get_queried_item($category, $query){
     echo $category.' '.$query.' ';
   }
-  function get_item_by_id($id, $status, $user_id = ''){
+  function get_item_by_id($id, $status = 1, $user_id = ''){
     $this->db->select('items.id, 
         headline, 
         description, 
@@ -68,9 +69,12 @@ Class Item_model extends CI_Model
         users.firstname, 
         users.lastname,
         images.name,
-        images.url')
+        images.url,
+        categories.name AS category_name,
+        items.category_id')
       ->from('items')
       ->join('users','items.user_id = users.id')
+      ->join('categories', 'categories.id = items.category_id', 'left')
       ->join('images','images.item_id = items.id','left')
       ->where('items.id', $id)
       ->where('status', $status)
@@ -97,7 +101,45 @@ Class Item_model extends CI_Model
     
     return FALSE;
   }
-   /**
+
+  /**
+   * Updates item by id
+   * 
+   * @access public
+   * @param int $item_id
+   * @param array $form_data
+   * @return BOOLEAN
+   */
+  function update_item($item_id, $form_data){
+    $this->db->where('id', $item_id)
+      ->update('items', $form_data);
+    if ($this->db->affected_rows() > 0)
+    {
+     return TRUE;
+    }
+    return FALSE;
+  }
+
+  /**
+   * Deletes item by id and user id
+   * 
+   * @access public
+   * @param int $item_id
+   * @param int $user_id
+   * @return BOOLEAN
+   */
+  function delete_item($item_id, $user_id){
+    $this->db->where('id', $item_id)
+      ->where('user_id', $user_id)
+      ->delete('items');
+    if ($this->db->affected_rows() > 0)
+    {
+     return TRUE;
+    }
+    return FALSE;
+  }
+
+  /**
    * Fetches items from category
    *
    * @access public
