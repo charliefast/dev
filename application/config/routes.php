@@ -84,7 +84,7 @@ $route['user/send_message/(:any)'] = 'message/send_message/$1/$2/$3';
 $route['user/(:num)'] = "user/get_user_info/$1";
 $route['message/(:any)'] = 'message/view_message/$1/$2';
 $route['starred/(:num)/(:num)'] = 'login/get_starred_items/$1/$2';
-$route['starred'] = 'login/get_starred_items/0/20';
+$route['starred'] = 'login/get_starred_items';
 $route['like/(:num)'] = 'like/like_item/$1';
 $route['user/like/(:num)'] = 'like/get_likes/$1';
 

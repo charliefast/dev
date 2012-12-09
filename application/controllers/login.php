@@ -89,9 +89,8 @@ class Login extends CI_Controller {
    * @param (optional) int $number
    * @return mixed
    */
-  function get_starred_items($offset = '', $limit = '')
+  function get_starred_items($offset = '0', $limit = '20')
   {
-    var_dump($limit.', '.$offset);
     $result = $this->item_model->get_item('', '', $limit, $offset);
     if ($result){
       if ($this->input->get('callback') == 'json' || $this->input->is_ajax_request())
@@ -115,10 +114,6 @@ class Login extends CI_Controller {
 
   private function _set_fb_data()
   {
-    if ($this->user_model->check_exists_email($email))
-    {
-
-    }
     $user = $this->facebook->getUser();
     if ($user)
     {
