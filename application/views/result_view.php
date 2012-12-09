@@ -45,6 +45,7 @@
 			</li>
 			<?php endforeach;
 		endif ?>
+			<a href="#">Se fler</a>
 		</ul>
 	</div>
 </div>

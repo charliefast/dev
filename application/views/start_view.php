@@ -64,5 +64,6 @@
       <?php endforeach;
       endif ?>
     </ul>
+      <a href="#" id="more">Se fler</a>
   </div>
 </div>
