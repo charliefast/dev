@@ -17,7 +17,7 @@
         <label class="control-label" for="selectCategory">Kategori</label>
         <div class="controls">
           <select id="selectCategory" name="selectCategory">
-            <option>-- Välj en kategori --</option>
+            <option value="">-- Välj en kategori --</option>
             <?php foreach ($categories as $cat): ?>
               <?php if ($cat->id == $row->category_id):?>
                 <option value='<?php echo $cat->id?>' selected="selected"><?php echo $cat->name ?></option>

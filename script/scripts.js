@@ -194,6 +194,7 @@ Validation = {
 		Validation.LoginForm();
 		Validation.RegisterForm();
 		Validation.EditForm();
+		Validation.UploadItemForm();
 		
 
 	},
@@ -435,7 +436,7 @@ Validation = {
 			}
 		});
 	},
-	'UploadForm': function() {
+	'UploadItemForm': function() {
 		$('.uploadItemForm form').validate({
 			rules: {
 				selectCategory: {
@@ -443,7 +444,8 @@ Validation = {
 				},
 				inputTitle: {
 					required:true,
-					maxlength: 50
+					maxlength: 50,
+					minlength: 3
 				},
 				inputDescription: {
 					required:true,
@@ -451,15 +453,16 @@ Validation = {
 				}
 			},
 			messages: {
-				firstname: {
+				selectCategory: {
 					required: 'Du glömde välja något i det här fältet'
 				},
 				inputTitle: {
 					required: 'Du glömde fylla i det här fältet',
-					maxlength: "Titeln får inte vara mer än 50 tecken."
+					maxlength: "Titeln får inte vara mer än 50 tecken.",
+					minlength: "Beskrivningen måste vara minst 3 tecken"
 				},
 				inputDescription: {
-					required: 'Fyll i en beskrivning i det här fältet',
+					required: 'Du glömde fylla i det här fältet',
 					minlength: 'Beskrivningen måste vara minst 5 tecken'
 				}
 			},
@@ -480,30 +483,32 @@ Validation = {
 				label.html("&nbsp;").addClass("checked");
 			},
 			submitHandler: function(form) {
+
 				$.ajax({
-					url: 'verify',
+					url: 'verify_new',
 					data: $(form).serialize(),
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
-						if (data.state === true) {
-							$('.alert-error, .finishedSuccess').remove();
+						console.log(data);
+						// if (data.state === true) {
+						// 	$('.alert-error, .finishedSuccess').remove();
 
-							var successDiv = $('<div></div>');
-							successDiv
-								.html($('<p><i class="icon-ok icon-white"></i>'+data.message+'</p>'))
-								.addClass('finishedSuccess')
-								.appendTo($('.container'))
-								.fadeIn()
-								.delay(3000)
-								.fadeOut();
-						} else {
-							$('.alert-error, .finishedSuccess').remove();
-							var errorDiv = $('<div class="alert alert-error"></div>');
-							errorDiv.html(data.message);
-							errorDiv.prepend($('<button type="button" class="close" data-dismiss="alert">&times;</button>'));
-							errorDiv.fadeIn().appendTo('#message');
-						}
+						// 	var successDiv = $('<div></div>');
+						// 	successDiv
+						// 		.html($('<p><i class="icon-ok icon-white"></i>'+data.message+'</p>'))
+						// 		.addClass('finishedSuccess')
+						// 		.appendTo($('.container'))
+						// 		.fadeIn()
+						// 		.delay(3000)
+						// 		.fadeOut();
+						// } else {
+						// 	$('.alert-error, .finishedSuccess').remove();
+						// 	var errorDiv = $('<div class="alert alert-error"></div>');
+						// 	errorDiv.html(data.message);
+						// 	errorDiv.prepend($('<button type="button" class="close" data-dismiss="alert">&times;</button>'));
+						// 	errorDiv.fadeIn().appendTo('#message');
+						// }
 					}
 				});
 			}
