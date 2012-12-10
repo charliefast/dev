@@ -62,6 +62,7 @@ $route['item/new/(:num)'] = 'item/new_item_view/$1';
 $route['item/upload/verify_upload/upload'] = 'upload/add_image_to_item';
 $route['item/upload/verify_upload'] = 'upload/add_image_to_item';
 $route['item/upload/verify_upload/(:num)'] = 'upload/add_image_to_item/$1';
+$route['user/verify_upload/(:num)'] = 'upload/add_image_to_item/$1';
 $route['item/verify_new'] = 'item/verify_new_item';
 $route['item/edit/(:num)'] = 'item/edit_item_form/$1';
 $route['item/edit_item'] = 'item/edit_published_item';
