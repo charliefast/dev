@@ -43,7 +43,7 @@ Class Like_model extends CI_Model
    */
   function fetch_likes($user_id)
   {
-    $this->db->select('items.id, 
+    $this->db->select('items.id AS item_id, 
         headline, 
         description, 
         date_added, 

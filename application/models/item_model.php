@@ -52,9 +52,36 @@ Class Item_model extends CI_Model
     $this->db->limit($limit, $offset);
     $this->db->where('status', '1');
     $query = $this->db->get();
-    var_dump($this->db->last_query());
     return $query->result();
   }
+
+  function get_users_items($user_id, $status = ''){
+      $this->db->select('items.id AS item_id, 
+        headline, 
+        description, 
+        date_added, 
+        end_date, 
+        items.user_id,
+        users.firstname, 
+        users.lastname,
+        images.name,
+        images.url,
+        categories.name')
+      ->from('items')
+      ->join('users','items.user_id = users.id')
+      ->join('categories', 'categories.id = items.category_id')
+      ->join('images','images.item_id = items.id','left')
+      ->order_by("date_added", "desc")
+      ->where('items.user_id', $user_id);
+      if ($status)
+      {
+        $this->db->where('status', $status);
+      }
+    $query = $this->db->get();
+    //var_dump($this->db->last_query());
+    return $query->result();
+  }
+
   function get_all_published_items($limit, $offset, $category= ''){
       $this->db->select('items.id, 
         headline, 
@@ -78,7 +105,6 @@ Class Item_model extends CI_Model
       $this->db->where('categories.id', $category);
     }
     $query = $this->db->get();
-    var_dump($this->db->last_query());
     return $query->result();
   }
 

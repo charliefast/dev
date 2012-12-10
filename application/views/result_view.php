@@ -37,7 +37,7 @@
 						<!-- <?php  echo $row->firstname.' '.$row -> lastname; ?> -->
 			      	</a>
 			      	<a href="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
-			      	<a href="#"><i class="icon-star"></i></a>
+			      	<a href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
 				</span>
 				<span>Upplagd den <?php  echo $row->date_added; ?></span>
 				<!-- <p><?php  echo $row -> id; ?></p> -->
@@ -47,6 +47,6 @@
 		endif ?>
 			<a href="#">Se fler<i class="icon-arrow-down"></i></a>
 		</ul>
-		<?php echo $links; ?>
+		<?php echo @$links; ?>
 	</div>
 </div>

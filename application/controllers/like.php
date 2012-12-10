@@ -30,14 +30,22 @@ class Like extends Auth_Controller {
   function like_item($item_id)
   {
     $result = $this->like_model->insert_like($item_id, $this->logged_in_user['id']);
-    if ($result)
+    if($result)
     {
-      redirect('index.php');
+      $response = array(
+        'state'  => true,
+        'message' => 'Tillagd i minneslistan!'
+      );
     }
     else
     {
-      echo 'något gick snett';
-    }
+      $response = array(
+        'state'  => false,
+        'message' => 'Något gick fel!'
+      );
+    }  
+    echo create_json($response);
+    exit;
   }
   
   /**
@@ -56,8 +64,29 @@ class Like extends Auth_Controller {
         echo json_encode(array('content' => $result));
         exit();
       }
-      return $result;
+      return array('likes' => $result, 'error' =>FALSE);
     }
+    else
+    {
+      return array('error' =>'Minneslistan är tom');
+    }
+  }
+
+  function show_user_likes($user_id)
+  {
+    $user_data = $this->session->userdata('logged_in');
+    $edit = ($user_data['id'] === $user_id)?TRUE:FALSE;
+    $this->content =  $this->get_likes($user_id);
+    $this->load->view('header_view', array('title' => 'Minneslista', 'page' => 'likes'));
+    if ($edit)
+    {
+      $this->load->view('edit_likes_view', $this->content); 
+    }
+    else
+    {
+      $this->load->view('likes_view', $this->content); 
+    }
+    $this->load->view('footer_view'); 
   }
 }
 /* End of file like.php */

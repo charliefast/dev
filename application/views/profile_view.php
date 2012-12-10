@@ -38,7 +38,18 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
                 echo $row->presentation; 
               endif; ?>
       </div>
-<?php endforeach; ?>
+      <?php if ($edit):
+        $like_list = 'Min minneslista'; $row->firstname.'s minneslista'; 
+        $item_list = 'Mina annonser';
+      else:
+        $like_list = $row->firstname.'s minneslista';
+        $item_list = $row->firstname.'s annonser'; 
+      endif; ?>
+      <ul>
+        <li><a href="<?php echo base_url().'user/'.$row->id.'/likes'; ?>"><?php echo $like_list; ?></a></li>
+        <li><a href="<?php echo base_url().'user/'.$row->id.'/items'; ?>"><?php echo $item_list; ?></a></li>
+      </ul>
+      <?php endforeach; ?>
     </div>
   </div>
 

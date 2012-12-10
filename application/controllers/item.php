@@ -348,6 +348,41 @@ class Item extends Auth_Controller {
     exit;
   }
 
+  function show_user_items($user_id)
+  {
+    $user_data = $this->session->userdata('logged_in');
+    $edit = ($user_data['id'] === $user_id)?TRUE:FALSE;
+    
+    $this->load->view('header_view', array('title' => 'Annonslista', 'page' => 'item_list'));
+    if ($edit)
+    {
+      $result = $this->item_model->get_users_items($user_id);
+      if ($result)
+      {
+        $this->content = array('result' => $result, 'error' => FALSE);
+      }
+      else
+      {
+        $this->content['error'] = 'Inga annonser funna';
+      }
+      $this->load->view('edit_item_list_view', $this->content); 
+    }
+    else
+    {
+      $result = $this->item_model->get_users_items($user_id, TRUE);
+      if ($result)
+      {
+        $this->content = array('result' => $result, 'error' => FALSE);
+      }
+      else
+      {
+        $this->content['error'] = 'Inga annonser funna';
+      }
+      $this->load->view('items_list_view', $this->content); 
+    }
+    $this->load->view('footer_view'); 
+  }
+
   private function _set_pagination_config($category = '')
   {
     $this->pag_config['first_link'] = 'Först';

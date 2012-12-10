@@ -76,6 +76,7 @@ class User extends Auth_Controller {
         'id' => $id,
         'result' => $result, 
         'comments' => $messages,
+        'likes' => $this->like_model->fetch_likes($id),
         'error' => FALSE);
     }
   }

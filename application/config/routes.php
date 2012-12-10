@@ -83,6 +83,8 @@ $route['user/edit/verify_upload/pic'] = 'upload/upload_pic';
 $route['user/edit/pic'] = 'upload';
 $route['user/edit/all'] = 'user/edit_profile';
 $route['user/send_message/(:any)'] = 'message/send_message_to_user/$1/$2';
+$route['user/(:num)/items'] = 'item/show_user_items/$1';
+$route['user/(:num)/likes'] = 'like/show_user_likes/$1';
 $route['user/(:num)'] = "user/get_user_info/$1";
 $route['message/(:any)'] = 'message/view_message/$1/$2';
 $route['starred/(:num)/(:num)'] = 'login/get_starred_items/$1/$2';
@@ -90,6 +92,7 @@ $route['starred'] = 'login/get_starred_items';
 $route['like/(:num)'] = 'like/like_item/$1';
 $route['user/like/(:num)'] = 'like/get_likes/$1';
 $route['message/delete/(:num)'] = 'message/message_delete_by_id/$1';
+
 
 
 /* End of file routes.php */
