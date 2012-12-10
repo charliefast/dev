@@ -434,6 +434,80 @@ Validation = {
 				});
 			}
 		});
+	},
+	'UploadForm': function() {
+		$('.uploadItemForm form').validate({
+			rules: {
+				selectCategory: {
+					required:true
+				},
+				inputTitle: {
+					required:true,
+					maxlength: 50
+				},
+				inputDescription: {
+					required:true,
+					minlength: 5
+				}
+			},
+			messages: {
+				firstname: {
+					required: 'Du glömde välja något i det här fältet'
+				},
+				inputTitle: {
+					required: 'Du glömde fylla i det här fältet',
+					maxlength: "Titeln får inte vara mer än 50 tecken."
+				},
+				inputDescription: {
+					required: 'Fyll i en beskrivning i det här fältet',
+					minlength: 'Beskrivningen måste vara minst 5 tecken'
+				}
+			},
+			errorPlacement: function(error, element) {
+				if ( element.is(":radio") ) {
+					error.appendTo( element.parent().next().next() );
+				} else if ( element.is(":checkbox") ) {
+					error.appendTo ( element.next() );
+				} else {
+					error.appendTo( element.parent() );
+					element.closest('.control-group').removeClass('success').addClass('error');
+				}
+			},
+			// set this class to error-labels to indicate valid fields
+			success: function(label) {
+				// set &nbsp; as text for IE
+				label.closest('.control-group').removeClass('error').addClass('success');
+				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+				$.ajax({
+					url: 'verify',
+					data: $(form).serialize(),
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if (data.state === true) {
+							$('.alert-error, .finishedSuccess').remove();
+
+							var successDiv = $('<div></div>');
+							successDiv
+								.html($('<p><i class="icon-ok icon-white"></i>'+data.message+'</p>'))
+								.addClass('finishedSuccess')
+								.appendTo($('.container'))
+								.fadeIn()
+								.delay(3000)
+								.fadeOut();
+						} else {
+							$('.alert-error, .finishedSuccess').remove();
+							var errorDiv = $('<div class="alert alert-error"></div>');
+							errorDiv.html(data.message);
+							errorDiv.prepend($('<button type="button" class="close" data-dismiss="alert">&times;</button>'));
+							errorDiv.fadeIn().appendTo('#message');
+						}
+					}
+				});
+			}
+		});
 	}
 };
 

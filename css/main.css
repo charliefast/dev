@@ -5525,6 +5525,16 @@ header .navbar .nav li a i {
   margin: 0 auto;
   display: none;
 }
+.container #more {
+  margin: 0 auto;
+  display: block;
+  width: 80px;
+  text-align: center;
+}
+.container #more i {
+  display: block;
+  margin: 0 auto;
+}
 .container .noResult {
   font-style: italic;
   color: #999999;
@@ -5606,6 +5616,7 @@ header .navbar .nav li a i {
   filter: alpha(opacity=100);
 }
 footer {
+  margin-top: 40px;
   background: #ffffff;
   color: #000000;
 }

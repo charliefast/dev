@@ -64,6 +64,6 @@
       <?php endforeach;
       endif ?>
     </ul>
-      <a href="#" id="more">Se fler</a>
+      <a href="#" id="more">Se fler<i class="icon-arrow-down"></i></a>
   </div>
 </div>

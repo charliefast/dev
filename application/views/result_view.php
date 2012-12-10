@@ -45,7 +45,7 @@
 			</li>
 			<?php endforeach;
 		endif ?>
-			<a href="#">Se fler</a>
+			<a href="#">Se fler<i class="icon-arrow-down"></i></a>
 		</ul>
 	</div>
 </div>
