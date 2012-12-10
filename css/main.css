@@ -5484,8 +5484,8 @@ header .navbar .nav li a i {
   margin-top: -10%;
   margin-left: -100px;
   padding: 20px;
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  opacity: 0.6;
+  filter: alpha(opacity=60);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -5694,10 +5694,11 @@ footer .container ul li {
   display: block;
 }
 #dropbox .preview {
+  left: 50%;
   width: 245px;
   height: 215px;
   float: left;
-  margin: 55px auto 0;
+  margin: 55px 0 0 -122px;
   position: relative;
   text-align: center;
 }
@@ -5735,15 +5736,19 @@ footer .container ul li {
   box-shadow: 0 0 2px #000000;
 }
 #dropbox .preview.done .progressHolder .progress {
-  background-color: green;
+  background-color: #87c06b;
+  background-image: none;
   position: absolute;
-  height: 100%;
   left: 0;
   width: 0;
+  height: 100%;
   -moz-transition: 0.25s;
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
   transition: 0.25s;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
 }
 #dropbox .uploaded {
   position: absolute;

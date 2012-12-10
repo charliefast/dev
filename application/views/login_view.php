@@ -7,7 +7,6 @@
     <div class="container">
       <div class="loginForm span4 offset4">
         <h2>Logga in</h2>
-        <div id="message"></div>
         <?php echo validation_errors(); ?>
 
         <?php //echo form_open('index.php/verifylogin'); ?>
@@ -27,6 +26,7 @@
             </div>
           </div>
 
+          <div id="message"></div>
           <a href="register" class="btn btn-primary">Skapa konto</a>
           <?php echo form_submit('submit','Logga in', 'class="btn"') ?>
 

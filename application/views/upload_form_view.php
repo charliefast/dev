@@ -1,3 +1,4 @@
+  <div class="container">
     <!-- Fallback button for normal upload -->
     <form class="uploadForm" action="upload/image" method="post" enctype="multipart/form-data">
       <input type="file" name="pic" accept="image/*">
@@ -10,4 +11,5 @@
     <div id="dropbox">
       <span class="message">Dra hit en bild för att ladda upp den.</span>
     </div>
+    <a href="http://bytarna/user/57#" class="btn btn-primary">Tillbaka</a>
   </div>
