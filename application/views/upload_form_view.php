@@ -11,5 +11,5 @@
     <div id="dropbox">
       <span class="message">Dra hit en bild för att ladda upp den.</span>
     </div>
-    <a href="http://bytarna/user/57#" class="btn btn-primary">Tillbaka</a>
+    <a href="<?php echo base_url().'item/new/'.$this->uri->segment(3, 0); ?>" class="btn btn-primary">Tillbaka</a>
   </div>
