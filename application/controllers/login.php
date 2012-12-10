@@ -5,7 +5,6 @@ session_start();
  * Controller Login class
  * 
  * Default controller. Loads login page.
- * @author Carina Möllbrink
  */
 
 class Login extends CI_Controller {
