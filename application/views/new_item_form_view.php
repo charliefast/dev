@@ -40,7 +40,7 @@
           <textarea type="text" id="inputDescription" name="inputDescription" placeholder="Beskrivning..."><?php echo $row->description;?></textarea>
         </div>
       </div>
-
+      <div id="message"></div>
       <div class="control-group">
         <div class="controls">
           <!-- <button type="submit" class="btn btn-primary">Kontrollera annons</button> -->

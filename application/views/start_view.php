@@ -6,6 +6,23 @@
 </section> -->
 
 <div class="container top">
+	<!-- <form action="http://bytarna/item/send_message/48" method="post" accept-charset="utf-8" style="position:fixed; top:50px; left:0;">
+		<div style="display:none">
+			<input type="hidden" name="id" value="57">
+			<input type="hidden" name="username" value="hector.romo@circuit.se">
+			<input type="hidden" name="date" value="2012-12-10 20:53:54">
+			<input type="hidden" name="to_id" value="57">
+		</div>
+		<div class="control-group">
+			<label for="message">Meddelande:</label>
+			<textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30"></textarea>
+		</div>
+		<input type="submit" name="submit" value="Svara" class="btn btn-primary">
+	</form> -->
+	<!--  -->
+
+
+
 	<div class="row-fluid">
 		<div class="span4 info-first">
 			<p>
@@ -36,26 +53,18 @@
 				<a href="<?php echo base_url().'item/edit/'.$row->id;?>">Ändra annons</a>
 				<a href="<?php echo base_url().'#'?>">Radera annons</a>
 				<?php endif;?>
-			<a href="#" class="img">
-					<?php if (! $row->url):?>
-						<img src="http://placehold.it/300x200"/>
-					<?php else: ?>
-						<img src="<?php echo base_url().$row->url?>"/>
-					<?php endif; ?>
+			<a href="<?php echo base_url().'item/'.$row->id; ?>" class="img">
+				<?php if (! $row->url):?>
+					<img src="http://placehold.it/300x200"/>
+				<?php else: ?>
+					<img src="<?php echo base_url().$row->url?>"/>
+				<?php endif; ?>
 			</a>
 			<h4><a href="<?php echo base_url().'item/'.$row->id; ?>"><?php echo $row->headline; ?></a></h4>
-			<!-- <p><?php  echo $row->description; ?></p> -->
 			<span class="icons">
-				<!-- Av:
-				<a href="<?php  echo base_url(); ?>index.php/user/<?php  echo $row->user_id; ?>">
-				<?php  echo $row->firstname.' '.$row->lastname; ?>
-				</a> -->
-				<a href="<?php echo base_url().'user/'.$row->user_id; ?>">
-							<i class="icon-user"></i>
-					<!-- <?php  echo $row->firstname.' '.$row -> lastname; ?> -->
-						</a>
-						<a href="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
-						<a href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
+				<a href="<?php echo base_url().'user/'.$row->user_id; ?>"><i class="icon-user"></i></a>
+				<a href="<?php echo base_url().'item/message/'.$row->id;?>" class="sendMessage" data-link="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
+				<a href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
 			</span>
 			<span>Upplagd den <?php  echo $row->date_added; ?></span>
 			<!-- <p><?php  echo $row -> id; ?></p> -->

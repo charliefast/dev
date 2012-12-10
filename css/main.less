@@ -48,7 +48,7 @@ header {
 		margin-top: -10%;
 		margin-left: -100px;
 		padding: 20px;
-		.opacity(90);
+		.opacity(60);
 		.border-radius(10px);
 		text-align: center;
 		font-weight: bold;
@@ -275,10 +275,11 @@ footer {
 		Image Previews
 	--------------------------*/
 	.preview{
+		left: 50%;
 		width:245px;
 		height: 215px;
 		float:left;
-		margin: 55px auto 0;
+		margin: 55px 0 0 -122px;
 		position: relative;
 		text-align: center;
 		img{
@@ -312,17 +313,19 @@ footer {
 				bottom: 0;
 				box-shadow:0 0 2px @black;
 				.progress{
-					background-color:green;
+					background-color: @mainColor;
+					background-image: none;
 					// background-color:#2586d0;
 					position: absolute;
-					height:100%;
 					left:0;
 					width:0;
+					height:100%;
 					// box-shadow: 0 0 1px rgba(255, 255, 255, 0.4) inset;
 					-moz-transition:0.25s;
 					-webkit-transition:0.25s;
 					-o-transition:0.25s;
 					transition:0.25s;
+					.border-radius(0px);
 				}
 			}
 		}
