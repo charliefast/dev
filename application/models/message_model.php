@@ -34,11 +34,13 @@ Class Message_model extends CI_Model
    * Deletes message
    * 
    * @param int $id
+   * @param int $user_id
    * @return BOOLEAN
    */
-  function delete_message($id)
+  function delete_message($id,$user_id)
   {
     $this->db->where('id', $id);
+    $this->db->where('user_id', $user_id);
     $this->db->delete('messages');  
     if ($this->db->affected_rows() == '1')
     {
@@ -56,11 +58,16 @@ Class Message_model extends CI_Model
    * @param (optional) int $item_id
    * @return mixed
    */
-  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '10, 0', $message_id = '', $item_id = '')
+  function fetch_all_messages($user_id = '', $desc = TRUE, $limit = '10, 0', $message_id = '', $item_id = '', $parent_id ='')
   {
-    $this->db->select('messages.id AS message_id, message, date_sent, firstname, lastname, parent_id')
+
+    $this->db->select('messages.id AS message_id, message, date_sent, firstname, lastname, parent_id, item_id, items.headline')
       ->from('messages')
-      ->join('users','messages.from_id = users.id');
+      ->join('users','messages.from_id = users.id')
+      ->join('items','items.id = messages.item_id', 'left');
+    if ($parent_id != ''){
+      $this->db->where('parent_id', $parent_id);
+    }
     //$str = "SELECT * FROM messages WHERE to_id = ?";
     if ($user_id != ''){
       $this->db->where('to_id', $user_id);

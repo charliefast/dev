@@ -57,14 +57,27 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
       </div>
       <ul class='guestbook media-list'>
         <?php if ($comments>0): ?>
-        <?php foreach ($comments as $comment): ?>
-          <?php $class = ($comment->parent_id > 0)?'comment-child':'comment-parent';?>
-          <li class ='<?php echo $class; ?> media'>
-            <p><?php echo $comment->message; ?></p>
-            <p class="user">Av: <?php echo $comment->firstname.' '.$comment->lastname; ?></p>
-            <p class="date">Den: <?php echo $comment->date_sent; ?></p>
-            <a href='../message/<?php echo $id.'/'.$comment->message_id; ?>'>Svara</a>
-          </li>
+        <?php foreach ($comments as $comment):?>
+          <li class='comment-parent media'>
+            <?php if( $comment['parent']->item_id): ?>
+              <a href="<?php echo base_url().'/item/'.$comment['parent']->item_id; ?>"><?php echo $comment['parent']->headline; ?></a>
+            <?php endif; ?>
+            <h3><?php echo $comment['parent']->firstname.' '.$comment['parent']->lastname; ?></h3>
+            <p><?php echo $comment['parent']->message; ?></p>
+            <p><?php echo $comment['parent']->date_sent; ?></p>
+            <a href="<?php echo base_url().'message/'.$id.'/'.$comment['parent']->message_id; ?>">Svara</a>
+            <?php if ($comment['children']): ?>
+            <ul class='comment-child media'>
+              <?php foreach ($comment['children'] as $child):?>
+              <li>
+                <h3><?php echo $child->firstname.' '.$child->lastname; ?></h3>
+                <p><?php echo $child->message; ?></p>
+                <p><?php echo $child->date_sent; ?></p>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+          </li> 
         <?php endforeach; ?>
         <?php endif; ?>
       </ul>

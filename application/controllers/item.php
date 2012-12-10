@@ -77,8 +77,9 @@ class Item extends Auth_Controller {
       $status = 1;
     }
     $result = $this->item_model->get_item_by_id($id, $status);
-      if ($result){
+    if ($result){
       $message_content = array (
+      'to_id' => $this->item_model->get_owner($id),
       'comments' => $this->message_model->fetch_all_messages('', FALSE, '20, 0', '', $id),
       'error' => FALSE,
       'form_to' => 'item/send_message/'.$id);
@@ -87,13 +88,12 @@ class Item extends Auth_Controller {
           exit();
         }
         $this->content['result'] = $result;
-      }
-      else
-      {
-        $this->content['error'] = 'Ingen annons funnen';
-        $message_content['error'] = 'TRUE';
-      }
-    
+    }
+    else
+    {
+      $this->content['error'] = 'Ingen annons funnen';
+       $message_content['error'] = 'TRUE';
+    }
     $this->load->view('header_view', $this->data);
     $this->load->view('result_view', $this->content);
     $this->load->view('message_view', $message_content);

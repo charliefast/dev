@@ -161,6 +161,19 @@ Class Item_model extends CI_Model
       return false;
     }
   }
+
+  function get_owner($item_id)
+  {
+    $str = "SELECT user_id FROM items 
+            WHERE id = ? ";
+    $query = $this->db->query($str,$item_id);
+    if ($query->num_rows() > 0)
+    {
+    $row = $query->row_array(); 
+    return $row['user_id'];
+    }
+    return FALSE;
+  }
 }
 /* End of file item_model.php */
 /* Location: ./application/models/item_model.php */

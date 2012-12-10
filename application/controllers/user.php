@@ -72,10 +72,17 @@ class User extends Auth_Controller {
   {
     $result = $this->user_model->get_user($id);
     if($result){
+    $message_result = $this->message_model->fetch_all_messages($id , TRUE, '10, 0', '', '', 0);
+    foreach ($message_result as $mrow) {
+      $messages[] = array('parent' => $mrow,
+        'children' => $this->message_model->fetch_all_messages($id , FALSE, '10, 0', '', '', $mrow->message_id)
+        );
+
+    }
       $this->content = array(
         'id' => $id,
         'result' => $result, 
-        'comments' => $this->message_model->fetch_all_messages($id),
+        'comments' => $messages,
         'error' => FALSE);
       }
   }
