@@ -11,6 +11,7 @@ class Item extends Auth_Controller {
   private $categories;
   private $content;
   private $logged_in_user;
+  private $pag_config;
   
   /**
    * Constructor
@@ -28,6 +29,8 @@ class Item extends Auth_Controller {
     $this->lang->load('form_validation', 'swedish');
     $this->load->helper('form', 'url', 'string');
     $this->logged_in_user = $this->session->userdata('logged_in');
+    $this->load->library('pagination');
+    $this->_set_pagination_config();
     
   }
   /**
@@ -38,7 +41,8 @@ class Item extends Auth_Controller {
     $this->load->view('header_view', $this->data);
     $this->load->view('category_menu_view', array('list' => $this->categories));
     $this->load->view('result_view', $this->content);
-    $this->load->view('footer_view'); 
+    $this->load->view('footer_view');
+
   }
   
   /**
@@ -46,25 +50,40 @@ class Item extends Auth_Controller {
    * 
    * @param (optional) string $item
    */
-  function get_items($item = null){
+  function get_items($item = null, $offset = 0){
     $type = '';
     //$search = '';
     $category = '';
    
-    if ($item != '$1'){
+    if ($item != '$1' && $item != 'page'){
       $category = $item;
       $this->data['title'] = $category;
+      $this->_set_pagination_config($category);
     }
-    $result = $this->item_model->get_item($category,$search = '');
+    $limit = $this->pag_config["per_page"];
+    $result = $this->item_model->get_item($category, '', $limit, $offset);
       if ($result){
-        if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
-          echo create_json(array('result'=> $result));
-          exit();
-        }
+        $response = array(
+          'state'  => TRUE,
+          'result' => $result
+          );
         $this->content['result'] = $result;
+      }
+      else
+      {
+      $response = array(
+        'state'  => FALSE,
+        'message' => 'Inga annonser hittade!'
+        );
+      
+      }
+      if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
+          echo create_json($response);
+          exit();
       }
     $this->index();
   }
+
   /**
    * Shows item by id with messages
    * 
@@ -327,6 +346,17 @@ class Item extends Auth_Controller {
     }
     echo create_json($response);
     exit;
+  }
+
+  private function _set_pagination_config($category = '')
+  {
+    $this->pag_config['first_link'] = 'Först';
+    $this->pag_config['last_link'] = 'Sist';
+    $this->pag_config['base_url'] = base_url().'item/page';
+    $this->pag_config['total_rows'] = $this->item_model->count_rows($category);
+    $this->pag_config['per_page'] = 5;
+    $this->pagination->initialize($this->pag_config);
+    $this->content['links'] = $this->pagination->create_links();
   }
 }
 /* End of file item.php */

@@ -47,5 +47,6 @@
 		endif ?>
 			<a href="#">Se fler<i class="icon-arrow-down"></i></a>
 		</ul>
+		<?php echo $links; ?>
 	</div>
 </div>
