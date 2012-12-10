@@ -27,6 +27,12 @@
   <script type="text/javascript" src="<?php echo base_url();?>script/modernizr-2.6.1.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>script/jquery.validate.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>script/jquery.validate.js"></script>-->
+  <script type="text/javascript">
+    if (window.location.hash == '#_=_') {
+      window.location.hash = ''; // for older browsers, leaves a # behind
+      history.pushState('', document.title, window.location.pathname); // nice and clean
+      e.preventDefault(); // no page reload
+  }</script>
 
 
   <!--[if lt IE 9]>

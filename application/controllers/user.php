@@ -34,11 +34,6 @@ class User extends Auth_Controller {
    */
   function get_user_info($id)
   {
-    $user = $this->facebook->getUser();
-    if ($user)
-    {
-      $this->load_facebook_profile_page();
-    }
     if ($this->logged_in_user['id'] == $id)
     {
       $this->data['page'] = 'my_profile';
@@ -54,13 +49,6 @@ class User extends Auth_Controller {
     $this->load->view('footer_view');
   }
   
-  function load_facebook_profile_page()
-  {
-    $this->content = $this->facebook->api('/me');
-    $this->load->view('header_view', $this->data);
-    $this->load->view('fb_profile_view', $this->content);
-    $this->load->view('footer_view');
-  }
 
   /**
    * Sets content
@@ -72,19 +60,24 @@ class User extends Auth_Controller {
   {
     $result = $this->user_model->get_user($id);
     if($result){
-    $message_result = $this->message_model->fetch_all_messages($id , TRUE, '10, 0', '', '', 0);
-    foreach ($message_result as $mrow) {
-      $messages[] = array('parent' => $mrow,
-        'children' => $this->message_model->fetch_all_messages($id , FALSE, '10, 0', '', '', $mrow->message_id)
-        );
-
-    }
+      $message_result = $this->message_model->fetch_all_messages($id , TRUE, '10, 0', '', '', 0);
+      if ($message_result){
+        foreach ($message_result as $mrow) {
+          $messages[] = array('parent' => $mrow,
+            'children' => $this->message_model->fetch_all_messages($id , FALSE, '10, 0', '', '', $mrow->message_id)
+            );
+        }
+      }
+      else
+      {
+        $messages = 0;
+      }
       $this->content = array(
         'id' => $id,
         'result' => $result, 
         'comments' => $messages,
         'error' => FALSE);
-      }
+    }
   }
   
   /**

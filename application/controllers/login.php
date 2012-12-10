@@ -119,11 +119,7 @@ class Login extends CI_Controller {
     {
         try {
             $this->fb_data['user_profile'] = $this->facebook->api('/me');
-            $sess_array = array(
-              'id' => $this->fb_data['user_profile']['id'],
-              'username' => $this->fb_data['user_profile']['email']
-        );
-        $this->session->set_userdata('logged_in', $sess_array);
+            $this->_handle_fb_login();
         } catch (FacebookApiException $e) {
             $user = null;
         }
@@ -133,6 +129,39 @@ class Login extends CI_Controller {
       $this->fb_data['login_url'] = $this->facebook->getLoginUrl(array('scope' => 'email'));
     }
     return $this->fb_data;
+  }
+
+  private function _is_member_check()
+  {
+    $email = $this->fb_data['user_profile']['email'];
+    $result = $this->user_model->get_user_by_email($email);
+    if ($result)
+    {
+      foreach ($result as $row) {
+      $sess_array = array(
+                'id' => $row->id,
+                'username' => $row->email
+              );
+        $this->session->set_userdata('logged_in', $sess_array);
+      }
+      return TRUE;
+    }
+    else
+    {
+    return FALSE;
+    }
+  }
+  private function _handle_fb_login()
+  {
+    $result = $this->_is_member_check();
+    if (! $result)
+    {
+      $register = $this->user_model->register_user_from_fb($this->fb_data);
+      if ($register)
+      {
+        redirect(base_url());
+      }
+    }
   }
 }
 /* End of file login.php */

@@ -64,11 +64,8 @@ class VerifyRegistration extends CI_Controller {
         
       if ($this->user_model->register_user($form_data) == TRUE) // the information has therefore been successfully saved in the db
       {
-        if ($this->input->is_ajax_request())
-        {
-          echo create_json(array('status' => 'Du är nu registrerad och kan logga in'));
-          exit;
-        }
+        echo create_json(array('state' => TRUE, 'status' => 'Du är nu registrerad och kan logga in'));
+        exit;
         //$this->send_email_activation_key($activationkey);
       }
     }

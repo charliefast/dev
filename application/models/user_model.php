@@ -56,6 +56,30 @@ Class User_model extends CI_Model
     }
     return FALSE;
   }
+
+  /**
+   * Inserts fb_data to table users
+   *
+   * @param array $fb_data
+   * @return BOOLEAN
+   */
+  function register_user_from_fb($fb_data)
+  {
+    $data = array(
+                        //'username' => set_value('username'),
+                        'firstname' => $fb_data['user_profile']['first_name'],
+                        'lastname' => $fb_data['user_profile']['last_name'],
+                        'email' => $fb_data['user_profile']['email'],
+                        'password' => SHA1('shru7hTTls'.'hittapa'),
+                        'sign_up_date' => date('Y-m-d h:i:s'),
+                        );
+    $this->db->insert('users', $data);  
+    if ($this->db->affected_rows() == '1')
+    {
+      return TRUE;
+    }
+    return FALSE;
+  }
   
   /**
    * Checks if username exist in database
@@ -145,6 +169,23 @@ Class User_model extends CI_Model
       ->join('images','images.user_id = users.id','left')
       ->where('users.id', $id)
       ->order_by('images.id', 'DESC')
+      ->limit('1,0');
+      $query = $this->db->get();
+    return $query->result();
+  }
+
+  /**
+   * Fetches user by email
+   * 
+   * @access public
+   * @param string $email
+   * @return mixed
+   */
+  function get_user_by_email($email)
+  {
+    $this->db->select('id, email')
+      ->from('users')
+      ->where('email', $email)
       ->limit('1,0');
       $query = $this->db->get();
     return $query->result();
