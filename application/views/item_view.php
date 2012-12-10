@@ -9,7 +9,7 @@
 				<div class="control-input">
 					<label for="categories">Välj kategori</label>
 					<select id="categories">
-	          			<option value='0'>-- Välj alla --</option>
+									<option value='0'>-- Välj alla --</option>
 						<?php foreach ($categories as $cat): ?>
 							<option value='<?php echo $cat->slug?>'><?php echo $cat->name ?></option>
 						<?php endforeach; ?>
