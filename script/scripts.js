@@ -4,6 +4,7 @@ $(document).ready(function () {
     Filedrop.Init();
     Validation.Init();
     Search.Init();
+    View.Init();
     
     // iOS scale bug fix
    // MBP.scaleFix();
@@ -433,6 +434,80 @@ Validation = {
 				});
 			}
 		});
+	},
+	'UploadForm': function() {
+		$('.uploadItemForm form').validate({
+			rules: {
+				selectCategory: {
+					required:true
+				},
+				inputTitle: {
+					required:true,
+					maxlength: 50
+				},
+				inputDescription: {
+					required:true,
+					minlength: 5
+				}
+			},
+			messages: {
+				firstname: {
+					required: 'Du glömde välja något i det här fältet'
+				},
+				inputTitle: {
+					required: 'Du glömde fylla i det här fältet',
+					maxlength: "Titeln får inte vara mer än 50 tecken."
+				},
+				inputDescription: {
+					required: 'Fyll i en beskrivning i det här fältet',
+					minlength: 'Beskrivningen måste vara minst 5 tecken'
+				}
+			},
+			errorPlacement: function(error, element) {
+				if ( element.is(":radio") ) {
+					error.appendTo( element.parent().next().next() );
+				} else if ( element.is(":checkbox") ) {
+					error.appendTo ( element.next() );
+				} else {
+					error.appendTo( element.parent() );
+					element.closest('.control-group').removeClass('success').addClass('error');
+				}
+			},
+			// set this class to error-labels to indicate valid fields
+			success: function(label) {
+				// set &nbsp; as text for IE
+				label.closest('.control-group').removeClass('error').addClass('success');
+				label.html("&nbsp;").addClass("checked");
+			},
+			submitHandler: function(form) {
+				$.ajax({
+					url: 'verify',
+					data: $(form).serialize(),
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if (data.state === true) {
+							$('.alert-error, .finishedSuccess').remove();
+
+							var successDiv = $('<div></div>');
+							successDiv
+								.html($('<p><i class="icon-ok icon-white"></i>'+data.message+'</p>'))
+								.addClass('finishedSuccess')
+								.appendTo($('.container'))
+								.fadeIn()
+								.delay(3000)
+								.fadeOut();
+						} else {
+							$('.alert-error, .finishedSuccess').remove();
+							var errorDiv = $('<div class="alert alert-error"></div>');
+							errorDiv.html(data.message);
+							errorDiv.prepend($('<button type="button" class="close" data-dismiss="alert">&times;</button>'));
+							errorDiv.fadeIn().appendTo('#message');
+						}
+					}
+				});
+			}
+		});
 	}
 };
 
@@ -457,33 +532,33 @@ Search = {
 				query = 'item/search/?key='+txtValue+'&callback=json';
 			}
 
-			$('#results').addClass('loading');
+			resultList.addClass('loading');
 			$.ajax({
 				url: query,
 				dataType: 'json',
 				data: form.serialize(),
 				type: 'POST',
 				success: function(data) {
-					$('#results').removeClass('loading');
-					
+					resultList.removeClass('loading');
+
 					var items = [];
 					
 					if(data.error) {
-						$('#results').append($('<div class="alert alert-error">'+data.error+'<div>'));
+						resultList.append($('<div class="alert alert-error">'+data.error+'<div>'));
 					} else {
 						$.each(data, function(key, val) {
 							items.push('<li class="span3 item">'+
-										'<a href="#" class="img">'+
+										'<a href="/item/'+val.id+'" class="img">'+
 											'<img src="http://placehold.it/300x200">'+
 										'</a>'+
 										'<h4>'+
-											'<a href="'+val.url+'">'+val.headline+'</a>'+
+											'<a href="/item/'+val.id+'">'+val.headline+'</a>'+
 										'</h4>'+
 										'<span class="icons">'+
 											'<a href="#">'+
 												'<i class="icon-user"></i>'+
 											'</a>'+
-											'<a href="#"><i class="icon-pencil"></i></a>'+
+											'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
 											'<a href="#"><i class="icon-star"></i></a>'+
 										'</span>'+
 										'<span>Upplagd den '+val.date_added+'</span>'+
@@ -499,40 +574,96 @@ Search = {
 				}
 			});
 		});
-
-		// var items = [];
-		// $.get("data.json", function(data){
-		//	notes = data.notes;
-		//		showList("");
-
-		// }, "json");
-
-		// var qEl = $("#q");
-
-		// qEl.keyup(function(event){
-		//  console.log( qEl.val() );
-		//  showList( qEl.val() );
-		// });
-
-		
-		// function showList( q ){
-		//	$("#list").empty();
-
-		// 	for (var i = 0; i < notes.length; i++){
-		// 		var note = notes[i];
-		// 		var title = note.title;
-		// 		var date = note.date;
-		// 		console.log("h");
-
-		// 		if(title.toLowerCase().indexOf(q) != -1){
-
-		// 			var liEl = $("<li />");
-		// 			liEl.text(title + "(" + date + ")");
-
-		// 			$("#lista").append(liEl);
-		// 		}
-		// 	}
-		// }
 	}
-}
+};
 
+View = {
+	'Init': function() {
+		$('#more').on('click', function(e) {
+			e.preventDefault();
+			
+			var itemsLength = $('#results').find('.item').length;
+
+			$('#results').addClass('loading');
+			$.ajax({
+				url: 'http://bytarna/starred/'+itemsLength+'/'+(itemsLength+20)+'?callback=json',
+				dataType: 'json',
+				type: 'POST',
+				success: function(data) {
+					// Items.Append(data.starred, $('#results'));
+
+					$('#results').removeClass('loading');
+					var items = [];
+
+					$.each(data.starred, function(key, val) {
+						items.push('<li class="span3 item">'+
+										'<a href="/item/'+val.id+'" class="img">'+
+											'<img src="http://placehold.it/300x200">'+
+										'</a>'+
+										'<h4>'+
+											'<a href="/item/'+val.id+'">'+val.headline+'</a>'+
+										'</h4>'+
+										'<span class="icons">'+
+											'<a href="#">'+
+												'<i class="icon-user"></i>'+
+											'</a>'+
+											'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
+											'<a href="#"><i class="icon-star"></i></a>'+
+										'</span>'+
+										'<span>Upplagd den '+val.date_added+'</span>'+
+										'</li>');
+					});
+
+					$('#results').append(items);
+
+				}
+			});
+		});
+	}
+};
+
+// Items = {
+// 	'Append': function(objects, parentElement) {
+// 		var items = [];
+
+// 		$.each(objects, function(key, val) {
+// 			// var liElement = $('<li/>').addClass('span3 item');
+// 			// var imgAnchor = $('<a href="/item/'+val.id+'" class="img"><img src="http://placehold.it/300x200"></a>');
+// 			// var headline = $('<h4><a href="/item/'+val.id+'">'+val.headline+'</a></h4>');
+// 			// var icons = $('<span class="icons"><a href="#"><i class="icon-user"></i></a><a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
+// 			// 				'<a href="#"><i class="icon-star"></i></a></span>');
+// 			// var date = $('<span>Upplagd den '+val.date_added+'</span>');
+
+
+// 			// imgAnchor.appendTo(liElement);
+// 			// headline.appendTo(liElement);
+// 			// icons.appendTo(liElement);
+// 			// date.appendTo(liElement);
+
+// 			// console.log(liElement);
+// 			// items.push(liElement);
+			
+// 			items.push('<li class="span3 item">'+
+// 						'<a href="/item/'+val.id+'" class="img">'+
+// 							'<img src="http://placehold.it/300x200">'+
+// 						'</a>'+
+// 						'<h4>'+
+// 							'<a href="/item/'+val.id+'">'+val.headline+'</a>'+
+// 						'</h4>'+
+// 						'<span class="icons">'+
+// 							'<a href="#">'+
+// 								'<i class="icon-user"></i>'+
+// 							'</a>'+
+// 							'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
+// 							'<a href="#"><i class="icon-star"></i></a>'+
+// 						'</span>'+
+// 						'<span>Upplagd den '+val.date_added+'</span>'+
+// 						'</li>');
+// 		});
+
+// console.log(items);
+
+// 		parentElement.add(items);
+
+// 	}
+// };
