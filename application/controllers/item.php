@@ -29,8 +29,6 @@ class Item extends Auth_Controller {
 		$this->lang->load('form_validation', 'swedish');
 		$this->load->helper('form', 'url', 'string');
 		$this->logged_in_user = $this->session->userdata('logged_in');
-		$this->load->library('pagination');
-		$this->_set_pagination_config();
 		
 	}
 	/**
@@ -49,8 +47,10 @@ class Item extends Auth_Controller {
 	 * Gets items
 	 * 
 	 * @param (optional) string $item
+	 * @param (otional) int $offset
+	 * @param (otional) int $limit
 	 */
-	function get_items($item = null, $offset = 0){
+	function get_items($item = null, $offset = 0, $limit = 20){
 		$type = '';
 		//$search = '';
 		$category = '';
@@ -58,29 +58,33 @@ class Item extends Auth_Controller {
 		if ($item != '$1' && $item != 'page'){
 			$category = $item;
 			$this->data['title'] = $category;
-			$this->_set_pagination_config($category);
+			$this->content['total_num_rows'] = $this->_count_items($category);
 		}
-		$limit = $this->pag_config["per_page"];
+		else
+		{
+			$this->content['total_num_rows'] = $this->_count_items();
+		}
 		$result = $this->item_model->get_item($category, '', $limit, $offset);
-			if ($result){
-				$response = array(
-					'state'  => TRUE,
-					'result' => $result
-					);
-				$this->content['result'] = $result;
-			}
-			else
-			{
+		if ($result){
 			$response = array(
-				'state'  => FALSE,
-				'message' => 'Inga annonser hittade!'
+				'state'  => TRUE,
+				'result' => $result,
+				'total_num_rows' => $this->content['total_num_rows']
 				);
-			
-			}
-			if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
-					echo create_json($response);
-					exit();
-			}
+			$this->content['result'] = $result;
+		}
+		else
+		{
+		$response = array(
+			'state'  => FALSE,
+			'message' => 'Inga annonser hittade!'
+			);
+		
+		}
+		if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
+				echo create_json($response);
+				exit();
+		}
 		$this->load->view('header_view', $this->data);
 		$this->load->view('category_menu_view', array('list' => $this->categories));
 		$this->load->view('result_view', $this->content);
@@ -91,18 +95,30 @@ class Item extends Auth_Controller {
 	 * Shows item by id with messages
 	 * 
 	 * @param int $id
+	 * @param int $status
 	 */
 	function show_item_by_id($id, $status)
 	{
-		if (! $status && $status !== '0')
+		$messages = FALSE;
+		if (! $status && $status !== 0)
 		{
 			$status = 1;
 		}
 		$result = $this->item_model->get_item_by_id($id, $status);
 		if ($result){
+			$to_id = $this->item_model->get_owner($id);
+			$message_result = $this->message_model->fetch_all_messages($to_id , TRUE, '10, 0', '', $id, 0);
+			if ($message_result)
+			{
+				foreach ($message_result as $mrow) {
+					$messages[] = array('parent' => $mrow,
+						'children' => $this->message_model->fetch_all_messages($to_id , FALSE, '10, 0', '', $id, $mrow->message_id)
+						);
+				}
+			}
 			$message_content = array (
-			'to_id' => $this->item_model->get_owner($id),
-			'comments' => $this->message_model->fetch_all_messages('', FALSE, '20, 0', '', $id),
+			'to_id' => $to_id,
+			'comments' => $messages,
 			'error' => FALSE,
 			'form_to' => 'item/send_message/'.$id);
 				if ($this->input->get('callback') == 'json' OR $this->input->is_ajax_request()){
@@ -386,15 +402,10 @@ class Item extends Auth_Controller {
 		$this->load->view('footer_view'); 
 	}
 
-	private function _set_pagination_config($category = '')
+	private function _count_items($category='')
 	{
-		$this->pag_config['first_link'] = 'Först';
-		$this->pag_config['last_link'] = 'Sist';
-		$this->pag_config['base_url'] = base_url().'item/page';
-		$this->pag_config['total_rows'] = $this->item_model->count_rows($category);
-		$this->pag_config['per_page'] = 5;
-		$this->pagination->initialize($this->pag_config);
-		$this->content['links'] = $this->pagination->create_links();
+		$total_rows = $this->item_model->count_rows($category);
+		return $total_rows;
 	}
 }
 /* End of file item.php */

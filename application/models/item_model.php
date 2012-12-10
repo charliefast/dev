@@ -19,10 +19,11 @@ Class Item_model extends CI_Model
 	 * @param (optional) array $category
 	 * @param (optional) array $search
 	 * @param (optional) BOOLEAN $desc
-	 * @param (optional) string $limit
+	 * @param (optional) int $limit
+	 * @param (optional) int $offset
 	 * @return mixed
 	 */
-	function get_item($category = '', $search = '', $limit = '20', $offset = '0', $desc = TRUE){
+	function get_item($category = '', $search = '', $limit = 20, $offset = 0, $desc = TRUE){
 			$this->db->select('items.id, 
 				headline, 
 				description, 
@@ -55,6 +56,13 @@ Class Item_model extends CI_Model
 		return $query->result();
 	}
 
+	/**
+	 * Gets user's items
+	 *
+	 * @param int $user_id
+	 * @param (optional) int $status
+	 * @return mixed
+	 */
 	function get_users_items($user_id, $status = ''){
 			$this->db->select('items.id AS item_id, 
 				headline, 
@@ -82,35 +90,14 @@ Class Item_model extends CI_Model
 		return $query->result();
 	}
 
-	function get_all_published_items($limit, $offset, $category= ''){
-			$this->db->select('items.id, 
-				headline, 
-				description, 
-				date_added, 
-				end_date, 
-				items.user_id,
-				users.firstname, 
-				users.lastname,
-				images.name,
-				images.url,
-				categories.name')
-			->from('items')
-			->join('users','items.user_id = users.id')
-			->join('categories', 'categories.id = items.category_id')
-			->join('images','images.item_id = items.id','left')
-			->where('status', '1')
-			->order_by("date_added", "desc")
-			->limit($limit, $offset);
-		if ($category){
-			$this->db->where('categories.id', $category);
-		}
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	function get_queried_item($category, $query){
-		echo $category.' '.$query.' ';
-	}
+	/**
+	 * Gets user's items
+	 *
+	 * @param int $id
+	 * @param (optional) int $status
+	 * @param (optional) int $user_id
+	 * @return mixed
+	 */
 	function get_item_by_id($id, $status = 1, $user_id = ''){
 		$this->db->select('items.id, 
 				headline, 
@@ -138,8 +125,11 @@ Class Item_model extends CI_Model
 			$query = $this->db->get();
 		return $query->result();
 	}
+
 	/**
-	 * @access public
+	 * Inserts form data to db
+	 * 
+	 * @param array $form_data
 	 * @return mixed
 	 */
 	function insert_item($form_data)
@@ -214,7 +204,13 @@ Class Item_model extends CI_Model
 			return false;
 		}
 	}
-
+  
+  /**
+   * Gets owner of item
+   *
+   * @param $int $item_id
+   * @return mixed
+   */
 	function get_owner($item_id)
 	{
 		$str = "SELECT user_id FROM items 
@@ -228,7 +224,13 @@ Class Item_model extends CI_Model
 		return FALSE;
 	}
 
-	function count_rows($category=NULL)
+	/**
+	 * Queries and count_rows
+	 * 
+	 * @param (optional) string $category
+	 * @return mixed
+	 */
+	function count_rows($category='')
 	{
 		$this->db->select('*')
 			->from('items')
