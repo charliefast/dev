@@ -4776,6 +4776,9 @@ a.badge:hover {
   .row-fluid .thumbnails {
     margin-left: 0;
   }
+  .container .item {
+    height: 340px !important;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
@@ -5542,24 +5545,34 @@ header .navbar .nav li a i {
 .container .profileSidebar img {
   width: 100%;
 }
+.container .itemSidebar img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.container .itemSidebar span {
+  display: block;
+}
+.container .itemSidebar a {
+  display: block;
+}
 .container .guestbook li {
-  border-bottom: 1px solid #555555;
+  list-style: none;
 }
-.container .guestbook li.comment-child {
-  padding-left: 50px;
-}
-.container .guestbook li.comment-child .user {
+.container .guestbook li span p {
+  margin: 0;
+  color: #999999;
   font-style: italic;
-  margin-bottom: 0;
-  font-size: 10.5px;
+  font-size: 11.9px;
 }
-.container .guestbook li.comment-child .date {
-  font-style: italic;
-  font-size: 10.5px;
+.container .guestbook li .comment-child {
+  border-top: 1px solid #E3E3E3;
+  margin-top: 10px;
+  padding: 10px 0 0 5%;
 }
 .container .item {
   width: 23.304255%;
   margin: 0 0.8% 2%;
+  height: 280px;
 }
 .container .item:first-child {
   margin: 0 0.8% 2%;
@@ -5599,21 +5612,27 @@ header .navbar .nav li a i {
   overflow: hidden;
 }
 .container #categoryList li a {
+  padding: 0;
+  margin: 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.container #categoryList li a:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.container #categoryList li a div {
   width: 100%;
   margin: 0;
+  padding: 10px;
   position: absolute;
   bottom: 0;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
   background: #000000;
   color: #ffffff;
-}
-.container #categoryList li a:hover {
-  opacity: 1;
-  filter: alpha(opacity=100);
 }
 footer {
   margin-top: 40px;

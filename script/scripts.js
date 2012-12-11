@@ -78,6 +78,7 @@ Filedrop = {
 		var dropbox = $('#dropbox'),
 			message = $('.message', dropbox);
 		var parts = {},
+		
 		bits = location.pathname.substr(1).split('/'); // get rid of first / and split on slashes
 		for (var i = 0; i<bits.length; i++) {
 			parts[i] = bits[i];
@@ -88,7 +89,7 @@ Filedrop = {
 			paramname:'pic',
 			maxfiles: 1,
 			maxfilesize: 1,
-			url: 'verify_upload/'+ parts[2],
+			url: 'verify_upload/'+ parts[3],
 			fallback_id: 'fallbackBtn',
 
 			uploadFinished:function(i,file,response){
@@ -617,8 +618,49 @@ View = {
 
 Messages = {
 	'Init': function() {
-		Messages.TeaserMessage();
-		Messages.Sent();
+		Messages.LikeMessage();
+		// Messages.TeaserMessage();
+		// Messages.Sent();
+		Messages.SendMessageForm();
+	},
+	'LikeMessage': function() {
+		$('.item .like').on('click', function(e) {
+			e.preventDefault();
+
+			var href = $(this).attr('href');
+			$.getJSON(href, function(data) {
+				if (data.state === true) {
+					Messages.Success(data.message, $('.container'));
+				}
+			});
+		});
+	},
+	'SendMessageForm': function() {
+		$('#sendMessageForm input[type="submit"]').on('click', function(e) {
+			
+			e.preventDefault();
+			var form = $(this).closest('form');
+			var href = form.attr('action');
+
+			form.validate({
+				rules: {
+					message: {
+						required: true,
+						minlength: 5
+					}
+				}
+			});
+
+			$.ajax({
+				url: href,
+				data: form.serialize(),
+				dataType: 'json',
+				type: 'POST',
+				success: function(data) {
+					Messages.Success(data.message, $('.container'));
+				}
+			});
+		});
 	},
 	// 'TeaserMessage': function() {
 	// 	$('.item .sendMessage').on('click', function(e) {
@@ -634,15 +676,21 @@ Messages = {
 	// },
 	// 'Sent': function(itemId) {
 	// 	$('#sendMessageForm input[type="submit"]').on('click', function(e) {
-	// 		console.log("hj");
 	// 		e.preventDefault();
 
 	// 		$.ajax({
-	// 			url: 'http://bytarna/item/send_message/'+itemId+'',
+	// 			url: '/item/send_message/'+itemId+'',
 	// 			type: 'POST',
+	// 			data: $('#sendMessageForm form').serialize(),
 	// 			dataType: 'json',
 	// 			success: function(data) {
-	// 				console.log(data);
+	// 				console.log(data.state);
+	// 				if (data.state === true) {
+	// 					Messages.Success(data.message, $('#sendMessageForm form'));
+						
+	// 				} else {
+	// 					console.log("false");
+	// 				}
 	// 			}
 	// 		});
 			

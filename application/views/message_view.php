@@ -14,15 +14,14 @@
         $hidden = array_merge($user_data, $date); ?>
         <?php echo form_open($form_to, '', $hidden); ?> 
           <label for="message">Meddelande:</label>
-          <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30">
-          </textarea>
+          <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30"></textarea>
           <?php echo form_submit('submit','Skicka', 'class="btn btn-primary"') ?>
         <?php echo form_close() ?>
       </div>
-      <ul class='guestbook media-list'>
+      <ul class='guestbook'>
         <?php if ($comments>0): ?>
         <?php foreach ($comments as $comment):?>
-          <li class='comment-parent media'>
+          <li class='comment-parent well'>
             <?php if( $comment['parent']->item_id): ?>
               <a href="<?php echo base_url().'/item/'.$comment['parent']->item_id; ?>">Svar till annons</a>
             <?php endif; ?>
@@ -30,7 +29,7 @@
             <p><?php echo $comment['parent']->message; ?></p>
             <p><?php echo $comment['parent']->date_sent; ?></p>
             <?php if ($comment['children']): ?>
-            <ul class='comment-child media'>
+            <ul class='comment-child'>
               <?php foreach ($comment['children'] as $child):?>
               <li>
                 <h3><?php echo $child->firstname.' '.$child->lastname; ?></h3>

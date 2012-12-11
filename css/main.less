@@ -114,27 +114,40 @@ header {
 			width: 100%;
 		}
 	}
+	.itemSidebar {
+		img {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		span {
+			display: block;
+		}
+		a {
+			display: block;
+		}
+	}
 	.guestbook {
 		li {
-			border-bottom: 1px solid @gray;
-			&.comment-child {
-				padding-left: 50px;
-				.user {
+			list-style: none;
+			span {
+				p {
+					margin: 0;
+					color: @grayLight;
 					font-style: italic;
-					margin-bottom: 0;
-					font-size: @fontSizeMini;
+					font-size: @fontSizeSmall;
 				}
-				.date {
-					font-style: italic;
-					font-size: @fontSizeMini;
-				}
-
+			}
+			.comment-child {
+				border-top: 1px solid #E3E3E3;
+				margin-top: 10px;
+				padding: 10px 0 0 5%;
 			}
 		}
 	}
 	.item {
 		width: 23.304255%;
 		margin: 0 0.8% 2%;
+		height: 280px;
 		&:first-child {
 			margin: 0 0.8% 2%;
 		}
@@ -180,16 +193,21 @@ header {
 			margin: 0 0.8% 2%;
 			overflow: hidden;
 			a {
-				width: 100%;
+				padding: 0;
 				margin: 0;
-				position: absolute;
-				bottom: 0;
 				.border-radius(0px);
-				.opacity(70);
-				background: @black;
-				color: @white;
 				&:hover {
-					.opacity(100);
+					.opacity(70);
+				}
+				div {
+					width: 100%;
+					margin: 0;
+					padding: 10px;
+					position: absolute;
+					bottom: 0;
+					.border-radius(0px);
+					background: @black;
+					color: @white;
 				}
 			}
 		}

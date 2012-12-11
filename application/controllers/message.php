@@ -40,7 +40,7 @@ class Message extends Auth_Controller {
 	{
 		$response = array(
 			'state'  => TRUE,
-			'message' => 'Medelandet är skickat!'
+			'message' => 'Meddelandet har skickats!'
 		);
 	}
 	else
@@ -75,7 +75,7 @@ class Message extends Auth_Controller {
 	{
 		$response = array(
 			'state'  => TRUE,
-			'message' => 'Medelandet är skickat!'
+			'message' => 'Meddelandet har skickats!'
 		);
 	}
 	else
@@ -158,7 +158,7 @@ class Message extends Auth_Controller {
 		{
 			$response = array(
 				'state'  => TRUE,
-				'message' => 'Medelandet är nu borttaget!'
+				'message' => 'Meddelandet är nu borttaget!'
 				);
 		}
 		else

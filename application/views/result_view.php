@@ -10,10 +10,6 @@
 				foreach ($result as $row):
 					$edit = ($user_data['id'] === $row->user_id)?TRUE:FALSE; ?>
 					<li class="span3 item">
-						<?php if($edit):?>
-							<a href="<?php echo base_url().'item/edit/'.$row->id;?>">Ändra annons</a>
-							<a href="<?php echo base_url().'#'?>">Radera annons</a>
-						<?php endif;?>
 						<a href="#" class="img">
 							<?php if (! $row->url):?>
 								<img src="http://placehold.it/300x200"/>
@@ -24,20 +20,15 @@
 						<h4><a href="<?php echo base_url().'item/'.$row->id; ?>"><?php echo $row->headline; ?></a></h4>
 							<!-- <p><?php  echo $row->description; ?></p> -->
 						<span class="icons">
-							<!-- Av:
-							<a href="<?php  echo base_url(); ?>index.php/user/<?php  echo $row->user_id; ?>">
-							<?php  echo $row->firstname.' '.$row->lastname; ?>
-							</a> -->
-							<a href="<?php echo base_url().'user/'.$row->user_id; ?>">
-								<i class="icon-user"></i>
-								<!-- <?php  echo $row->firstname.' '.$row -> lastname; ?> -->
-							</a>
+							<a href="<?php echo base_url().'user/'.$row->user_id; ?>"><i class="icon-user"></i></a>
 							<a href="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
-							<a href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
+							<a class="like" href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
 						</span>
 						<span>Upplagd den <?php  echo $row->date_added; ?></span>
-						<!-- <p><?php  echo $row -> id; ?></p> -->
-						<!-- <p><?php  echo $row->end_date; ?></p> -->
+						<?php if($edit):?>
+							<a href="<?php echo base_url().'item/edit/'.$row->id;?>"><i class="icon-edit"></i>Ändra</a>
+							<a href="<?php echo base_url().'#'?>"><i class="icon-remove"></i>Radera</a>
+						<?php endif;?>
 						</li>
 				<?php endforeach; ?>
 			<?php endif ?>

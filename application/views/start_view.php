@@ -6,20 +6,19 @@
 </section> -->
 
 <div class="container top">
-	<!-- <form action="http://bytarna/item/send_message/48" method="post" accept-charset="utf-8" style="position:fixed; top:50px; left:0;">
-		<div style="display:none">
-			<input type="hidden" name="id" value="57">
-			<input type="hidden" name="username" value="hector.romo@circuit.se">
-			<input type="hidden" name="date" value="2012-12-10 20:53:54">
-			<input type="hidden" name="to_id" value="57">
-		</div>
-		<div class="control-group">
-			<label for="message">Meddelande:</label>
-			<textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30"></textarea>
-		</div>
-		<input type="submit" name="submit" value="Svara" class="btn btn-primary">
-	</form> -->
-	<!--  -->
+	<!-- <div id="sendMessageForm" style="position:fixed; top:50px; left:0;">
+		<?php $user_data = $this->session->userdata('logged_in'); ?>
+	    <?php $date = array('date' => date('Y-m-d H:i:s'));
+	    $hidden = array_merge($user_data, $date); 
+	    //$hidden['to_id'] = $to_id; ?>
+	    <?php echo form_open('', '', $hidden); ?> 
+		    <div class="control-group">
+		    	<label class="label-control" for="message">Meddelande:</label>
+		    	<textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span4" rows="5" cols="30"></textarea>
+	    	</div>
+	    <?php echo form_submit('submit','Svara', 'class="btn btn-primary"') ?>
+	    <?php echo form_close() ?>
+	</div> -->
 
 
 
@@ -49,10 +48,6 @@
 		foreach ($result as $row):
 		$edit = ($user_data['id'] === $row->user_id)?TRUE:FALSE; ?>
 		<li class="span3 item">
-			<?php if($edit):?>
-				<a href="<?php echo base_url().'item/edit/'.$row->id;?>">Ändra annons</a>
-				<a href="<?php echo base_url().'#'?>">Radera annons</a>
-				<?php endif;?>
 			<a href="<?php echo base_url().'item/'.$row->id; ?>" class="img">
 				<?php if (! $row->url):?>
 					<img src="http://placehold.it/300x200"/>
@@ -64,15 +59,18 @@
 			<span class="icons">
 				<a href="<?php echo base_url().'user/'.$row->user_id; ?>"><i class="icon-user"></i></a>
 				<a href="<?php echo base_url().'item/message/'.$row->id;?>" class="sendMessage" data-link="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
-				<a href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
+				<a class="like" href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
 			</span>
 			<span>Upplagd den <?php  echo $row->date_added; ?></span>
-			<!-- <p><?php  echo $row -> id; ?></p> -->
-			<!-- <p><?php  echo $row->end_date; ?></p> -->
+			<?php if($edit):?>
+				<a href="<?php echo base_url().'item/edit/'.$row->id;?>"><i class="icon-edit"></i>Ändra</a>
+				<a href="<?php echo base_url().'#'?>"><i class="icon-remove"></i>Radera</a>
+			<?php endif;?>
 			</li>
 			<?php endforeach;
 			endif ?>
 		</ul>
+			<!-- <div><?php echo $total_num_rows; ?></div> -->
 			<a href="#" id="more">Se fler<i class="icon-arrow-down"></i></a>
 	</div>
 </div>
