@@ -58,8 +58,8 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 			</a>
 			<?php if($edit) echo anchor('index.php/user/edit/pic','Ändra bild', 'class=edit_pic');?>
 			<?php $place = ($row->city && $row->country)?$row->city.', '.$row->country:'ej angivet'; ?>
-			<p>Finns i: <?php echo $place; ?></p>
-			<p>Medlem sedan:<?php echo $row->sign_up_date; ?></p>
+			<p><i class="icon-map-marker"></i><?php echo $place; ?></p>
+			<p><i class="icon-time"></i>Medlem sedan:<?php echo $row->sign_up_date; ?></p>
 		</div>  
 
 		<div class="span6">
