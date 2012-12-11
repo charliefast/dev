@@ -5,6 +5,16 @@
 	<h1 class="span4 offset4 logo"><img class="" src="<?php echo base_url();?>images/logo.png" /></h1>
 </section> -->
 
+<div class="startTop">
+	<div class="container">
+		<div class="row-fluid">
+			<h1 class="span4 offset4"><img class="logo" src="<?php echo base_url();?>images/logo.png" /></h1>
+		</div>
+		<div class="row-fluid">
+			<h2 class="span4 offset4 lead">Byteshandel på nätet</h2>
+		</div>
+	</div>
+</div>
 <div class="container top">
 	<!-- <div id="sendMessageForm" style="position:fixed; top:50px; left:0;">
 		<?php $user_data = $this->session->userdata('logged_in'); ?>
@@ -24,18 +34,22 @@
 
 	<div class="row-fluid">
 		<div class="span4 info-first">
-			<p>
-				Lite info om vad man kan göra på siten.
+			<p class="lead">
+				<i class="icon-thumbs-up"></i>
+				Bytarna.se är en enkel tjänst. Du lägger in en annons, eller letar efter andras annonser, tar kontakt och byter. Byter vadå? Vad som helst!
 			</p>
 		</div>
 		<div class="span4 info-second">
-			<p>
-				Lite annan rolig info eller kanske tips
+			<p class="lead">
+				<i class="icon-heart"></i>
+				Vi på bytarna tänker med hjärtat. Varje användare ska få kontakt med andra bytare så enkelt som möjligt, på ett trevligt sätt. Sen tänker vi även på miljön.
 			</p>
 		</div>
 		<div class="span4 info-last">
-			<p>
-				Onödig fakta.
+			<p class="lead">
+				<i class="icon-search"></i>
+				Sök igenom alla annonser med hjälp av vår <a href="#">söksida</a>, sök bland våra kategorier, eller börja direkt med att ta en titt på de senaste annonserna här nedanför.
+				<i class="icon-arrow-down"></i>
 			</p>
 		</div>
 	</div>

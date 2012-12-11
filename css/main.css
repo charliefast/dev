@@ -5478,6 +5478,16 @@ header .navbar .nav li a i {
 .topImage .logo img {
   width: 100%;
 }
+.startTop {
+  background: #87c06b;
+  padding: 5% 0;
+}
+.startTop img {
+  width: 100%;
+}
+.startTop h2 {
+  text-align: center;
+}
 .container .finishedSuccess {
   background-color: #333;
   width: 200px;
@@ -5510,13 +5520,13 @@ header .navbar .nav li a i {
   color: #333;
 }
 .container.top .row-fluid .span4.info-first {
-  background: #87c06b;
-}
-.container.top .row-fluid .span4.info-second {
   background: #90d3cd;
 }
-.container.top .row-fluid .span4.info-last {
+.container.top .row-fluid .span4.info-second {
   background: #cddfd3;
+}
+.container.top .row-fluid .span4.info-last {
+  background: #eeeeee;
 }
 .container.resultsContainer.loading .loader {
   display: block;

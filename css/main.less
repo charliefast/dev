@@ -38,6 +38,17 @@ header {
 	}
 }
 
+.startTop {
+	background: @mainColor;
+	padding: 5% 0;
+	img {
+		width: 100%;
+	}
+	h2 {
+		text-align: center;
+	}
+}
+
 .container {
 	.finishedSuccess{
 		background-color: #333;
@@ -70,13 +81,13 @@ header {
 				}
 
 				&.info-first {
-					background: @mainColor;
-				}
-				&.info-second {
 					background: @secondColor;
 				}
-				&.info-last {
+				&.info-second {
 					background: @thirdColor; 
+				}
+				&.info-last {
+					background: @grayLighter;
 				}
 			}
 		}
