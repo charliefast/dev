@@ -16,7 +16,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://bytarna/';
+$config['base_url']	= 'http://localhost/bytarna';
 
 /*
 |--------------------------------------------------------------------------

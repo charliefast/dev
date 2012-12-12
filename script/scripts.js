@@ -253,7 +253,7 @@ Validation = {
 					success: function(data) {
 
 						if(data === null) {
-							document.location.href = 'login';
+							document.location.href = '/bytarna/';
 						} else if ( data.state === false ) {
 
 							var errorDiv = $('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button></div>');
