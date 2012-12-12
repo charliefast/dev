@@ -31,7 +31,7 @@
 						<?php endif;?>
 						</li>
 				<?php endforeach; ?>
-			<?php endif ?>
+			<?php endif;?>
 			<a href="#">Se fler<i class="icon-arrow-down"></i></a>
 		</ul>
 	</div>

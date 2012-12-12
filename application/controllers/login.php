@@ -93,10 +93,12 @@ class Login extends CI_Controller {
 		$result = $this->item_model->get_item('', '', $limit, $offset);
 		if ($result){
 			$this->content = array('result' => $result);
+			$this->content['total_num_rows'] = $this->item_model->count_rows();
 		}
 		else
 	 {
 		 $this->content = array('error' => $result);
+		 $this->content['total_num_rows'] = $this->item_model->count_rows();
 	 }
 	 $this->content['total_num_row'] = $this->item_model->count_rows();
 	 if ($this->input->get('callback') == 'json' || $this->input->is_ajax_request())

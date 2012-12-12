@@ -11,7 +11,8 @@
 
       <div>
         <?php $date = array('date' => date('Y-m-d H:i:s'));
-        $hidden = array_merge($user_data, $date); ?>
+        $hidden = array_merge($user_data, $date); 
+        $hidden['to_id'] = $to_id; ?>
         <?php echo form_open($form_to, '', $hidden); ?> 
           <label for="message">Meddelande:</label>
           <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span12" rows="5" cols="30"></textarea>

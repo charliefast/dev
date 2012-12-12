@@ -107,15 +107,7 @@ class Item extends Auth_Controller {
 		$result = $this->item_model->get_item_by_id($id, $status);
 		if ($result){
 			$to_id = $this->item_model->get_owner($id);
-			$message_result = $this->message_model->fetch_all_messages($to_id , TRUE, '10, 0', '', $id, 0);
-			if ($message_result)
-			{
-				foreach ($message_result as $mrow) {
-					$messages[] = array('parent' => $mrow,
-						'children' => $this->message_model->fetch_all_messages($to_id , FALSE, '10, 0', '', $id, $mrow->message_id)
-						);
-				}
-			}
+			$messages = $this->message_model->get_items_messages($id, $to_id);
 			$message_content = array (
 			'to_id' => $to_id,
 			'comments' => $messages,

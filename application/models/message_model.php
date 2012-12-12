@@ -91,6 +91,22 @@ Class Message_model extends CI_Model
     }
     return FALSE;
   }
+
+  function get_items_messages($item_id, $to_id)
+  {
+    $message_result = $this->fetch_all_messages($to_id , TRUE, '10, 0', '', $item_id, 0);
+    if ($message_result)
+    {
+      foreach ($message_result as $mrow) {
+        $messages[] = array('parent' => $mrow,
+          'children' => $this->fetch_all_messages($to_id , FALSE, '10, 0', '', $item_id, $mrow->message_id)
+          );
+      }
+    
+    return $messages;
+    }
+    return FALSE;
+  }
 }
 /* End of file message_model.php */
 /* Location: ./application/models/message_model.php */

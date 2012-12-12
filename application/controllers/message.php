@@ -75,14 +75,16 @@ class Message extends Auth_Controller {
 	{
 		$response = array(
 			'state'  => TRUE,
-			'message' => 'Meddelandet har skickats!'
+			'message' => 'Meddelandet har skickats!',
+			'comments' => $this->message_model->get_items_messages($item_id, $form_data['to_id'])
 		);
 	}
 	else
 	{
 		$response = array(
 			'state'  => FALSE,
-			'message' => 'Något blev fel, försök igen!'
+			'message' => 'Något blev fel, försök igen!',
+			'comments' => $this->message_model->get_items_messages($item_id, $form_data['to_id'])
 		);
 		}
 		echo create_json($response);
