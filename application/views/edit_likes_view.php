@@ -1,19 +1,16 @@
+<?php $user_data = $this->session->userdata('logged_in');
+$edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
+
 <?php if (! $error): ?>
 <div class="container top">
 	<div class="row-fluid">
 		<div class="span12">
 
-			<ul class="nav nav-tabs hidden-phone">
-		        <li><a href="#">Min profil</a></li>
-		        <li><a href="#">Ändra profil</a></li>
-		        <li class="active"><a href="#">Min minneslista</a></li>
-		        <li><a href="#">Mina annonser</a></li>
-		    </ul>
-
-		    <!--<ul class="nav nav-tabs hidden-phone">
+		    <?php foreach ($result as $row): ?>
+		    <ul class="nav nav-tabs hidden-phone">
 		        <li><a href="<?php echo base_url().'user/'.$user_data['id']; ?>">Min profil</a></li>
 
-		        <li class="active"><?php if($edit) echo anchor('index.php/user/edit/all','Ändra profil');?></li>
+		        <li><?php if($edit) echo anchor('index.php/user/edit/all','Ändra profil');?></li>
 		        <?php if ($edit):
 		          $like_list = 'Min minneslista'; $row->firstname.'s minneslista'; 
 		          $item_list = 'Mina annonser';
@@ -21,7 +18,7 @@
 		          $like_list = $row->firstname.'s minneslista';
 		          $item_list = $row->firstname.'s annonser'; 
 		        endif; ?>
-		          <li><a href="<?php echo base_url().'user/'.$row->id.'/likes'; ?>"><?php echo $like_list; ?></a></li>
+		          <li class="active"><a href="<?php echo base_url().'user/'.$row->id.'/likes'; ?>"><?php echo $like_list; ?></a></li>
 
 		          <li><a href="<?php echo base_url().'user/'.$row->id.'/items'; ?>"><?php echo $item_list; ?></a></li>
 		    </ul>
@@ -38,8 +35,8 @@
 		      endif; ?>
 		        <li><a href="<?php echo base_url().'user/'.$row->id.'/likes'; ?>"><?php echo $like_list; ?></a></li>
 		         <li><a href="<?php echo base_url().'user/'.$row->id.'/items'; ?>"><?php echo $item_list; ?></a></li>
-		    </ul>-->
-
+		    </ul>
+			<?php endforeach ?>
 	    </div>
 	</div>
 

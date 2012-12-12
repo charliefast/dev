@@ -22,6 +22,7 @@ class Item extends Auth_Controller {
 		$this->load->model('item_model');
 		$this->load->model('message_model');
 		$this->load->model('category_model');
+		$this->load->model('user_model');
 		$this->data = array('title' => 'Kategorier', 'page' => 'item');
 		$this->categories = $this->category_model->get_categories_from_db();
 		$this->content = array('result' => 'Inga annonser hittades i vald kategori');
@@ -370,11 +371,14 @@ class Item extends Auth_Controller {
 			$result = $this->item_model->get_users_items($user_id);
 			if ($result)
 			{
-				$this->content = array('result' => $result, 'error' => FALSE);
+				$this->content = array('items' => $result, 'error' => FALSE, 'result' => $this->user_model->get_user($user_id));
+				$this->content['id'] = $user_id;
 			}
 			else
 			{
 				$this->content['error'] = 'Inga annonser funna';
+				$this->content['result'] = $this->user_model->get_user($user_id);
+				$this->content['id'] = $user_id;
 			}
 			$this->load->view('edit_item_list_view', $this->content); 
 		}
@@ -384,10 +388,14 @@ class Item extends Auth_Controller {
 			if ($result)
 			{
 				$this->content = array('result' => $result, 'error' => FALSE);
+				$this->content['result'] = $this->user_model->get_user($user_id);
+				$this->content['id'] = $user_id;
 			}
 			else
 			{
 				$this->content['error'] = 'Inga annonser funna';
+				$this->content['result'] = $this->user_model->get_user($user_id);
+				$this->content['id'] = $user_id;
 			}
 			$this->load->view('items_list_view', $this->content); 
 		}

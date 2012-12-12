@@ -74,7 +74,8 @@ Class Item_model extends CI_Model
 				users.lastname,
 				images.name,
 				images.url,
-				categories.name')
+				categories.name,
+				status')
 			->from('items')
 			->join('users','items.user_id = users.id')
 			->join('categories', 'categories.id = items.category_id')

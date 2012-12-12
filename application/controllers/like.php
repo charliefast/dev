@@ -19,6 +19,7 @@ class Like extends Auth_Controller {
 		parent::__construct();
 		$this->logged_in_user = $this->session->userdata('logged_in');
 		$this->load->model('like_model');
+		$this->load->model('user_model');
 	}
 	
 	/**
@@ -64,11 +65,11 @@ class Like extends Auth_Controller {
 				echo json_encode(array('content' => $result));
 				exit();
 			}
-			return array('likes' => $result, 'error' =>FALSE);
+			return array('likes' => $result, 'error' =>FALSE, 'id' => $user_id);
 		}
 		else
 		{
-			return array('error' =>'Minneslistan är tom');
+			return array('error' =>'Minneslistan är tom', 'id' => $user_id);
 		}
 	}
 
@@ -82,6 +83,7 @@ class Like extends Auth_Controller {
 		$user_data = $this->session->userdata('logged_in');
 		$edit = ($user_data['id'] === $user_id)?TRUE:FALSE;
 		$this->content =  $this->get_likes($user_id);
+		$this->content['result'] = $this->user_model->get_user($user_id);
 		$this->load->view('header_view', array('title' => 'Minneslista', 'page' => 'likes'));
 		if ($edit)
 		{
