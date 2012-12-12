@@ -38,7 +38,8 @@ Class Item_model extends CI_Model
 			->from('items')
 			->join('users','items.user_id = users.id')
 			->join('categories', 'categories.id = items.category_id')
-			->join('images','images.item_id = items.id','left');
+			->join('images','images.item_id = items.id','left')
+			->group_by('items.id');
 		if ($category){
 			$this->db->where('categories.slug', $category);
 		}
@@ -53,6 +54,7 @@ Class Item_model extends CI_Model
 		$this->db->limit($limit, $offset);
 		$this->db->where('status', '1');
 		$query = $this->db->get();
+		//var_dump($this->db->last_query());
 		return $query->result();
 	}
 
@@ -118,6 +120,7 @@ Class Item_model extends CI_Model
 			->join('images','images.item_id = items.id','left')
 			->where('items.id', $id)
 			->where('status', $status)
+			->order_by('images.id', 'DESC')
 			->limit('1,0');
 			if ($user_id)
 			{

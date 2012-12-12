@@ -74,6 +74,8 @@ Filedrop = {
 	'Init': function() {
 		
 		$('.uploadForm').hide();
+		var itemId = $('.uploadForm').find('[name="item_id"]').val();
+
 
 		var dropbox = $('#dropbox'),
 			message = $('.message', dropbox);
@@ -83,15 +85,15 @@ Filedrop = {
 		for (var i = 0; i<bits.length; i++) {
 			parts[i] = bits[i];
 		}
+		console.log(itemId);
 		
 		dropbox.filedrop({
 			// The name of the $_FILES entry:
 			paramname:'pic',
 			maxfiles: 1,
 			maxfilesize: 1,
-			url: 'verify_upload/'+ parts[3],
+			url: '/bytarna/item/verify_upload/'+ itemId,
 			fallback_id: 'fallbackBtn',
-
 			uploadFinished:function(i,file,response){
 				$.data(file).addClass('done');
 

@@ -1,0 +1,11 @@
+SELECT * FROM (SELECT `items`.`id` as items_id, `headline`, `description`, `date_added`, `end_date`, `items`.`user_id`, `users`.`firstname`, `users`.`lastname`, `images`.`name` as images_name, `images`.`url`, `images`.`id` as images_id, `categories`.`name` as categories_name
+FROM (`items`)
+JOIN `users` ON `items`.`user_id` = `users`.`id`
+JOIN `categories` ON `categories`.`id` = `items`.`category_id`
+LEFT JOIN `images` ON `images`.`item_id` = `items`.`id`
+WHERE `categories`.`slug` =  'klader-accessoarer'
+AND `status` =  '1'
+ORDER BY images_id desc) AS t1
+GROUP BY items_id
+ORDER BY date_added desc
+LIMIT 20
