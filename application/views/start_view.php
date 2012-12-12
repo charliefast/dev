@@ -16,7 +16,7 @@
 	</div>
 </div>
 <div class="container top">
-	<!-- <div id="sendMessageForm" style="position:fixed; top:50px; left:0;">
+	<!-- <div id="teaserMessageForm" style="position:fixed; top:50px; left:0;">
 		<?php $user_data = $this->session->userdata('logged_in'); ?>
 	    <?php $date = array('date' => date('Y-m-d H:i:s'));
 	    $hidden = array_merge($user_data, $date); 
@@ -29,7 +29,6 @@
 	    <?php echo form_submit('submit','Svara', 'class="btn btn-primary"') ?>
 	    <?php echo form_close() ?>
 	</div> -->
-
 
 
 	<div class="row-fluid">
