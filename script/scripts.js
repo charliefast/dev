@@ -4,7 +4,7 @@ $(document).ready(function () {
     Filedrop.Init();
     Validation.Init();
     Search.Init();
-    View.Init();
+    ViewItem.Init();
     Messages.Init();
     
     // iOS scale bug fix
@@ -266,9 +266,6 @@ Validation = {
 				});
 			}
 		});
-
-		
-
 	},
 	'RegisterForm': function() {
 		$('.registerForm form').validate({
@@ -480,7 +477,7 @@ Validation = {
 				label.html("&nbsp;").addClass("checked");
 			}
 			// submitHandler: function(form) {
-			//		document.location.href = 'http://bytarna/item/verify_new';
+			//		document.location.href = '/bytarna/item/verify_new';
 			//	$.ajax({
 			//		url: 'verify_new',
 			//		data: $(form).serialize(),
@@ -497,7 +494,7 @@ Validation = {
 			//			//	errorDiv.fadeIn().appendTo('#message');
 			//			//} else {
 			//			//	console.log("hej");
-			//			//	document.location.href = 'http://bytarna/item/verify_new';
+			//			//	document.location.href = '/bytarna/item/verify_new';
 			//			// }
 			//		}
 			//	});
@@ -572,16 +569,33 @@ Search = {
 	}
 };
 
-View = {
+
+ViewItem = {
 	'Init': function() {
+		var itemsLength = $('#results').find('.item').length,
+			moreLink = $('#more'),
+			totalItems = moreLink.data('items');
+
+
+		if( itemsLength < totalItems ) {
+			// ViewItem.AddItems();
+		} else {
+			moreLink.hide();
+		}
+
 		$('#more').on('click', function(e) {
 			e.preventDefault();
-			
-			var itemsLength = $('#results').find('.item').length;
 
-			$('#results').addClass('loading');
+			console.log();
+			
+
+			
+		});
+	},
+	'AddItems': function() {
+		$('#results').addClass('loading');
 			$.ajax({
-				url: 'http://bytarna/starred/'+itemsLength+'/'+(itemsLength+20)+'?callback=json',
+				url: '/bytarna/starred/'+itemsLength+'/'+(itemsLength+20)+'?callback=json',
 				dataType: 'json',
 				type: 'POST',
 				success: function(data) {
@@ -613,7 +627,6 @@ View = {
 
 				}
 			});
-		});
 	}
 };
 
