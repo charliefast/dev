@@ -345,7 +345,7 @@ Validation = {
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
-						document.location.href = 'login';
+						document.location.href = '/bytarna/';
 					}
 				});
 			}

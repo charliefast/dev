@@ -76,6 +76,38 @@
   // Remove width from containers
   .container {
     width: auto;
+    #teaserMessageForm {
+        position:fixed; 
+        z-index: 2000;
+        bottom: -250px;
+        right: -20px !important;
+        height: 250px;
+        max-width: 320px;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid @grayLight;
+        .box-sizing(border-box);
+        .transition(all 0.3s);
+        display: none;
+        &.visible {
+          bottom: 0px;
+          .transition(ease-in all 0.3s);
+          display: block;
+        }
+        .close {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+        }
+        h3 {
+          max-width: 100%;
+        }
+        textarea {
+          width: 90%;
+        }
+      }
+
   }
   // Fluid rows
   .row-fluid {
@@ -239,6 +271,38 @@
   // UPDATED STYLES 
   body {
     .container {
+      #teaserMessageForm {
+        position:fixed; 
+        z-index: 2000;
+        top: 0px;
+        bottom: none;
+        right: 0px !important;
+        height: 250px;
+        max-width: 320px;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid @grayLight;
+        .box-sizing(border-box);
+        .transition(all 0.3s);
+        display: none;
+        &.visible {
+          bottom: 0px;
+          .transition(ease-in all 0.3s);
+          display: block;
+        }
+        .close {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+        }
+        h3 {
+          max-width: 100%;
+        }
+        textarea {
+          width: 90%;
+        }
+      }
       #categoryList {
         li {
           width: 47.904255% !important;

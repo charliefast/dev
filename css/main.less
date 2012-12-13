@@ -89,9 +89,11 @@ header {
 		border: 1px solid @grayLight;
 		.box-sizing(border-box);
 		.transition(all 0.3s);
+		display: none;
 		&.visible {
 			bottom: 0px;
 			.transition(ease-in all 0.3s);
+			display: block;
 		}
 		.close {
 			position: absolute;
@@ -280,7 +282,7 @@ header {
 
 footer {
 	margin-top: 40px;
-	background: @white;
+	background: none;
 	color: @black;
 	.container {
 		padding: 20px 10px;

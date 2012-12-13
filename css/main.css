@@ -5161,6 +5161,45 @@ a.badge:hover {
   .container {
     width: auto;
   }
+  .container #teaserMessageForm {
+    position: fixed;
+    z-index: 2000;
+    bottom: -250px;
+    right: -20px !important;
+    height: 250px;
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #999999;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    display: none;
+  }
+  .container #teaserMessageForm.visible {
+    bottom: 0px;
+    -webkit-transition: ease-in all 0.3s;
+    -moz-transition: ease-in all 0.3s;
+    -o-transition: ease-in all 0.3s;
+    transition: ease-in all 0.3s;
+    display: block;
+  }
+  .container #teaserMessageForm .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  .container #teaserMessageForm h3 {
+    max-width: 100%;
+  }
+  .container #teaserMessageForm textarea {
+    width: 90%;
+  }
   .row-fluid {
     width: 100%;
   }
@@ -5284,6 +5323,46 @@ a.badge:hover {
   }
   .carousel-caption {
     position: static;
+  }
+  body .container #teaserMessageForm {
+    position: fixed;
+    z-index: 2000;
+    top: 0px;
+    bottom: none;
+    right: 0px !important;
+    height: 250px;
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #999999;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    display: none;
+  }
+  body .container #teaserMessageForm.visible {
+    bottom: 0px;
+    -webkit-transition: ease-in all 0.3s;
+    -moz-transition: ease-in all 0.3s;
+    -o-transition: ease-in all 0.3s;
+    transition: ease-in all 0.3s;
+    display: block;
+  }
+  body .container #teaserMessageForm .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  body .container #teaserMessageForm h3 {
+    max-width: 100%;
+  }
+  body .container #teaserMessageForm textarea {
+    width: 90%;
   }
   body .container #categoryList li {
     width: 47.904255% !important;
@@ -5539,6 +5618,7 @@ header .navbar .nav li a i {
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+  display: none;
 }
 .container #teaserMessageForm.visible {
   bottom: 0px;
@@ -5546,6 +5626,7 @@ header .navbar .nav li a i {
   -moz-transition: ease-in all 0.3s;
   -o-transition: ease-in all 0.3s;
   transition: ease-in all 0.3s;
+  display: block;
 }
 .container #teaserMessageForm .close {
   position: absolute;
@@ -5707,7 +5788,7 @@ header .navbar .nav li a i {
 }
 footer {
   margin-top: 40px;
-  background: #ffffff;
+  background: none;
   color: #000000;
 }
 footer .container {
