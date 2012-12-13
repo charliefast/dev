@@ -4777,7 +4777,7 @@ a.badge:hover {
     margin-left: 0;
   }
   .container .item {
-    height: 340px !important;
+    height: 360px !important;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -5130,6 +5130,7 @@ a.badge:hover {
   body .container .item {
     width: 31.704255%;
     float: left;
+    height: 320px;
   }
   body .container .item:first-child {
     margin: 0 0.8% 2%;
@@ -5713,8 +5714,8 @@ header .navbar .nav li a i {
 }
 .container .item {
   width: 23.304255%;
-  margin: 0 0.8% 2%;
-  height: 280px;
+  margin: 0 0.8% 4%;
+  height: 290px;
 }
 .container .item:first-child {
   margin: 0 0.8% 2%;
