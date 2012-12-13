@@ -6,6 +6,7 @@ $(document).ready(function () {
     Search.Init();
     ViewItem.Init();
     Messages.Init();
+    Publish.Item();
     
     // iOS scale bug fix
    // MBP.scaleFix();
@@ -73,7 +74,7 @@ Responsive = {
 Filedrop = {
 	'Init': function() {
 		
-		$('.uploadForm').hide();
+		// $('.uploadForm').hide();
 		var itemId = $('.uploadForm').find('[name="item_id"]').val();
 
 
@@ -85,7 +86,6 @@ Filedrop = {
 		for (var i = 0; i<bits.length; i++) {
 			parts[i] = bits[i];
 		}
-		console.log(itemId);
 		
 		dropbox.filedrop({
 			// The name of the $_FILES entry:
@@ -540,6 +540,7 @@ Search = {
 					} else {
 						$.each(data, function(key, val) {
 							items.push('<li class="span3 item">'+
+										'<div class="thumbnail">'+
 										'<a href="/item/'+val.id+'" class="img">'+
 											'<img src="http://placehold.it/300x200">'+
 										'</a>'+
@@ -553,7 +554,8 @@ Search = {
 											'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
 											'<a href="#"><i class="icon-star"></i></a>'+
 										'</span>'+
-										'<span>Upplagd den '+val.date_added+'</span>'+
+										'<span class="date">Upplagd den '+val.date_added+'</span>'+
+										'</div>'+
 										'</li>');
 
 						});
@@ -606,21 +608,23 @@ ViewItem = {
 
 					$.each(data.starred, function(key, val) {
 						items.push('<li class="span3 item">'+
-										'<a href="/item/'+val.id+'" class="img">'+
-											'<img src="http://placehold.it/300x200">'+
-										'</a>'+
-										'<h4>'+
-											'<a href="/item/'+val.id+'">'+val.headline+'</a>'+
-										'</h4>'+
-										'<span class="icons">'+
-											'<a href="#">'+
-												'<i class="icon-user"></i>'+
+										'<div class="thumbnail">'+
+											'<a href="/item/'+val.id+'" class="img">'+
+												'<img src="http://placehold.it/300x200">'+
 											'</a>'+
-											'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
-											'<a href="#"><i class="icon-star"></i></a>'+
-										'</span>'+
-										'<span>Upplagd den '+val.date_added+'</span>'+
-										'</li>');
+											'<h4>'+
+												'<a href="/item/'+val.id+'">'+val.headline+'</a>'+
+											'</h4>'+
+											'<span class="icons">'+
+												'<a href="#">'+
+													'<i class="icon-user"></i>'+
+												'</a>'+
+												'<a href="/item/send_message/'+val.id+'"><i class="icon-pencil"></i></a>'+
+												'<a href="#"><i class="icon-star"></i></a>'+
+											'</span>'+
+											'<span>Upplagd den '+val.date_added+'</span>'+
+										'</div>'+
+									'</li>');
 					});
 
 					$('#results').append(items);
@@ -630,12 +634,30 @@ ViewItem = {
 	}
 };
 
+Publish = {
+	'Item': function() {
+		$('.itemPreview button').on('click', function(e) {
+
+			
+			$.ajax({
+				url: '/bytarna/item/publish',
+				dataType: 'json',
+				type: 'POST',
+				data: $('itemPreview form').serialize(),
+				success: function(data) {
+					console.log(data);
+				}
+			});
+		});
+	}
+};
+
 
 Messages = {
 	'Init': function() {
 		Messages.LikeMessage();
-		// Messages.TeaserMessage();
-		// Messages.Sent();
+		Messages.TeaserMessage();
+		Messages.Sent();
 		Messages.SendMessageForm();
 	},
 	'LikeMessage': function() {
@@ -657,61 +679,89 @@ Messages = {
 			var form = $(this).closest('form');
 			var href = form.attr('action');
 
-			form.validate({
-				rules: {
-					message: {
-						required: true,
-						minlength: 5
-					}
-				}
-			});
-
 			$.ajax({
 				url: href,
 				data: form.serialize(),
 				dataType: 'json',
 				type: 'POST',
 				success: function(data) {
+					var lastComment = '';
+					var liClass = 'comment-parent';
+
+					if( data.comments['0'].children === false ) {
+						lastComment = data.comments['0'].parent;
+					} else {
+						liClass = 'comment-child';
+					}
+
+					var li = $('<li class="'+liClass+' well"></li>'),
+						link = $('<a></a>').attr('href','/bytarna/item/'+lastComment.item_id).html('Svar till annons'),
+                        message = $('<p></p>').html(lastComment.message),
+                        span = $('<span></span>'),
+                        name = $('<p></p>').html(lastComment.firstname +' '+ lastComment.lastname),
+                        date = $('<p></p>').html(lastComment.date_sent);
+
+
+                        span.append(name, date);
+						li.append(link, message, span);
+
+						$('.guestbook').prepend(li);
+
 					Messages.Success(data.message, $('.container'));
 				}
 			});
 		});
 	},
-	// 'TeaserMessage': function() {
-	// 	$('.item .sendMessage').on('click', function(e) {
-	// 		e.preventDefault();
-	// 		var href = $(this).data('link'),
-	// 			itemId = href.match(/\d+/g).toString();
+	'TeaserMessage': function() {
+		$('#teaserMessageForm .close').on('click', function(e) {
+			e.preventDefault();
 
-	// 		$('#sendMessageForm form').attr('action', href);
+			$('#teaserMessageForm').removeClass('visible');
+		});
 
-	// 		Messages.Sent(itemId);
-	// 	});
 
-	// },
-	// 'Sent': function(itemId) {
-	// 	$('#sendMessageForm input[type="submit"]').on('click', function(e) {
-	// 		e.preventDefault();
+		$('.item .sendMessage').on('click', function(e) {
+			e.preventDefault();
 
-	// 		$.ajax({
-	// 			url: '/item/send_message/'+itemId+'',
-	// 			type: 'POST',
-	// 			data: $('#sendMessageForm form').serialize(),
-	// 			dataType: 'json',
-	// 			success: function(data) {
-	// 				console.log(data.state);
-	// 				if (data.state === true) {
-	// 					Messages.Success(data.message, $('#sendMessageForm form'));
+			var href = $(this).data('link'),
+				itemId = href.match(/\d+/g).toString(),
+				userId = $(this).siblings('.userLink').attr('href').match(/\d+/g).toString();
+
+			$('#teaserMessageForm form').attr('action', href);
+			var test = $('#teaserMessageForm form').find('input[name="to_id"]').val(userId);
+
+			$('#teaserMessageForm').find('h3').html( $(this).closest('span').siblings('h4').find('a').html() );
+
+			$('#teaserMessageForm').addClass('visible');
+
+
+			Messages.Sent(itemId);
+		});
+
+	},
+	'Sent': function(itemId) {
+		$('#teaserMessageForm input[type="submit"]').on('click', function(e) {
+			e.preventDefault();
+
+			$.ajax({
+				url: '/bytarna/item/send_message/'+itemId+'',
+				type: 'POST',
+				data: $('#teaserMessageForm form').serialize(),
+				dataType: 'json',
+				success: function(data) {
+					console.log(data.state);
+					if (data.state === true) {
+						Messages.Success(data.message, $('#teaserMessageForm form'));
 						
-	// 				} else {
-	// 					console.log("false");
-	// 				}
-	// 			}
-	// 		});
+					} else {
+						console.log("false");
+					}
+				}
+			});
 			
-	// 	});
+		});
 
-	// },
+	},
 	'Success': function(message, parent) {
 		var successDiv = $('<div></div>');
 
