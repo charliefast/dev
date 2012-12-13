@@ -360,45 +360,34 @@ class Item extends Auth_Controller {
 		exit;
 	}
 
+	/**
+	 * Loads view with users items
+	 *
+	 * @param in $user_id
+	 */
 	function show_user_items($user_id)
 	{
 		$user_data = $this->session->userdata('logged_in');
 		$edit = ($user_data['id'] === $user_id)?TRUE:FALSE;
-		
+		$this->content = array(
+			'result' => $this->user_model->get_user($user_id),
+			'id' => $user_id,
+			'error' => 'Inga annonser funna');
 		$this->load->view('header_view', array('title' => 'Annonslista', 'page' => 'item_list'));
-		if ($edit)
+		
+
+		$result = ($edit)?
+			$this->item_model->get_users_items($user_id):
+			$this->item_model->get_users_items($user_id, TRUE);
+		$page = ($edit)?
+			'edit_item_list_view':
+			'items_list_view';
+		if ($result)
 		{
-			$result = $this->item_model->get_users_items($user_id);
-			if ($result)
-			{
-				$this->content = array('items' => $result, 'error' => FALSE, 'result' => $this->user_model->get_user($user_id));
-				$this->content['id'] = $user_id;
-			}
-			else
-			{
-				$this->content['error'] = 'Inga annonser funna';
-				$this->content['result'] = $this->user_model->get_user($user_id);
-				$this->content['id'] = $user_id;
-			}
-			$this->load->view('edit_item_list_view', $this->content); 
+			$this->content['error'] = FALSE;
+			$this->content['items'] = $result;
 		}
-		else
-		{
-			$result = $this->item_model->get_users_items($user_id, TRUE);
-			if ($result)
-			{
-				$this->content = array('result' => $result, 'error' => FALSE);
-				$this->content['result'] = $this->user_model->get_user($user_id);
-				$this->content['id'] = $user_id;
-			}
-			else
-			{
-				$this->content['error'] = 'Inga annonser funna';
-				$this->content['result'] = $this->user_model->get_user($user_id);
-				$this->content['id'] = $user_id;
-			}
-			$this->load->view('items_list_view', $this->content); 
-		}
+		$this->load->view($page, $this->content);
 		$this->load->view('footer_view'); 
 	}
 
