@@ -10,7 +10,7 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
       <ul class="nav nav-tabs hidden-phone">
         <li><a href="<?php echo base_url().'user/'.$user_data['id']; ?>">Min profil</a></li>
 
-        <li class="active"><?php if($edit) echo anchor('index.php/user/edit/all','Ändra profil');?></li>
+        <li class="active"><?php if($edit) echo anchor('base_url().user/edit/image','Ändra profil');?></li>
         <?php if ($edit):
           $like_list = 'Min minneslista'; $row->firstname.'s minneslista'; 
           $item_list = 'Mina annonser';

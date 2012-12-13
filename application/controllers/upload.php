@@ -45,6 +45,13 @@ class Upload extends Auth_Controller {
     $this->load->view('footer_view');
   }
 
+  function upload_user_view(){
+    $this->load->view('header_view', array('title' => 'Ladda upp bild', 'page' => 'upload_image'));
+    // $this->load->view('category_menu_view', $categories);
+    $this->load->view('upload_form_user_view', array('user_id' => $this->user_id));
+    $this->load->view('footer_view');
+  }
+
   /**
    * Adds image to item and redirects
    * 

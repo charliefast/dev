@@ -83,7 +83,8 @@ Class Item_model extends CI_Model
 			->join('categories', 'categories.id = items.category_id')
 			->join('images','images.item_id = items.id','left')
 			->order_by("date_added", "desc")
-			->where('items.user_id', $user_id);
+			->where('items.user_id', $user_id)
+			->group_by('items.id');
 			if ($status)
 			{
 				$this->db->where('status', $status);
@@ -121,6 +122,7 @@ Class Item_model extends CI_Model
 			->where('items.id', $id)
 			->where('status', $status)
 			->order_by('images.id', 'DESC')
+			->group_by('items.id')
 			->limit('1,0');
 			if ($user_id)
 			{

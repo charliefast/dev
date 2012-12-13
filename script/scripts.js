@@ -76,8 +76,10 @@ Filedrop = {
 		
 		// $('.uploadForm').hide();
 		var itemId = $('.uploadForm').find('[name="item_id"]').val();
-
-
+		var url = '/bytarna/item/verify_upload/'+ itemId;
+		if (itemId === 'user') {
+			url = '/bytarna/user/verify_upload';
+		}
 		var dropbox = $('#dropbox'),
 			message = $('.message', dropbox);
 		var parts = {},
@@ -92,7 +94,7 @@ Filedrop = {
 			paramname:'pic',
 			maxfiles: 1,
 			maxfilesize: 1,
-			url: '/bytarna/item/verify_upload/'+ itemId,
+			url: url,
 			fallback_id: 'fallbackBtn',
 			uploadFinished:function(i,file,response){
 				$.data(file).addClass('done');
