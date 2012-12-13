@@ -1,7 +1,7 @@
 <!-- ITEM PREVIEW -->
 <div class="container top">
   <div class="row-fluid">
-    <div class="span6 offset3">
+    <div class="span6 offset3 itemPreview">
 
       <?php if (isset($result['error'])):
         echo $result['error'];

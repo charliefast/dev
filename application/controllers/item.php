@@ -338,9 +338,11 @@ class Item extends Auth_Controller {
 
 	function delete_item($item_id)
 	{
+		var_dump($item_id);
 		$user_id = $this->logged_in_user['id'];
 		$item_id = $this->input->post('item_id');
 		$result = $this->item_model->delete_item($item_id, $user_id);
+		var_dump($item_id);
 		if ($result)
 		{
 			$response = array(

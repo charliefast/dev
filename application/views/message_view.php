@@ -9,7 +9,7 @@
 <div class="row-fluid">
     <div class="span9 offset3">
 
-      <div>
+      <div id="sendMessageForm">
         <?php $date = array('date' => date('Y-m-d H:i:s'));
         $hidden = array_merge($user_data, $date); 
         $hidden['to_id'] = $to_id; ?>
@@ -19,6 +19,7 @@
           <?php echo form_submit('submit','Skicka', 'class="btn btn-primary"') ?>
         <?php echo form_close() ?>
       </div>
+
       <ul class='guestbook'>
         <?php if ($comments>0): ?>
         <?php foreach ($comments as $comment):?>
@@ -26,9 +27,12 @@
             <?php if( $comment['parent']->item_id): ?>
               <a href="<?php echo base_url().'/item/'.$comment['parent']->item_id; ?>">Svar till annons</a>
             <?php endif; ?>
-            <h3><?php echo $comment['parent']->firstname.' '.$comment['parent']->lastname; ?></h3>
+
             <p><?php echo $comment['parent']->message; ?></p>
-            <p><?php echo $comment['parent']->date_sent; ?></p>
+            <span>
+              <p><?php echo $comment['parent']->firstname.' '.$comment['parent']->lastname; ?></p>
+              <p><?php echo $comment['parent']->date_sent; ?></p>
+            </span>
             <?php if ($comment['children']): ?>
             <ul class='comment-child'>
               <?php foreach ($comment['children'] as $child):?>

@@ -5451,6 +5451,17 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
+body {
+  background: #f9f9f9;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-weight: 200;
+}
 /* Main styles */
 header {
   height: 44px;
@@ -5511,6 +5522,42 @@ header .navbar .nav li a i {
   display: block;
   margin: 0 auto 10px;
 }
+.container #teaserMessageForm {
+  position: fixed;
+  z-index: 2000;
+  bottom: -250px;
+  right: 20px;
+  height: 250px;
+  width: 400px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #999999;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.container #teaserMessageForm.visible {
+  bottom: 0px;
+  -webkit-transition: ease-in all 0.3s;
+  -moz-transition: ease-in all 0.3s;
+  -o-transition: ease-in all 0.3s;
+  transition: ease-in all 0.3s;
+}
+.container #teaserMessageForm .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.container #teaserMessageForm h3 {
+  max-width: 100%;
+}
+.container #teaserMessageForm textarea {
+  width: 90%;
+}
 .container.top {
   margin-top: 20px;
 }
@@ -5532,7 +5579,7 @@ header .navbar .nav li a i {
   display: block;
 }
 .container.resultsContainer .loader {
-  background: url('/images/loader.gif') no-repeat 0 0;
+  background: url('/bytarna/images/loader.gif') no-repeat 0 0;
   width: 40px;
   height: 40px;
   margin: 0 auto;
@@ -5565,6 +5612,10 @@ header .navbar .nav li a i {
 .container .itemSidebar a {
   display: block;
 }
+.container .guestbook {
+  margin: 0;
+  padding: 0;
+}
 .container .guestbook li {
   list-style: none;
 }
@@ -5587,30 +5638,40 @@ header .navbar .nav li a i {
 .container .item:first-child {
   margin: 0 0.8% 2%;
 }
-.container .item a.img img:hover {
+.container .item .thumbnail a.img img:hover {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
-.container .item h4 {
-  font-size: 16px;
+.container .item .thumbnail h4 {
+  font-size: 18px;
   line-height: 24px;
-  margin-bottom: 3px;
+  margin-bottom: 15px;
 }
-.container .item h4 a {
+.container .item .thumbnail h4 a {
+  text-align: center;
+  display: block;
   color: #333333;
 }
-.container .item span {
+.container .item .thumbnail span {
   display: block;
   font-size: 12px;
   line-height: 16px;
   font-style: italic;
   color: #999999;
 }
-.container .item span.icons {
-  margin-bottom: 5px;
+.container .item .thumbnail span.icons {
+  text-align: center;
+  margin-bottom: 10px;
 }
-.container .item span.icons a {
-  margin-right: 5px;
+.container .item .thumbnail span.icons a {
+  margin-right: 15px;
+}
+.container .item .thumbnail span.icons a.like {
+  margin-right: 0;
+}
+.container .item .thumbnail span.date {
+  text-align: center;
+  margin-bottom: 10px;
 }
 .container #categoryList li {
   width: 23.304255%;
@@ -5785,6 +5846,6 @@ footer .container ul li {
   left: 0;
   height: 100%;
   width: 100%;
-  background: url('/images/done.png') no-repeat center center rgba(255, 255, 255, 0.5);
+  background: url('/bytarna/images/done.png') no-repeat center center rgba(255, 255, 255, 0.5);
   display: none;
 }

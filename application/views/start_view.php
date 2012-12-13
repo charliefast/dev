@@ -16,19 +16,21 @@
 	</div>
 </div>
 <div class="container top">
-	<!-- <div id="teaserMessageForm" style="position:fixed; top:50px; left:0;">
+	<div id="teaserMessageForm">
+		<span class="close">x</span>
+		<h3>Meddelande angående:</h3>
 		<?php $user_data = $this->session->userdata('logged_in'); ?>
 	    <?php $date = array('date' => date('Y-m-d H:i:s'));
 	    $hidden = array_merge($user_data, $date); 
-	    //$hidden['to_id'] = $to_id; ?>
+	    $hidden['to_id'] = ''; ?>
 	    <?php echo form_open('', '', $hidden); ?> 
 		    <div class="control-group">
 		    	<label class="label-control" for="message">Meddelande:</label>
-		    	<textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span4" rows="5" cols="30"></textarea>
+		    	<textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." class="message span4" rows="3" cols="30"></textarea>
 	    	</div>
-	    <?php echo form_submit('submit','Svara', 'class="btn btn-primary"') ?>
+	    <?php echo form_submit('submit','Skicka meddelande', 'class="btn btn-primary"') ?>
 	    <?php echo form_close() ?>
-	</div> -->
+	</div>
 
 
 	<div class="row-fluid">
@@ -60,25 +62,27 @@
 		elseif($result):
 		foreach ($result as $row):
 		$edit = ($user_data['id'] === $row->user_id)?TRUE:FALSE; ?>
-		<li class="span3 item">
-			<a href="<?php echo base_url().'item/'.$row->id; ?>" class="img">
-				<?php if (! $row->url):?>
-					<img src="http://placehold.it/300x200"/>
-				<?php else: ?>
-					<img src="<?php echo base_url().$row->url?>"/>
-				<?php endif; ?>
-			</a>
-			<h4><a href="<?php echo base_url().'item/'.$row->id; ?>"><?php echo $row->headline; ?></a></h4>
-			<span class="icons">
-				<a href="<?php echo base_url().'user/'.$row->user_id; ?>"><i class="icon-user"></i></a>
-				<a href="<?php echo base_url().'item/message/'.$row->id;?>" class="sendMessage" data-link="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
-				<a class="like" href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
-			</span>
-			<span>Upplagd den <?php  echo $row->date_added; ?></span>
-			<?php if($edit):?>
-				<a href="<?php echo base_url().'item/edit/'.$row->id;?>"><i class="icon-edit"></i>Ändra</a>
-				<a href="<?php echo base_url().'#'?>"><i class="icon-remove"></i>Radera</a>
-			<?php endif;?>
+			<li class="span3 item">
+				<div class="thumbnail">
+					<a href="<?php echo base_url().'item/'.$row->id; ?>" class="img">
+						<?php if (! $row->url):?>
+							<img src="http://placehold.it/300x200"/>
+						<?php else: ?>
+							<img src="<?php echo base_url().$row->url?>"/>
+						<?php endif; ?>
+					</a>
+					<h4><a href="<?php echo base_url().'item/'.$row->id; ?>"><?php echo $row->headline; ?></a></h4>
+					<span class="icons">
+						<a href="#" class="sendMessage" data-link="<?php echo base_url().'item/message/'.$row->id;?>"><i class="icon-pencil"></i></a>
+						<a href="<?php echo base_url().'user/'.$row->user_id; ?>" class="userLink"><i class="icon-user"></i></a>
+						<a class="like" href="<?php echo base_url().'like/'.$row->id;?>"><i class="icon-star"></i></a>
+					</span>
+					<span class="date">Upplagd den <?php  echo $row->date_added; ?></span>
+					<?php if($edit):?>
+						<a class="edit" href="<?php echo base_url().'item/edit/'.$row->id;?>"><i class="icon-edit"></i>Ändra</a>
+						<!-- <a class="edit" href="<?php echo base_url().'#'?>"><i class="icon-remove"></i>Radera</a> -->
+					<?php endif;?>
+				</div>
 			</li>
 			<?php endforeach;
 			endif ?>
