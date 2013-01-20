@@ -67,6 +67,7 @@ $route['item/verify_new'] = 'item/verify_new_item';
 $route['item/edit/(:num)'] = 'item/edit_item_form/$1';
 $route['item/edit_item'] = 'item/edit_published_item';
 $route['item/delete/(:num)'] = 'item/delete_item/$1';
+$route['item_list/batch_edit'] = 'item/batch_edit';
 $route['item/search'] = "search/get_items/$1";
 $route['item/search/load'] = "search/load_page";
 $route['item/category/(:num)/page'] = "item/item/get_items/$1/$2";
@@ -97,6 +98,7 @@ $route['starred'] = 'login/get_starred_items';
 $route['like/(:num)'] = 'like/like_item/$1';
 $route['user/like/(:num)'] = 'like/get_likes/$1';
 $route['message/delete/(:num)'] = 'message/message_delete_by_id/$1';
+ 
 
 
 

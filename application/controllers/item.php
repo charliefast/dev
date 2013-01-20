@@ -238,11 +238,13 @@ class Item extends Auth_Controller {
 	* 
 	* @return string
 	*/
-	function publish_item()
+	function publish_item($item_id = FALSE)
 	{
-		if ($this->input->post('item_id'))
-		{
+		if (! $item_id){
 			$item_id = $this->input->post('item_id');
+		}
+		if ($item_id)
+		{
 			$result = $this->item_model->update_item($item_id, array('status' => 1));
 			if ($result)
 			{
@@ -336,13 +338,13 @@ class Item extends Auth_Controller {
 		exit;
 	}
 
-	function delete_item($item_id)
+	function delete_item($item_id = FALSE)
 	{
-		var_dump($item_id);
+		if (! $item_id){
+			$item_id = $this->input->post('item_id');
+		}
 		$user_id = $this->logged_in_user['id'];
-		$item_id = $this->input->post('item_id');
 		$result = $this->item_model->delete_item($item_id, $user_id);
-		var_dump($item_id);
 		if ($result)
 		{
 			$response = array(
@@ -397,6 +399,55 @@ class Item extends Auth_Controller {
 	{
 		$total_rows = $this->item_model->count_rows($category);
 		return $total_rows;
+	}
+
+	function batch_edit()
+	{
+		$user_data = $this->session->userdata('logged_in');
+		if($this->input->post('submit') == 'cancel'){
+			redirect('user/'.$user_data['id'].'/items');
+		}
+		else if ($this->input->get('id'))
+		{
+			$ids = explode(' ', $this->input->get('id'));
+			foreach ($ids as $id)
+			{
+				if ($this->input->get('publish'))
+				{
+					$this->publish_item($id);
+				}
+				if ($this->input->get('delete'))
+				{
+					$this->delete_item($id);
+				}
+			}
+
+		}
+		else if($this->input->post('items'))
+		{
+			$items = implode('+',$this->input->post('items'));
+
+			if($this->input->post('submit')== 'delete')
+			{
+				$box =  confirmation_popup_box('?delete=yes&id='.$items, 'Vill du verkligen ta bort dessa annonser?');
+				echo $box;
+			}
+			else if($this->input->post('submit')== 'publish')
+			{
+				$box = confirmation_popup_box('?publish=yes&id='.$items, 'Vill du publicera dessa annonser?');
+				echo $box;
+			}
+		}
+		else
+		{
+			$response = array(
+				'state'  => FALSE,
+				'message' => 'Du har inte markeat någon annons!'
+				);
+			echo create_json($response);
+			exit;
+		}
+		//echo create_json($response);
 	}
 }
 /* End of file item.php */

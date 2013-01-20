@@ -45,7 +45,7 @@ $edit = ($user_data['id'] === $id)?TRUE:FALSE; ?>
 			<?php foreach ($items as $item): ?>
 			<?php 
 			$status = ($item->status)?'Publicerad':'Opublicerad'; ?>	
-			<li><input type="checkbox" name="likes" value="<?php echo $item->item_id; ?>">
+			<li><input type="checkbox" name="items[]" value="<?php echo $item->item_id; ?>">
 				<a href="<?php echo base_url().'item/'.$item->item_id; ?>"><?php echo $item->headline; ?></a> Status:<?php echo $status; ?>
 			</li>
 			<?php endforeach ?>
